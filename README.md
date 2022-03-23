@@ -1,2 +1,2 @@
 # SJ-Library
-Androis Studio library
+Android Studio library
