@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.sjapps.setupdialog.R;
+import com.sjapps.library.R;
 
 /**
  * by SlaVcE
