@@ -2,7 +2,6 @@
 
 
 buildscript {
-    apply plugin: 'maven'
     repositories {
         google()
         mavenCentral()
