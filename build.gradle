@@ -2,9 +2,6 @@
 
 
 buildscript {
-    plugins {
-        id 'maven-publish'
-    }
     repositories {
         google()
         mavenCentral()
@@ -21,3 +18,17 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+publishing {
+    publications {
+    	// This mavenJava can be filled in randomly, it's just a task name
+    	// MavenPublication must have, this is the task class to call
+        mavenJava(MavenPublication) {
+        	// The header here is the artifacts configuration information, do not fill in the default
+            groupId = 'org.gradle.sample'
+            artifactId = 'library'
+            version = '1.1'
+
+            from components.java
+        }
+    }
+}
