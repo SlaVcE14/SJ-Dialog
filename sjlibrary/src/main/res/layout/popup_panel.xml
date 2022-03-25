@@ -11,6 +11,7 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/background"
         android:gravity="bottom"
+        android:layout_marginHorizontal="10dp"
         android:orientation="vertical">
 
         <TextView

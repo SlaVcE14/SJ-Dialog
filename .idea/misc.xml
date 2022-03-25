@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Programirane/Android Studio/MyLibrary2/app/src/main/res/layout/activity_main.xml" value="0.20208333333333334" />
+        <entry key="..\:/Programirane/Android Studio/MyLibrary2/sjlibrary/src/main/res/drawable/background.xml" value="0.21822916666666667" />
+        <entry key="..\:/Programirane/Android Studio/MyLibrary2/sjlibrary/src/main/res/layout/popup_panel.xml" value="0.2671875" />
+        <entry key="..\:/Programirane/Android Studio/MyLibrary2/sjlibrary/src/main/res/layout/popup_panel_long.xml" value="0.2671875" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
