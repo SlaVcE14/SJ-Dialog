@@ -7,5 +7,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "My Library 2"
-include ':app'
 include ':sjlibrary'
