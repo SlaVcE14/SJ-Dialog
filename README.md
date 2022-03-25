@@ -1,5 +1,6 @@
 # SJ-Library
 Anndroid Studio library
+
 ## Download
 
 Add it in your root build.gradle at the end of repositories:
@@ -18,3 +19,4 @@ dependencies {
 	        implementation 'com.github.slavce14:SJ-Library:1.2'
 	}
 ```
+[![](https://jitpack.io/v/slavce14/SJ-Library.svg)](https://jitpack.io/#slavce14/SJ-Library)
