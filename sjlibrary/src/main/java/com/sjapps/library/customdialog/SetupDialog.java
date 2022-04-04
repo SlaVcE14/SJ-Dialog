@@ -2,9 +2,11 @@ package com.sjapps.library.customdialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,6 +21,7 @@ import com.sjapps.library.R;
 public class SetupDialog {
     public Dialog dialog;
     public Button button1, button2;
+    private int maxWidth = 600;
 
     public SetupDialog (){
 
@@ -52,7 +55,7 @@ public class SetupDialog {
             TextView msg = (TextView)dialog.findViewById(R.id.textView);
             msg.setText(Text);
         }
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        SetDialogSize(context);
         TextView TitleTv = (TextView)dialog.findViewById(R.id.TitleText);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         button1 = (Button)dialog.findViewById(R.id.Btn1);
@@ -77,6 +80,21 @@ public class SetupDialog {
         return this;
     }
 
+    public void dismiss(){
+        dialog.dismiss();
+    }
+
+    private void SetDialogSize(Context context){
+        Configuration configuration = context.getResources().getConfiguration();
+        if (configuration.screenWidthDp > maxWidth)
+            dialog.getWindow().setLayout(dpToPixels(context,maxWidth), ViewGroup.LayoutParams.WRAP_CONTENT);
+        else dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    }
+
+    private int dpToPixels(Context context, float dp) {
+        Resources r = context.getResources();
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
+    }
 
 
     public void onButtonClick(DialogButtonEvents dialogButtonEvents){
