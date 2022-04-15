@@ -15,8 +15,13 @@ buildscript {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+//task clean(type: Delete) {
+//    delete rootProject.buildDir
+//}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
-
-
