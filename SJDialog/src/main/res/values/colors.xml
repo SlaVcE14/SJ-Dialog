@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Blue_1">#0060f4</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="main1">#E5E5E5</color>
+    <color name="main2">#D5D5D5</color>
+
+    <color name="main1dark">#333333</color>
+    <color name="main2dark">#4a4a4a</color>
+
+    <color name="BtnClick">#BDBDBD</color>
+</resources>
