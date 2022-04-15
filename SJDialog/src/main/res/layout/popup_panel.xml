@@ -43,7 +43,6 @@
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
                 android:maxLines="1"
-                style="@style/ButtonColor"
                 android:text="Cancel" />
 
             <Button
@@ -53,7 +52,6 @@
                 android:layout_weight="1"
                 android:maxLines="1"
                 android:text="Delete" />
-
 
         </LinearLayout>
 

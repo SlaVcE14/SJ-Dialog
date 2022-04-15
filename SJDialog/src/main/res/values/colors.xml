@@ -7,8 +7,5 @@
     <color name="main1">#E5E5E5</color>
     <color name="main2">#D5D5D5</color>
 
-    <color name="main1dark">#333333</color>
-    <color name="main2dark">#4a4a4a</color>
-
     <color name="BtnClick">#BDBDBD</color>
 </resources>
