@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
-            android:text="Delete user?"
+            android:text="Delete?"
             android:textAlignment="center"
             android:textSize="25dp" />
 
