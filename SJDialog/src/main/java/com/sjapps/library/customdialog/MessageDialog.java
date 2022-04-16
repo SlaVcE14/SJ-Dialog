@@ -119,6 +119,10 @@ public class MessageDialog {
         return this;
     }
 
+    public Button getButton() {
+        return button;
+    }
+
     private void SetDialogSize(Context context){
         Configuration configuration = context.getResources().getConfiguration();
         if (configuration.screenWidthDp > maxWidth)
