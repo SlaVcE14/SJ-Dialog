@@ -47,7 +47,7 @@ public class MessageDialog {
      * @return current class
      * */
     public MessageDialog setTitle(String title){
-
+        
         TextView TitleTv = dialog.findViewById(R.id.titleText);
         TitleTv.setText(title);
         return this;
