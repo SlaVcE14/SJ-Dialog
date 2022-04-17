@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/TitleText"
+            android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -26,18 +26,16 @@
             android:text="Title"
             android:textAlignment="center"
             android:textSize="25dp" />
-
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/messageTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Message"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:text="message here"
-            android:textAlignment="center"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,21 +47,14 @@
 
 
             <Button
-                android:id="@+id/Btn1"
+                android:id="@+id/btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
                 android:maxLines="1"
-                android:text="Cancel" />
+                android:text="Ok" />
 
-            <Button
-                android:id="@+id/Btn2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:maxLines="1"
-                android:text="Yes" />
 
 
         </LinearLayout>
