@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="Blue_1">#0060f4</color>
+    <color name="SJLibrary_Blue_1">#0060f4</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="main1">#E5E5E5</color>
-    <color name="main2">#D5D5D5</color>
+    <color name="SJLibrary_main1">#E5E5E5</color>
+    <color name="SJLibrary_main2">#D5D5D5</color>
 
     <color name="BtnClick">#BDBDBD</color>
 </resources>
