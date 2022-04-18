@@ -16,7 +16,7 @@ allprojects {
 Add implementation:
 ```
 dependencies {
-	        implementation 'com.github.slavce14:SJ-Library:1.3'
+	        implementation 'com.github.slavce14:SJ-Library:1.3.0.1'
 	}
 ```
 [![](https://jitpack.io/v/slavce14/SJ-Library.svg)](https://jitpack.io/#slavce14/SJ-Library)
