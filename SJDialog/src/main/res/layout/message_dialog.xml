@@ -23,6 +23,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"
             android:text="Title"
             android:textAlignment="center"
             android:textSize="25dp" />
@@ -51,6 +52,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5dp"
+                android:autoSizeMaxTextSize="14dp"
+                android:autoSizeStepGranularity="1dp"
                 android:layout_weight="1"
                 android:maxLines="1"
                 android:text="Ok" />
