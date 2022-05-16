@@ -5,13 +5,17 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
 
 import com.sjapps.library.R;
 
@@ -211,6 +215,36 @@ public class SetupDialog {
         background.setBackgroundResource(drawable);
         return this;
     }
+    /**
+     * Set background color for all buttons.
+     * @param color Color to use for tinting buttons
+     * @return current class
+     * */
+    public SetupDialog setButtonsColor(int color){
+        button1.getBackground().setTint(color);
+        button2.getBackground().setTint(color);
+        return this;
+    }
+
+    /**
+     * Set background color for left button.
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     * */
+    public SetupDialog setLeftButtonColor(int color){
+        button1.getBackground().setTint(color);
+        return this;
+    }
+    /**
+     * Set background color for right button.
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     * */
+    public SetupDialog setRightButtonColor(int color){
+        button2.getBackground().setTint(color);
+        return this;
+    }
+
     /**
      * Set onClick listener for both buttons
      * @param dialogButtonEvents dialog button events
