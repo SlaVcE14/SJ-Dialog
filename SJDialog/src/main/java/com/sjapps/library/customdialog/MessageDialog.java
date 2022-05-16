@@ -118,6 +118,15 @@ public class MessageDialog {
         button.setBackgroundResource(drawable);
         return this;
     }
+    /**
+     * Set button color.
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     * */
+    public MessageDialog setButtonColor(int color){
+        button.getBackground().setTint(color);
+        return this;
+    }
 
     public Button getButton() {
         return button;
