@@ -2,6 +2,7 @@ package com.sjapps.library.customdialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -27,6 +29,8 @@ public class SetupDialog {
 
     public static final String LONG_TYPE = "long";
     public static final String SHORT_TYPE = "short";
+    public static final String DEFAULT_BUTTON = "DefaultBtn";
+    public static final String RED_BUTTON = "RedBtn";
 
     public Dialog dialog;
     private Button button1, button2;
@@ -50,7 +54,7 @@ public class SetupDialog {
         return Short(context,Title,null,Btn2Txt);
     }
     public SetupDialog Delete(Context context,String Title){
-        return DialogBuilder(context,Title,null,null,null);
+        return DialogBuilder(context,Title,null,null,null).setRightButtonColor(RED_BUTTON);
     }
     public SetupDialog Delete(Context context){
         return DialogBuilder(context,null,null,null,null);
@@ -80,7 +84,7 @@ public class SetupDialog {
 
 
     public SetupDialog DialogBuilder(Context context,String Title,String Text, String Btn1Txt, String Btn2Txt){
-
+        this.context = context;
         dialog = new Dialog(context);
         if (Text == null){
             dialog.setContentView(R.layout.popup_panel);
@@ -244,6 +248,71 @@ public class SetupDialog {
         button2.getBackground().setTint(color);
         return this;
     }
+    /**
+     * Set text color for all buttons.
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     * */
+    public SetupDialog setButtonsTextColor(int color){
+        button1.setTextColor(color);
+        button2.setTextColor(color);
+        return this;
+    }
+    /**
+     * Set text color for left button.
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     * */
+    public SetupDialog setLeftButtonTextColor(int color){
+        button1.setTextColor(color);
+//        button1.setTextAppearance(R.style.ButtonColor);
+        return this;
+    }
+    /**
+     * Set text color for right button.
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     * */
+    public SetupDialog setRightButtonTextColor(int color){
+        button2.setTextColor(color);
+        return this;
+    }
+
+
+    public SetupDialog setLeftButtonColor(String color){
+        switch (color){
+            case RED_BUTTON:
+                setLeftButtonBackgroundResource(R.drawable.ripple_button_red);
+                setLeftButtonTextColor(context.getResources().getColor(R.color.md_theme_onErrorContainer,context.getTheme()));
+                break;
+            default:
+                setLeftButtonBackgroundResource(R.drawable.ripple_button);
+                setLeftButtonTextColor(context.getResources().getColor(R.color.md_theme_onPrimaryContainer,context.getTheme()));
+        }
+        return this;
+    }
+
+    public SetupDialog setRightButtonColor(String color){
+        switch (color){
+            case RED_BUTTON:
+                setRightButtonBackgroundResource(R.drawable.ripple_button_red);
+                setRightButtonTextColor(context.getResources().getColor(R.color.md_theme_onErrorContainer,context.getTheme()));
+                break;
+            default:
+                setRightButtonBackgroundResource(R.drawable.ripple_button);
+                setRightButtonTextColor(context.getResources().getColor(R.color.md_theme_onPrimaryContainer,context.getTheme()));
+        }
+        return this;
+    }
+
+
+
+    public SetupDialog setButtonsColor(String color){
+        setLeftButtonColor(color);
+        setRightButtonColor(color);
+        return this;
+    }
+
 
     /**
      * Set onClick listener for both buttons
