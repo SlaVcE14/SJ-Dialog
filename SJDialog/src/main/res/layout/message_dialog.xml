@@ -3,7 +3,6 @@
     android:id="@+id/dialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.sjlibrary"
     >
 
     <LinearLayout
@@ -53,6 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                style="@style/ButtonColor"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMinTextSize="5dp"
                 android:autoSizeMaxTextSize="14dp"

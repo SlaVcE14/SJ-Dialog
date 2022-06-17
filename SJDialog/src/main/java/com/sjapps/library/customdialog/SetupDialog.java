@@ -2,22 +2,16 @@ package com.sjapps.library.customdialog;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.util.TypedValue;
-import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import androidx.annotation.ColorInt;
 
 import com.sjapps.library.R;
 
@@ -29,7 +23,6 @@ public class SetupDialog {
 
     public static final String LONG_TYPE = "long";
     public static final String SHORT_TYPE = "short";
-    public static final String DEFAULT_BUTTON = "DefaultBtn";
     public static final String RED_BUTTON = "RedBtn";
 
     public Dialog dialog;
@@ -57,7 +50,7 @@ public class SetupDialog {
         return DialogBuilder(context,Title,null,null,null).setRightButtonColor(RED_BUTTON);
     }
     public SetupDialog Delete(Context context){
-        return DialogBuilder(context,null,null,null,null);
+        return DialogBuilder(context,null,null,null,null).setRightButtonColor(RED_BUTTON);
     }
     public SetupDialog DialogBuilder(Context context){
         this.context = context;
@@ -99,12 +92,7 @@ public class SetupDialog {
         button1 = dialog.findViewById(R.id.Btn1);
         button2 = dialog.findViewById(R.id.Btn2);
         if (Btn1Txt == null) {
-            button1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
+            button1.setOnClickListener(v -> dialog.dismiss());
         }else button1.setText(Btn1Txt);
         if (Btn2Txt != null) {
             button2.setText(Btn2Txt);
@@ -283,11 +271,10 @@ public class SetupDialog {
         switch (color){
             case RED_BUTTON:
                 setLeftButtonBackgroundResource(R.drawable.ripple_button_red);
-                setLeftButtonTextColor(context.getResources().getColor(R.color.md_theme_onErrorContainer,context.getTheme()));
+                setLeftButtonTextColor(context.getResources().getColor(R.color.md_theme_onError,context.getTheme()));
                 break;
             default:
-                setLeftButtonBackgroundResource(R.drawable.ripple_button);
-                setLeftButtonTextColor(context.getResources().getColor(R.color.md_theme_onPrimaryContainer,context.getTheme()));
+                throw new IllegalArgumentException(color + " is not a valid argument");
         }
         return this;
     }
@@ -296,11 +283,10 @@ public class SetupDialog {
         switch (color){
             case RED_BUTTON:
                 setRightButtonBackgroundResource(R.drawable.ripple_button_red);
-                setRightButtonTextColor(context.getResources().getColor(R.color.md_theme_onErrorContainer,context.getTheme()));
+                setRightButtonTextColor(context.getResources().getColor(R.color.md_theme_onError,context.getTheme()));
                 break;
             default:
-                setRightButtonBackgroundResource(R.drawable.ripple_button);
-                setRightButtonTextColor(context.getResources().getColor(R.color.md_theme_onPrimaryContainer,context.getTheme()));
+                throw new IllegalArgumentException(color + " is not a valid argument");
         }
         return this;
     }
@@ -322,18 +308,8 @@ public class SetupDialog {
      * */
     public SetupDialog onButtonClick(DialogButtonEvents dialogButtonEvents){
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogButtonEvents.onLeftButtonClick();
-            }
-        });
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogButtonEvents.onRightButtonClick();
-            }
-        });
+        button1.setOnClickListener(v -> dialogButtonEvents.onLeftButtonClick());
+        button2.setOnClickListener(v -> dialogButtonEvents.onRightButtonClick());
         return this;
     }
     /**
@@ -342,18 +318,8 @@ public class SetupDialog {
      * @return current class
      * */
     public SetupDialog onButtonClick(DialogButtonEvent dialogButtonEvent){
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogButtonEvent.onButtonClick();
-            }
-        });
+        button1.setOnClickListener(v -> dialog.dismiss());
+        button2.setOnClickListener(v -> dialogButtonEvent.onButtonClick());
         return this;
     }
     /**

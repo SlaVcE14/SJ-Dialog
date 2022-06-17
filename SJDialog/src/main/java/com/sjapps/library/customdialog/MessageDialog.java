@@ -17,6 +17,8 @@ import com.sjapps.library.R;
 
 public class MessageDialog {
 
+    public static final String RED_BUTTON = "RedBtn";
+
     public Dialog dialog;
     private Button button;
     Context context;
@@ -33,12 +35,7 @@ public class MessageDialog {
         button = dialog.findViewById(R.id.btn);
         SetDialogSize(context);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        button.setOnClickListener(v -> dialog.dismiss());
         return this;
     }
     /**
@@ -91,12 +88,7 @@ public class MessageDialog {
      * @return current class
      * */
     public MessageDialog onButtonClick(DialogButtonEvent dialogButtonEvent){
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogButtonEvent.onButtonClick();
-            }
-        });
+        button.setOnClickListener(v -> dialogButtonEvent.onButtonClick());
         return this;
     }
     /**
@@ -125,6 +117,27 @@ public class MessageDialog {
      * */
     public MessageDialog setButtonColor(int color){
         button.getBackground().setTint(color);
+        return this;
+    }
+    /**
+     * Set button text color.
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     * */
+    public MessageDialog setButtonTextColor(int color){
+        button.setTextColor(color);
+        return this;
+    }
+
+    public MessageDialog setButtonColor(String color){
+        switch (color){
+            case RED_BUTTON:
+                setButtonBackgroundResource(R.drawable.ripple_button_red);
+                setButtonTextColor(context.getResources().getColor(R.color.md_theme_onError,context.getTheme()));
+                break;
+            default:
+                throw new IllegalArgumentException(color + " is not a valid argument");
+        }
         return this;
     }
 
