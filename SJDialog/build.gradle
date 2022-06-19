@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
 }
-
+group 'com.sjapps.library'
 android {
     compileSdk 31
 
