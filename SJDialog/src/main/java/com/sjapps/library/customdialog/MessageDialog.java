@@ -2,13 +2,9 @@ package com.sjapps.library.customdialog;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,7 +18,7 @@ public class MessageDialog {
     public Dialog dialog;
     private Button button;
     Context context;
-    private int maxWidth = 600;
+    private int maxDialogWidth = 600;
 
     public MessageDialog(){
 
@@ -33,7 +29,7 @@ public class MessageDialog {
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.message_dialog);
         button = dialog.findViewById(R.id.btn);
-        SetDialogSize(context);
+        setDialogSize();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         button.setOnClickListener(v -> dialog.dismiss());
         return this;
@@ -145,14 +141,28 @@ public class MessageDialog {
         return button;
     }
 
-    private void SetDialogSize(Context context){
-        Configuration configuration = context.getResources().getConfiguration();
-        if (configuration.screenWidthDp > maxWidth)
-            dialog.getWindow().setLayout(dpToPixels(context,maxWidth), ViewGroup.LayoutParams.WRAP_CONTENT);
-        else dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    /**
+     * Set a maximum width for dialog
+     * @param maxDialogWidth set value for {@link #maxDialogWidth}. Default is 600
+     * @return current class
+     */
+    public MessageDialog setMaxDialogWidth(int maxDialogWidth){
+        this.maxDialogWidth = maxDialogWidth;
+        setDialogSize();
+        return this;
     }
-    private int dpToPixels(Context context, float dp) {
-        Resources r = context.getResources();
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
+
+    public int getMaxDialogWidth(){
+        return this.maxDialogWidth;
     }
+
+    private void setDialogSize(){
+        if (context == null)
+            throw new NullPointerException("context is null");
+        if (dialog == null) {
+            throw new NullPointerException("dialog is null");
+        }
+        functions.SetDialogSize(context,dialog,maxDialogWidth);
+    }
+
 }
