@@ -23,6 +23,7 @@ public class SetupDialog {
 
     public static final String LONG_TYPE = "long";
     public static final String SHORT_TYPE = "short";
+    public static final String RED_BUTTON = "RedBtn";
 
     public Dialog dialog;
     private Button button1, button2;
@@ -46,10 +47,10 @@ public class SetupDialog {
         return Short(context,Title,null,Btn2Txt);
     }
     public SetupDialog Delete(Context context,String Title){
-        return DialogBuilder(context,Title,null,null,null);
+        return DialogBuilder(context,Title,null,null,null).setRightButtonColor(RED_BUTTON);
     }
     public SetupDialog Delete(Context context){
-        return DialogBuilder(context,null,null,null,null);
+        return DialogBuilder(context,null,null,null,null).setRightButtonColor(RED_BUTTON);
     }
     public SetupDialog DialogBuilder(Context context){
         this.context = context;
@@ -76,7 +77,7 @@ public class SetupDialog {
 
 
     public SetupDialog DialogBuilder(Context context,String Title,String Text, String Btn1Txt, String Btn2Txt){
-
+        this.context = context;
         dialog = new Dialog(context);
         if (Text == null){
             dialog.setContentView(R.layout.popup_panel);
@@ -91,12 +92,7 @@ public class SetupDialog {
         button1 = dialog.findViewById(R.id.Btn1);
         button2 = dialog.findViewById(R.id.Btn2);
         if (Btn1Txt == null) {
-            button1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
+            button1.setOnClickListener(v -> dialog.dismiss());
         }else button1.setText(Btn1Txt);
         if (Btn2Txt != null) {
             button2.setText(Btn2Txt);
@@ -240,6 +236,69 @@ public class SetupDialog {
         button2.getBackground().setTint(color);
         return this;
     }
+    /**
+     * Set text color for all buttons.
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     * */
+    public SetupDialog setButtonsTextColor(int color){
+        button1.setTextColor(color);
+        button2.setTextColor(color);
+        return this;
+    }
+    /**
+     * Set text color for left button.
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     * */
+    public SetupDialog setLeftButtonTextColor(int color){
+        button1.setTextColor(color);
+//        button1.setTextAppearance(R.style.ButtonColor);
+        return this;
+    }
+    /**
+     * Set text color for right button.
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     * */
+    public SetupDialog setRightButtonTextColor(int color){
+        button2.setTextColor(color);
+        return this;
+    }
+
+
+    public SetupDialog setLeftButtonColor(String color){
+        switch (color){
+            case RED_BUTTON:
+                setLeftButtonBackgroundResource(R.drawable.ripple_button_red);
+                setLeftButtonTextColor(context.getResources().getColor(R.color.md_theme_onError,context.getTheme()));
+                break;
+            default:
+                throw new IllegalArgumentException(color + " is not a valid argument");
+        }
+        return this;
+    }
+
+    public SetupDialog setRightButtonColor(String color){
+        switch (color){
+            case RED_BUTTON:
+                setRightButtonBackgroundResource(R.drawable.ripple_button_red);
+                setRightButtonTextColor(context.getResources().getColor(R.color.md_theme_onError,context.getTheme()));
+                break;
+            default:
+                throw new IllegalArgumentException(color + " is not a valid argument");
+        }
+        return this;
+    }
+
+
+
+    public SetupDialog setButtonsColor(String color){
+        setLeftButtonColor(color);
+        setRightButtonColor(color);
+        return this;
+    }
+
 
     /**
      * Set onClick listener for both buttons
@@ -249,18 +308,8 @@ public class SetupDialog {
      * */
     public SetupDialog onButtonClick(DialogButtonEvents dialogButtonEvents){
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogButtonEvents.onLeftButtonClick();
-            }
-        });
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogButtonEvents.onRightButtonClick();
-            }
-        });
+        button1.setOnClickListener(v -> dialogButtonEvents.onLeftButtonClick());
+        button2.setOnClickListener(v -> dialogButtonEvents.onRightButtonClick());
         return this;
     }
     /**
@@ -269,18 +318,8 @@ public class SetupDialog {
      * @return current class
      * */
     public SetupDialog onButtonClick(DialogButtonEvent dialogButtonEvent){
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogButtonEvent.onButtonClick();
-            }
-        });
+        button1.setOnClickListener(v -> dialog.dismiss());
+        button2.setOnClickListener(v -> dialogButtonEvent.onButtonClick());
         return this;
     }
     /**
