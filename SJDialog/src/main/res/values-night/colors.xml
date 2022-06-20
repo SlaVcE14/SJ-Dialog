@@ -27,6 +27,7 @@
     <color name="md_theme_inversePrimary">#0053DC</color>
     <color name="md_theme_shadow">#000000</color>
     <color name="md_theme_primaryInverse">#0053DC</color>
+
     <color name="seed">#0060F4</color>
     <color name="error">#BA1B1B</color>
     <color name="Custom0">#625FCD</color>
