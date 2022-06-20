@@ -1,8 +1,8 @@
 # SJ-Library
-Anndroid Studio library
+Android Studio library for dialog builder
 
 ## Download
-
+### Step 1. Add the JitPack repository 
 Add it in your root build.gradle at the end of repositories:
 ```
 allprojects {
@@ -12,8 +12,7 @@ allprojects {
 		}
 	}
 ```
-
-Add implementation:
+### Step 2. Add the dependency
 ```
 dependencies {
 	        implementation 'com.github.slavce14:SJ-Library:1.3.1'

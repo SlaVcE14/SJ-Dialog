@@ -349,6 +349,7 @@ public class SetupDialog {
         if (configuration.screenWidthDp > maxWidth)
             dialog.getWindow().setLayout(dpToPixels(context,maxWidth), ViewGroup.LayoutParams.WRAP_CONTENT);
         else dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
     }
 
     private int dpToPixels(Context context, float dp) {
