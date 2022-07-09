@@ -46,7 +46,7 @@ messageDialog.setButtonBackgroundResource(drawable);
 //Set dialog background resource
 messageDialog.setDialogBackgroundResource(drawable);
 
-//Set maximum dialog width. Default is 600
+//Set maximum dialog width. Default is 600dp
 messageDialog.setMaxDialogWidth(width);
 
 //Get maximum dialog width
