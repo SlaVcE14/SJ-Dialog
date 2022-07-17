@@ -1,4 +1,4 @@
-# SJ-Library
+# SJ-Dialog
 Android Studio library for dialog builder
 
 ## Download
@@ -24,10 +24,10 @@ dependencyResolutionManagement {
 ### Step 2. Add the dependency
 ```gradle
 dependencies {
-	implementation 'com.github.slavce14:SJ-Library:1.4'
+	implementation 'com.github.slavce14:SJ-Dialog:1.4'
 }
 ```
-[![](https://jitpack.io/v/slavce14/SJ-Library.svg)](https://jitpack.io/#slavce14/SJ-Library)
+[![](https://jitpack.io/v/slavce14/SJ-Dialog.svg)](https://jitpack.io/#slavce14/SJ-Dialog)
 ## Documentation
-* [SetupDialogDoc](https://github.com/SlaVcE14/SJ-Library/blob/master/SJDialog/SetupDialogDoc.md): Documentation for SetupDialog
-* [MessageDialogDoc](https://github.com/SlaVcE14/SJ-Library/blob/master/SJDialog/MessageDialogDoc.md): Documentation for MessageDialog
+* [SetupDialogDoc](https://github.com/SlaVcE14/SJ-Dialog/blob/master/SJDialog/SetupDialogDoc.md): Documentation for SetupDialog
+* [MessageDialogDoc](https://github.com/SlaVcE14/SJ-Dialog/blob/master/SJDialog/MessageDialogDoc.md): Documentation for MessageDialog
