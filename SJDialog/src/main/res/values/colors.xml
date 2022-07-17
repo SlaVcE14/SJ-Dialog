@@ -37,4 +37,7 @@
     <color name="overlay_light_onPrimary">#FFFFFF</color>
     <color name= "overlay_light_primaryContainer">#FFDADB</color>
     <color name="overlay_light_onPrimaryContainer">#400008</color>
+
+    <color name="SJDialog_oldBackground">#E5E5E5</color>
+    <color name="SJDialog_oldButton">#0060f4</color>
 </resources>

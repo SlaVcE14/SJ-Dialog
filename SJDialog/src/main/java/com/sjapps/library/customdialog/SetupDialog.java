@@ -21,6 +21,7 @@ public class SetupDialog {
     @Deprecated
     public static final String SHORT_TYPE = "short";
     public static final String RED_BUTTON = "RedBtn";
+    public static final String OLD_BUTTON_COLOR = "OldBtnColor";
 
     public Dialog dialog;
     private Button button1, button2;
@@ -108,6 +109,12 @@ public class SetupDialog {
         //Noting here!!
         return this;
     }
+    public SetupDialog setOldTheme(){
+        setButtonsColor(OLD_BUTTON_COLOR);
+        setDialogBackgroundResource(R.drawable.dialog_background_old);
+        return this;
+    }
+
     /**
      * Set a dialog title.
      * @param title title of a dialog
@@ -251,6 +258,10 @@ public class SetupDialog {
                 setLeftButtonBackgroundResource(R.drawable.ripple_button_red);
                 setLeftButtonTextColor(context.getResources().getColor(R.color.md_theme_onError,context.getTheme()));
                 break;
+            case OLD_BUTTON_COLOR:
+                setLeftButtonBackgroundResource(R.drawable.ripple_button_old);
+                setLeftButtonTextColor(Color.WHITE);
+                break;
             default:
                 throw new IllegalArgumentException(color + " is not a valid argument");
         }
@@ -262,6 +273,10 @@ public class SetupDialog {
             case RED_BUTTON:
                 setRightButtonBackgroundResource(R.drawable.ripple_button_red);
                 setRightButtonTextColor(context.getResources().getColor(R.color.md_theme_onError,context.getTheme()));
+                break;
+            case OLD_BUTTON_COLOR:
+                setRightButtonBackgroundResource(R.drawable.ripple_button_old);
+                setRightButtonTextColor(Color.WHITE);
                 break;
             default:
                 throw new IllegalArgumentException(color + " is not a valid argument");
