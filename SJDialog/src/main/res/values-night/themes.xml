@@ -28,26 +28,7 @@
         <item name="colorSurfaceInverse">@color/md_theme_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_primaryInverse</item>
 
-        <item name="materialButtonStyle">@style/ButtonColor</item>
-    </style>
-
-    <style name="ButtonColor" parent="@android:style/Widget.Button">
-        <item name="android:background">@drawable/ripple_button</item>
-        <item name="android:textSize">12dp</item>
-        <item name="android:paddingStart">15dp</item>
-        <item name="android:paddingEnd">15dp</item>
-        <item name="android:padding">14dp</item>
-        <item name="textAllCaps">true</item>
-        <item name="android:focusable">true</item>
-        <item name="android:clickable">true</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceSmallInverse</item>
-        <item name="android:textColor">?colorOnPrimary</item>
-        <item name="android:gravity">center_vertical|center_horizontal</item>
-    </style>
-
-    <style name="ButtonColor.Red" parent="@style/ButtonColor">
-        <item name="backgroundTint">@color/md_theme_error</item>
-        <item name="android:textColor">@color/md_theme_onError</item>
+        <item name="materialButtonStyle">@style/SJDialog.ButtonStyle</item>
     </style>
 
 
