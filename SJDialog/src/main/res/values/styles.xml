@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SJDialog.ButtonStyle" parent="@android:style/Widget.Button">
+    <style name="SJDialog.ButtonStyle" parent="@style/Widget.MaterialComponents.Button">
         <item name="android:background">@drawable/ripple_button</item>
         <item name="android:textSize">12dp</item>
         <item name="android:paddingStart">15dp</item>
