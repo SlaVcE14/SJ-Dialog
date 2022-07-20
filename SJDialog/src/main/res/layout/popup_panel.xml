@@ -18,7 +18,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/TitleText"
+            android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -51,7 +51,7 @@
 
 
             <Button
-                android:id="@+id/Btn1"
+                android:id="@+id/btn1"
                 style="@style/SJDialog.ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                 android:text="Cancel" />
 
             <Button
-                android:id="@+id/Btn2"
+                android:id="@+id/btn2"
                 style="@style/SJDialog.ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
