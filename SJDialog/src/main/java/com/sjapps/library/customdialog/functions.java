@@ -4,17 +4,24 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
+import com.sjapps.library.R;
+
 public class functions {
     public static void SetDialogSize(@NonNull Context context, Dialog dialog, int maxWidth){
         Configuration configuration = context.getResources().getConfiguration();
+        int width  = ViewGroup.LayoutParams.MATCH_PARENT;
+        int height = ViewGroup.LayoutParams.WRAP_CONTENT;
+
         if (configuration.screenWidthDp > maxWidth)
-            dialog.getWindow().setLayout(dpToPixels(context,maxWidth), ViewGroup.LayoutParams.WRAP_CONTENT);
-        else dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            width = dpToPixels(context,maxWidth);
+
+        dialog.getWindow().setLayout(width, height);
 
     }
     private static int dpToPixels(@NonNull Context context, float dp) {
