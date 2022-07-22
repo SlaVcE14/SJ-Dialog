@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="10dp"
-
     >
 
     <LinearLayout
@@ -42,6 +41,7 @@
             android:visibility="gone" />
 
         <LinearLayout
+            android:id="@+id/buttonRoot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
