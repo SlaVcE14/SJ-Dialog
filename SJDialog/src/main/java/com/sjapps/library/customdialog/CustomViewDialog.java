@@ -257,7 +257,6 @@ public class CustomViewDialog extends SJDialog{
 
     public CustomViewDialog addCustomView(View view){
         rootView.addView(view);
-        setDialogSize();
         return this;
     }
 }
