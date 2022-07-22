@@ -332,11 +332,20 @@ public abstract class SJDialog {
         return this;
     }
 
+    /**
+     * Set onClick listener for left button
+     *
+     * @param dialogButtonEvent dialog button event
+     * @return current class
+     */
     protected SJDialog onLeftButtonClick(DialogButtonEvent dialogButtonEvent) {
         button1.setOnClickListener(v -> dialogButtonEvent.onButtonClick());
         return this;
     }
 
+    /**
+     * Creating dialog with two buttons. Use this method before changing buttons attributes
+     * */
     protected SJDialog dialogWithTwoButtons() {
         twoButtons = true;
         return this;
@@ -374,20 +383,23 @@ public abstract class SJDialog {
     protected abstract void setButtons();
 
     @SuppressLint("SetTextI18n")
-    private void regenerateButtons(){
+    private void regenerateButtons() {
         LinearLayout buttons = dialog.findViewById(setButtonsRootLayoutID());
         buttons.removeView(button1);
-         Activity activity = (Activity) context;
-         button1 = (Button) activity.getLayoutInflater().inflate(R.layout.button_template,buttons,false);
-         button1.setText("Cancel");
+        Activity activity = (Activity) context;
+        button1 = (Button) activity.getLayoutInflater().inflate(R.layout.button_template, buttons, false);
+        button1.setText("Cancel");
         buttons.addView(button1);
-        if (!onlyOneButton) {
-            buttons.removeView(button2);
-            button2 = (Button) activity.getLayoutInflater().inflate(R.layout.button_template,buttons,false);
-            button2.setText("Ok");
-            buttons.addView(button2);
-        }
 
+        if (onlyOneButton) {
+            return;
+        }
+        int btn2Visibility = button2.getVisibility();
+        buttons.removeView(button2);
+        button2 = (Button) activity.getLayoutInflater().inflate(R.layout.button_template, buttons, false);
+        button2.setVisibility(btn2Visibility);
+        button2.setText("Ok");
+        buttons.addView(button2);
     }
 
     protected void setButton2Visibility(int visibility) {
