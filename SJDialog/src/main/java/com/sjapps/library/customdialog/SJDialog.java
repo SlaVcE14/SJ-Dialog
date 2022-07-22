@@ -1,10 +1,14 @@
 package com.sjapps.library.customdialog;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.view.ContextThemeWrapper;
 import android.view.View;
+
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,14 +18,17 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.StringDef;
+import androidx.annotation.StyleRes;
 
 import com.sjapps.library.R;
 
 @SuppressWarnings({"unused","UnusedReturnValue"})
-public class SJDialog {
+public abstract class SJDialog {
 
     public static final String RED_BUTTON = "RedBtn";
     public static final String OLD_BUTTON_COLOR = "OldBtnColor";
+
+    private final int defaultTheme = R.style.Theme_SJDialog;
 
     public Dialog dialog;
     protected Button button1, button2;
@@ -32,14 +39,29 @@ public class SJDialog {
     public @interface ButtonColor {
     }
 
+    protected boolean onlyOneButton = false;
     protected boolean twoButtons = false;
 
     protected SJDialog Builder(Context context, @LayoutRes int layoutResID) {
+        Builder(context,layoutResID,defaultTheme,false);
+        return this;
+    }
+    protected SJDialog Builder(Context context, @LayoutRes int layoutResID,boolean useAppTheme) {
+        Builder(context,layoutResID,defaultTheme, useAppTheme);
+        return this;
+    }
+    protected SJDialog Builder(Context context, @LayoutRes int layoutResID, @StyleRes int theme, boolean useAppTheme) {
         this.context = context;
-        dialog = new Dialog(context);
+        dialog = useAppTheme ?
+                new Dialog(new ContextThemeWrapper(context, context.getTheme())) :
+                new Dialog(new ContextThemeWrapper(context, theme));
         setContentView(layoutResID);
         setDialogSize();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        setButtons();
+        if (theme != defaultTheme)
+            regenerateButtons();
         return this;
     }
 
@@ -315,8 +337,9 @@ public class SJDialog {
         return this;
     }
 
-    protected void dialogWithTwoButtons() {
+    protected SJDialog dialogWithTwoButtons() {
         twoButtons = true;
+        return this;
     }
 
     /**
@@ -344,6 +367,27 @@ public class SJDialog {
 
     protected void setButton2(@IdRes int id) {
         this.button2 = dialog.findViewById(id);
+    }
+
+    protected abstract @IdRes int setButtonsRootLayoutID();
+
+    protected abstract void setButtons();
+
+    @SuppressLint("SetTextI18n")
+    private void regenerateButtons(){
+        LinearLayout buttons = dialog.findViewById(setButtonsRootLayoutID());
+        buttons.removeView(button1);
+         Activity activity = (Activity) context;
+         button1 = (Button) activity.getLayoutInflater().inflate(R.layout.button_template,buttons,false);
+         button1.setText("Cancel");
+        buttons.addView(button1);
+        if (!onlyOneButton) {
+            buttons.removeView(button2);
+            button2 = (Button) activity.getLayoutInflater().inflate(R.layout.button_template,buttons,false);
+            button2.setText("Ok");
+            buttons.addView(button2);
+        }
+
     }
 
     protected void setButton2Visibility(int visibility) {

@@ -45,13 +45,21 @@ public class SetupDialog extends SJDialog{
         return DialogBuilder(context,Title,null,null,null).setRightButtonColor(RED_BUTTON);
     }
     public SetupDialog Delete(Context context){
-        return DialogBuilder(context,null,null,null,null).setRightButtonColor(RED_BUTTON);
+        return DialogBuilder(context).setRightButtonColor(RED_BUTTON);
+    }
+    public SetupDialog Delete(Context context, int theme){
+        return DialogBuilder(context,theme).setRightButtonColor(RED_BUTTON).setRightButtonText("Delete");
     }
     public SetupDialog DialogBuilder(Context context){
         super.Builder(context,R.layout.popup_panel);
-        setButton1(R.id.btn1);
-        setButton2(R.id.btn2);
-
+        return this;
+    }
+    public SetupDialog DialogBuilder(Context context,boolean useAppTheme){
+        super.Builder(context,R.layout.popup_panel,useAppTheme);
+        return this;
+    }
+    public SetupDialog DialogBuilder(Context context,int theme){
+        super.Builder(context,R.layout.popup_panel,theme,false);
         return this;
     }
 
@@ -63,12 +71,9 @@ public class SetupDialog extends SJDialog{
         return DialogBuilder(context);
     }
 
-
     public SetupDialog DialogBuilder(Context context,String Title,String Text, String Btn1Txt, String Btn2Txt){
         super.Builder(context,R.layout.popup_panel);
         TextView TitleTv = dialog.findViewById(R.id.titleText);
-        setButton1(R.id.btn1);
-        setButton2(R.id.btn2);
         if (Btn1Txt == null) {
             button1.setOnClickListener(v -> dialog.dismiss());
         }else button1.setText(Btn1Txt);
@@ -223,10 +228,21 @@ public class SetupDialog extends SJDialog{
     }
 
     @Override
+    protected int setButtonsRootLayoutID() {
+        return R.id.buttons;
+    }
+
+    @Override
     public SetupDialog setMaxDialogWidth(int maxDialogWidth) {
         super.setMaxDialogWidth(maxDialogWidth);
         return this;
 
+    }
+
+    @Override
+    protected void setButtons() {
+        setButton1(R.id.btn1);
+        setButton2(R.id.btn2);
     }
 
     @Override
@@ -238,5 +254,6 @@ public class SetupDialog extends SJDialog{
     public Button getRightButton() {
         return super.getRightButton();
     }
+
 }
 

@@ -5,6 +5,7 @@ import android.widget.Button;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.StyleRes;
 
 import com.sjapps.library.R;
 
@@ -13,11 +14,21 @@ public class MessageDialog extends SJDialog{
 
 
     public MessageDialog(){
+        onlyOneButton = true;
     }
 
     public MessageDialog Builder(Context context){
         super.Builder(context,R.layout.message_dialog);
-        setButton1(R.id.btn);
+        onButtonClick(() -> dialog.dismiss());
+        return this;
+    }
+    public MessageDialog Builder(Context context,@StyleRes int theme){
+        super.Builder(context,R.layout.message_dialog,theme, false);
+        onButtonClick(() -> dialog.dismiss());
+        return this;
+    }
+    public MessageDialog Builder(Context context,boolean useAppTheme){
+        super.Builder(context,R.layout.message_dialog,useAppTheme);
         onButtonClick(() -> dialog.dismiss());
         return this;
     }
@@ -102,6 +113,11 @@ public class MessageDialog extends SJDialog{
         return this;
     }
 
+    @Override
+    protected void setButtons() {
+        setButton1(R.id.btn);
+    }
+
     public Button getButton() {
         return super.getLeftButton();
     }
@@ -118,4 +134,8 @@ public class MessageDialog extends SJDialog{
         return this;
     }
 
+    @Override
+    protected int setButtonsRootLayoutID() {
+        return R.id.buttonRoot;
+    }
 }
