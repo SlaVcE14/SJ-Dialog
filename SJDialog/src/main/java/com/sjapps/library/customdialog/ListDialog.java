@@ -348,8 +348,7 @@ public class ListDialog extends SJDialog{
     public ListDialog setItems(String[] listOfItems,@Nullable ListItemClick itemClick) {
 
         if (!isSelectableList && itemClick == null)
-            throw new NullPointerException("ListItemClick is null. Set ListItemClick event or use setSelectableList() " +
-                    "for selecting multiple item in a list");
+            throw nullListItemClick;
 
         adapter = new DefaultListAdapter(listOfItems,
                 isSelectableList,
