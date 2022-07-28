@@ -551,6 +551,10 @@ public class ListDialog extends SJDialog{
         return this;
     }
 
+    public boolean isSelectableList(){
+        return isSelectableList;
+    }
+
     /**
      * Get selected items in a list
      * @return ArrayList of selected items in a list
