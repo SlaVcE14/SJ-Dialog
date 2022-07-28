@@ -527,6 +527,21 @@ public class ListDialog extends SJDialog{
         return adapter;
     }
 
+
+    /**
+     * @return Background resource for views in RecycleView
+     */
+    public int getListItemBgRes(){
+        return listItemBgRes;
+    }
+
+    /**
+     * @return Background resource for selected views in RecycleView
+     */
+    public int getListItemBgResSelected(){
+        return listItemBgResSelected;
+    }
+
     /**
      * Create list with multi selectable items. Use {@link #getSelectedItems()} fet getting selected items
      * @return current class
