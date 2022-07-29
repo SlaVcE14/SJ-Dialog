@@ -228,6 +228,12 @@ public class CustomViewDialog extends SJDialog{
     }
 
     @Override
+    public CustomViewDialog setDialogAnimations(int styleRes) {
+        super.setDialogAnimations(styleRes);
+        return this;
+    }
+
+    @Override
     protected void setButtons() {
         setButton1(R.id.btn1);
         setButton2(R.id.btn2);

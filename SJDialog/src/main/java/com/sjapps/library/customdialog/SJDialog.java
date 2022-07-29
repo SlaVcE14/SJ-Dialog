@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.ContextThemeWrapper;
+import android.view.DragEvent;
 import android.view.View;
 
 import android.widget.Button;
@@ -58,7 +59,7 @@ public abstract class SJDialog {
         setContentView(layoutResID);
         setDialogSize();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
+        dialog.getWindow().getAttributes().windowAnimations = R.style.SJDialogAnimation;
         setButtons();
         if (theme != defaultTheme)
             regenerateButtons();
@@ -435,6 +436,17 @@ public abstract class SJDialog {
     protected SJDialog setMaxDialogWidth(int maxDialogWidth) {
         this.maxDialogWidth = maxDialogWidth;
         setDialogSize();
+        return this;
+    }
+
+
+    /**
+     * Set animation for a dialog
+     * @param styleRes style resource
+     * @return current class
+     */
+    protected SJDialog setDialogAnimations(@StyleRes int styleRes){
+        dialog.getWindow().getAttributes().windowAnimations = styleRes;
         return this;
     }
 
