@@ -51,15 +51,15 @@ public class SetupDialog extends SJDialog{
         return DialogBuilder(context,theme).setRightButtonColor(RED_BUTTON).setRightButtonText("Delete");
     }
     public SetupDialog DialogBuilder(Context context){
-        super.Builder(context,R.layout.popup_panel);
+        super.Builder(context,R.layout.dialog);
         return this;
     }
     public SetupDialog DialogBuilder(Context context,boolean useAppTheme){
-        super.Builder(context,R.layout.popup_panel,useAppTheme);
+        super.Builder(context,R.layout.dialog,useAppTheme);
         return this;
     }
     public SetupDialog DialogBuilder(Context context,int theme){
-        super.Builder(context,R.layout.popup_panel,theme,false);
+        super.Builder(context,R.layout.dialog,theme,false);
         return this;
     }
 
@@ -72,7 +72,7 @@ public class SetupDialog extends SJDialog{
     }
 
     public SetupDialog DialogBuilder(Context context,String Title,String Text, String Btn1Txt, String Btn2Txt){
-        super.Builder(context,R.layout.popup_panel);
+        super.Builder(context,R.layout.dialog);
         TextView TitleTv = dialog.findViewById(R.id.titleText);
         if (Btn1Txt == null) {
             button1.setOnClickListener(v -> dialog.dismiss());
