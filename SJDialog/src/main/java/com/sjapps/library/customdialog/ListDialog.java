@@ -243,6 +243,12 @@ public class ListDialog extends SJDialog{
     }
 
     @Override
+    public ListDialog setDialogAnimations(int styleRes) {
+        super.setDialogAnimations(styleRes);
+        return this;
+    }
+
+    @Override
     public Button getLeftButton() {
         return super.getLeftButton();
     }

@@ -19,4 +19,9 @@
         <item name="android:textColor">@color/md_theme_onError</item>
     </style>
 
+    <style name="SJDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
+
 </resources>

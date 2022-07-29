@@ -129,6 +129,12 @@ public class MessageDialog extends SJDialog{
     }
 
     @Override
+    public MessageDialog setDialogAnimations(int styleRes) {
+        super.setDialogAnimations(styleRes);
+        return this;
+    }
+
+    @Override
     public MessageDialog show(){
         super.show();
         return this;
