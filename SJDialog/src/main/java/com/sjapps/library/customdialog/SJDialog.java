@@ -7,7 +7,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.ContextThemeWrapper;
-import android.view.DragEvent;
 import android.view.View;
 
 import android.widget.Button;
@@ -29,7 +28,11 @@ public abstract class SJDialog {
     public static final String RED_BUTTON = "RedBtn";
     public static final String OLD_BUTTON_COLOR = "OldBtnColor";
 
+    private @LayoutRes int Btn1Resource = R.layout.button_template;
+    private @LayoutRes int Btn2Resource = R.layout.button_template;
+
     private final int defaultTheme = R.style.Theme_SJDialog;
+    private boolean usesDefaultTheme = true;
 
     public Dialog dialog;
     protected Button button1, button2;
@@ -61,8 +64,10 @@ public abstract class SJDialog {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.SJDialogAnimation;
         setButtons();
-        if (theme != defaultTheme)
+        if (theme != defaultTheme || useAppTheme) {
+            usesDefaultTheme = false;
             regenerateButtons();
+        }
         return this;
     }
 
@@ -182,9 +187,12 @@ public abstract class SJDialog {
      * @return current class
      */
     protected SJDialog setButtonsColor(@ColorInt int color) {
+        checkButtonResource(0);
         button1.getBackground().setTint(color);
-        if (twoButtons)
+        if (twoButtons){
+            checkButtonResource(1);
             button2.getBackground().setTint(color);
+        }
         return this;
     }
 
@@ -195,6 +203,7 @@ public abstract class SJDialog {
      * @return current class
      */
     protected SJDialog setLeftButtonColor(@ColorInt int color) {
+        checkButtonResource(0);
         button1.getBackground().setTint(color);
         return this;
     }
@@ -208,11 +217,14 @@ public abstract class SJDialog {
     protected SJDialog setRightButtonColor(@ColorInt int color) {
         if (!twoButtons)
             throw OneButtonException();
+
+        checkButtonResource(1);
         button2.getBackground().setTint(color);
         return this;
     }
 
     protected SJDialog setButtonColor(@ButtonColor String color) {
+        checkButtonResource(0);
         setLeftButtonColor(color);
         return this;
     }
@@ -221,10 +233,12 @@ public abstract class SJDialog {
         setLeftButtonColor(color);
         if (twoButtons)
             setRightButtonColor(color);
+
         return this;
     }
 
     protected SJDialog setLeftButtonColor(@ButtonColor String color) {
+        checkButtonResource(0);
         switch (color) {
             case RED_BUTTON:
                 setLeftButtonBackgroundResource(R.drawable.ripple_button_red);
@@ -243,7 +257,7 @@ public abstract class SJDialog {
     protected SJDialog setRightButtonColor(@ButtonColor String color) {
         if (!twoButtons)
             throw OneButtonException();
-
+        checkButtonResource(1);
         switch (color) {
             case RED_BUTTON:
                 setRightButtonBackgroundResource(R.drawable.ripple_button_red);
@@ -252,6 +266,7 @@ public abstract class SJDialog {
             case OLD_BUTTON_COLOR:
                 setRightButtonBackgroundResource(R.drawable.ripple_button_old);
                 setRightButtonTextColor(Color.WHITE);
+
                 break;
             default:
                 throw new IllegalArgumentException(color + " is not a valid argument");
@@ -383,24 +398,59 @@ public abstract class SJDialog {
 
     protected abstract void setButtons();
 
-    @SuppressLint("SetTextI18n")
+
     private void regenerateButtons() {
         LinearLayout buttons = dialog.findViewById(setButtonsRootLayoutID());
-        buttons.removeView(button1);
-        Activity activity = (Activity) context;
-        button1 = (Button) activity.getLayoutInflater().inflate(R.layout.button_template, buttons, false);
-        button1.setText("Cancel");
-        buttons.addView(button1);
-
+        regenerateLeftBtn(buttons);
         if (onlyOneButton) {
             return;
         }
+        regenerateRightBtn(buttons);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void regenerateLeftBtn(LinearLayout buttons){
+        if (buttons == null)
+            buttons = dialog.findViewById(setButtonsRootLayoutID());
+
+        buttons.removeView(button1);
+        Activity activity = (Activity) context;
+        button1 = (Button) activity.getLayoutInflater().inflate(Btn1Resource, buttons, false);
+        button1.setText("Cancel");
+        buttons.addView(button1,0);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void regenerateRightBtn(LinearLayout buttons){
+        if (buttons == null)
+            buttons = dialog.findViewById(setButtonsRootLayoutID());
+
         int btn2Visibility = button2.getVisibility();
         buttons.removeView(button2);
-        button2 = (Button) activity.getLayoutInflater().inflate(R.layout.button_template, buttons, false);
+        Activity activity = (Activity) context;
+        button2 = (Button) activity.getLayoutInflater().inflate(Btn2Resource, buttons, false);
         button2.setVisibility(btn2Visibility);
         button2.setText("Ok");
-        buttons.addView(button2);
+        buttons.addView(button2,1);
+    }
+
+    private void checkButtonResource(int i) {
+        if (usesDefaultTheme)
+            return;
+
+        if (i == 0){
+            if (Btn1Resource == R.layout.button_template){
+                Btn1Resource = R.layout.button_template_1;
+                regenerateLeftBtn(null);
+            }
+            return;
+        }
+        if (i == 1){
+            if (Btn2Resource == R.layout.button_template) {
+                Btn2Resource = R.layout.button_template_1;
+                regenerateRightBtn(null);
+            }
+        }
     }
 
     protected void setButton2Visibility(int visibility) {
