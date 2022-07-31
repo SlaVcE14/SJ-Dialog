@@ -44,7 +44,7 @@ public class SetupDialog extends SJDialog{
         return Long(context,Title,Text,null,Btn2Txt);
     }
     public SetupDialog Delete(Context context,String Title){
-        return DialogBuilder(context,Title,null,null,null).setRightButtonColor(RED_BUTTON);
+        return DialogBuilder(context,Title,null,null,null).deleteAttributes();
     }
     public SetupDialog Delete(Context context){
         return DialogBuilder(context).deleteAttributes();
@@ -58,7 +58,7 @@ public class SetupDialog extends SJDialog{
     private SetupDialog deleteAttributes(){
         isDeleteDialog = true;
         return setTitle("Delete?")
-                .setRightButtonColor(RED_BUTTON)
+                .setRightButtonColor(MATERIAL3_RED_BUTTON)
                 .setRightButtonText("Delete");
     }
     public SetupDialog DialogBuilder(Context context){

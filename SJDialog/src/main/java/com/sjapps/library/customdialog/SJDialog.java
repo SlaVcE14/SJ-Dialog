@@ -26,6 +26,7 @@ import com.sjapps.library.R;
 public abstract class SJDialog {
 
     public static final String RED_BUTTON = "RedBtn";
+    public static final String MATERIAL3_RED_BUTTON = "Material3RedBtn";
     public static final String OLD_BUTTON_COLOR = "OldBtnColor";
 
     private @LayoutRes int Btn1Resource = R.layout.button_template;
@@ -39,7 +40,7 @@ public abstract class SJDialog {
     private int maxDialogWidth = 600;
     Context context;
 
-    @StringDef({RED_BUTTON, OLD_BUTTON_COLOR})
+    @StringDef({RED_BUTTON, MATERIAL3_RED_BUTTON, OLD_BUTTON_COLOR})
     public @interface ButtonColor {
     }
 
@@ -242,6 +243,10 @@ public abstract class SJDialog {
         switch (color) {
             case RED_BUTTON:
                 setLeftButtonBackgroundResource(R.drawable.ripple_button_red);
+                setLeftButtonTextColor(Color.WHITE);
+                break;
+            case MATERIAL3_RED_BUTTON:
+                setLeftButtonBackgroundResource(R.drawable.ripple_button_material3_red);
                 setLeftButtonTextColor(context.getResources().getColor(R.color.md_theme_onError, context.getTheme()));
                 break;
             case OLD_BUTTON_COLOR:
@@ -261,6 +266,10 @@ public abstract class SJDialog {
         switch (color) {
             case RED_BUTTON:
                 setRightButtonBackgroundResource(R.drawable.ripple_button_red);
+                setRightButtonTextColor(Color.WHITE);
+                break;
+            case MATERIAL3_RED_BUTTON:
+                setRightButtonBackgroundResource(R.drawable.ripple_button_material3_red);
                 setRightButtonTextColor(context.getResources().getColor(R.color.md_theme_onError, context.getTheme()));
                 break;
             case OLD_BUTTON_COLOR:

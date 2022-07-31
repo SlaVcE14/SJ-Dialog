@@ -41,4 +41,5 @@
     <color name="SJDialog_oldBackground">#333333</color>
     <color name="SJDialog_oldBackground2">#4a4a4a</color>
     <color name="SJDialog_oldButton">#0060f4</color>
+    <color name="SJDialog_red">#BA1B1B</color>
 </resources>
