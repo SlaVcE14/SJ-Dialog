@@ -20,6 +20,8 @@ public class SetupDialog extends SJDialog{
     @Deprecated
     public static final String SHORT_TYPE = "short";
 
+    private boolean isDeleteDialog;
+
     public SetupDialog (){
         twoButtons = true;
     }
@@ -45,10 +47,19 @@ public class SetupDialog extends SJDialog{
         return DialogBuilder(context,Title,null,null,null).setRightButtonColor(RED_BUTTON);
     }
     public SetupDialog Delete(Context context){
-        return DialogBuilder(context).setRightButtonColor(RED_BUTTON);
+        return DialogBuilder(context).deleteAttributes();
     }
     public SetupDialog Delete(Context context, int theme){
-        return DialogBuilder(context,theme).setRightButtonColor(RED_BUTTON).setRightButtonText("Delete");
+        return DialogBuilder(context,theme).deleteAttributes();
+    }
+    public SetupDialog Delete(Context context, boolean useAppTheme){
+        return DialogBuilder(context,useAppTheme).deleteAttributes();
+    }
+    private SetupDialog deleteAttributes(){
+        isDeleteDialog = true;
+        return setTitle("Delete?")
+                .setRightButtonColor(RED_BUTTON)
+                .setRightButtonText("Delete");
     }
     public SetupDialog DialogBuilder(Context context){
         super.Builder(context,R.layout.dialog);
@@ -104,6 +115,8 @@ public class SetupDialog extends SJDialog{
     @Override
     public SetupDialog setOldTheme(){
         super.setOldTheme();
+        if (isDeleteDialog)
+            super.setRightButtonColor(RED_BUTTON);
         return this;
     }
 
