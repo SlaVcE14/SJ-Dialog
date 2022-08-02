@@ -11,8 +11,27 @@ dialog.DialogBuilder(context)
 	})
        	.show();
 ```
+## DialogBuilder
+Apply the default theme to a dialog
+```java
+dialog.DialogBuilder(context)
+```
+Apply the app theme to a dialog (only works with material3 theme)
+```java
+dialog.DialogBuilder(context,true)
+```
+Apply the custom theme to a dialog (only works with material3 theme)
+```java
+dialog.DialogBuilder(context,theme)
+```
+## Old Dialog theme
+By default dialog colors will be set to material3 dynamic colors. With this method you can set the dialog color for the background and buttons to the older non-dynamic colors
+```java
+dialog.setOldTheme();
+```
+
 ## Add onClick Listener
-onClickListener for right button
+onClickListener for right button. The left button is for dismissing dialog
 ```java
 dialog.onButtonClick(new DialogButtonEvent() {
 	@Override
@@ -42,10 +61,13 @@ dialog.onButtonClick(new DialogButtonEvents() {
 });
 ```
 
-## All SetupDialog Functions
+## All SetupDialog Methods
 ```java
 //Create dialog
 dialog.DialogBuilder(context);
+
+//Usin the old dialog theme
+dialog.setOldTheme();
 
 //Set title
 dialog.setTitle("Title");
