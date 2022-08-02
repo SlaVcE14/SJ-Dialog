@@ -10,15 +10,15 @@ messageDialog.Builder(context)
 ## Builder
 Apply the default theme to a dialog
 ```java
-messageDialog.DialogBuilder(context)
+messageDialog.Builder(context)
 ```
 Apply the app theme to a dialog (only works with material3 theme)
 ```java
-messageDialog.DialogBuilder(context,true)
+messageDialog.Builder(context,true)
 ```
 Apply the custom theme to a dialog (only works with material3 theme)
 ```java
-messageDialog.DialogBuilder(context,theme)
+messageDialog.Builder(context,theme)
 ```
 ## Old Dialog theme
 By default dialog colors will be set to material3 dynamic colors. With this method you can set the dialog color for the background and buttons to the older non-dynamic colors
