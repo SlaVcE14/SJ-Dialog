@@ -355,7 +355,8 @@ public class ListDialog extends SJDialog{
                 itemClick,
                 (ArrayList<String>) selectedItems,
                 listItemBgRes,
-                listItemBgResSelected,1);
+                listItemBgResSelected,
+                listItemTextColor);
         return this;
     }
 
