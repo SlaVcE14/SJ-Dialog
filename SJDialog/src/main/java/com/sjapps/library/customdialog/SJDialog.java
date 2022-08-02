@@ -40,12 +40,16 @@ public abstract class SJDialog {
     private int maxDialogWidth = 600;
     Context context;
 
+    DialogButtonEvent dialogButtonEvent;
+    DialogButtonEvents dialogButtonEvents;
+
     @StringDef({RED_BUTTON, MATERIAL3_RED_BUTTON, OLD_BUTTON_COLOR})
     public @interface ButtonColor {
     }
 
     protected boolean onlyOneButton = false;
     protected boolean twoButtons = false;
+    private boolean leftBtnOnClick = false;
 
     protected SJDialog Builder(Context context, @LayoutRes int layoutResID) {
         Builder(context,layoutResID,defaultTheme,false);
@@ -340,8 +344,9 @@ public abstract class SJDialog {
      * @return current class
      */
     protected SJDialog onButtonClick(DialogButtonEvent dialogButtonEvent) {
-        button1.setOnClickListener(v -> dialog.dismiss());
-        button2.setOnClickListener(v -> dialogButtonEvent.onButtonClick());
+        leftBtnOnClick = false;
+        this.dialogButtonEvent = dialogButtonEvent;
+
         return this;
     }
 
@@ -352,8 +357,8 @@ public abstract class SJDialog {
      * @return current class
      */
     protected SJDialog onButtonClick(DialogButtonEvents dialogButtonEvents) {
-        button1.setOnClickListener(v -> dialogButtonEvents.onLeftButtonClick());
-        button2.setOnClickListener(v -> dialogButtonEvents.onRightButtonClick());
+        this.dialogButtonEvents = dialogButtonEvents;
+
         return this;
     }
 
@@ -364,7 +369,9 @@ public abstract class SJDialog {
      * @return current class
      */
     protected SJDialog onLeftButtonClick(DialogButtonEvent dialogButtonEvent) {
-        button1.setOnClickListener(v -> dialogButtonEvent.onButtonClick());
+        leftBtnOnClick = true;
+        this.dialogButtonEvent = dialogButtonEvent;
+
         return this;
     }
 
@@ -380,8 +387,33 @@ public abstract class SJDialog {
      * show dialog
      */
     protected SJDialog show() {
+        addOnClickListener();
         dialog.show();
         return this;
+    }
+
+    private void addOnClickListener(){
+        if (dialogButtonEvents == null && dialogButtonEvent == null)
+            return;
+
+        if (dialogButtonEvents != null) {
+            button1.setOnClickListener(v -> dialogButtonEvents.onLeftButtonClick());
+            button2.setOnClickListener(v -> dialogButtonEvents.onRightButtonClick());
+            return;
+        }
+
+        if (!twoButtons) {
+            button1.setOnClickListener(v -> dialogButtonEvent.onButtonClick());
+            return;
+        }
+
+        if (leftBtnOnClick) {
+            button1.setOnClickListener(v -> dialogButtonEvent.onButtonClick());
+            return;
+        }
+
+        button1.setOnClickListener(v -> dismiss());
+        button2.setOnClickListener(v -> dialogButtonEvent.onButtonClick());
     }
 
     /**
