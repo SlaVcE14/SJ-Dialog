@@ -1,0 +1,241 @@
+# ListDialog Documentation
+## Examples
+#### List of String array
+```java
+String[] strings = {"item1","item2","item3"};
+
+ListDialog listDialog = new ListDialog();
+listDialog.Builder(this)
+	.setItems(strings,(position, value) -> {
+       		// Do something
+       	})
+       	.show();
+```
+#### List of Objects
+```java
+class ExampleObject{
+    	String value;
+
+    	public ExampleObject(String value) {
+        	this.value = value;
+    	}
+}
+```
+
+```java
+ExampleObject[] objects = {new ExampleObject("object1"),new ExampleObject("object2"),new ExampleObject("object3")};
+
+ListDialog listDialog = new ListDialog();
+listDialog.Builder(this)
+	.setItems(
+       		objects,
+                obj -> obj.value, // get value from object
+                (position, value) -> {
+                	// Do something
+                })
+       	.show();
+```
+#### ArrayList of Objects with two values
+```java
+class ExampleObject{
+    	String value1;
+    	String value2;
+    
+	public ExampleObject(String value1, String value2) {
+        	this.value1 = value1;
+        	this.value2 = value2;
+    	}
+}
+```
+```java
+ArrayList<ExampleObject> arrayList = new ArrayList<>();
+arrayList.add(new ExampleObject("object1","value1"));
+arrayList.add(new ExampleObject("object2","value2"));
+arrayList.add(new ExampleObject("object3","value3"));
+
+ListDialog listDialog = new ListDialog();
+listDialog.Builder(this)
+	.setItems(
+   		arrayList,
+                new ListItemValues<ExampleObject>() {
+              		@Override
+                       	public String getValue1(ExampleObject obj) {
+                       		return obj.value1;
+                      	}
+
+                      	@Override
+                      	public String getValue2(ExampleObject obj) {
+                             	return obj.value2;
+                       	}
+               	},
+      	  	(position, value) -> {
+                    // Do something
+                })
+   	.show();
+```
+#### Selecting multiple items in a list
+```java
+ArrayList<String> stringArrayList = new ArrayList<>();
+stringArrayList.add("item1");
+stringArrayList.add("item2");
+stringArrayList.add("item3");
+
+ListDialog listDialog = new ListDialog();
+listDialog.Builder(this)
+	.dialogWithTwoButtons()
+        .setSelectableList()
+       	.setItems(stringArrayList,obj -> obj)
+       	.onButtonClick(() -> {
+        	ArrayList<ExampleObject> selectedItems = listDialog.getSelectedItems();
+               		// Do something
+              	})
+	.show();
+```
+
+## Builder
+Apply the default theme to a dialog
+```java
+listDialog.Builder(context)
+```
+Apply the app theme to a dialog (only works with material3 theme)
+```java
+listDialog.Builder(context,true)
+```
+Apply the custom theme to a dialog (only works with material3 theme)
+```java
+listDialog.Builder(context,theme)
+```
+## Dialog with two buttons
+```java
+listDialog.dialogWithTwoButtons();
+```
+## Old Dialog theme
+By default dialog colors will be set to material3 dynamic colors. With this method you can set the dialog color for the background and buttons to the older non-dynamic colors
+```java
+listDialog.setOldTheme();
+```
+## Add onClick Listener
+onClickListener for the right button if the dialog has [two buttons](#dialog-with-two-buttons), the left button is for dismissing dialog. If the dialog has only one button, onClickListener will be set to that button.
+```java
+listDialog.onButtonClick(new DialogButtonEvent() {
+	@Override
+      	public void onButtonClick() {
+      		// Do something
+      	}
+});
+//or
+listDialog.onButtonClick(() -> {
+	// Do something
+});
+```
+onClickListener for left and right button (only works when dialog has [two buttons](#dialog-with-two-buttons))
+```java
+listDialog.onButtonClick(new DialogButtonEvents() {
+	@Override
+       	public void onLeftButtonClick() {
+       		// Do something
+       	}
+     	@Override
+      	public void onRightButtonClick() {
+       		// Do something
+      	}
+});
+```
+## All ListDialog Methods
+```java
+//Create dialog
+listDialog.Builder(context);
+
+//Create dialog width two buttons
+listDialog.dialogWithTwoButtons();
+
+//Usin the old dialog theme
+listDialog.setOldTheme();
+
+//Set title
+listDialog.setTitle("Title");
+
+//Set message
+listDialog.setMessage("Message");
+
+//Set button text (one button dialog)
+listDialog.setButtonText("Text");
+//Set left button text
+listDialog.setLeftButtonText("Text");
+//Set right button text
+listDialog.setRightButtonText("Text");
+
+//Set buttons color
+listDialog.setButtonsColor(color);
+//Set button color (one button dialog)
+listDialog.setButtonColor(color);
+//Set left button color
+listDialog.setLeftButtonColor(color);
+//Set right button color
+listDialog.setRightButtonColor(color);
+
+//Set buttons text color
+listDialog.setButtonsTextColor(color);
+//Set text color a button (one button dialog)
+listDialog.setButtonTextColor(color);
+//Set text color for left button
+listDialog.setLeftButtonTextColor(color);
+//Set text color for right button
+listDialog.setRightButtonTextColor(color);
+
+//Set buttons background resource
+listDialog.setButtonsBackgroundResource(drawable);
+//Set button background resource (one button dialog)
+listDialog.setButtonBackgroundResource(drawable);
+//Set left button background resource
+listDialog.setLeftButtonBackgroundResource(drawable);
+//Set right button background resource
+listDialog.setRightButtonBackgroundResource(drawable);
+
+//Set dialog background resource
+listDialog.setDialogBackgroundResource(drawable);
+
+
+
+listDialog.setSelectableList();
+
+listDialog.setListItemTextColor(color);
+listDialog.setListItemBackgroundResource(drawable);
+listDialog.setListItemSelectedBackgroundResource(drawable);
+listDialog.setListBackgroundResource(drawable);
+
+int ItemBgRes = listDialog.getListItemBgRes();
+int ItemBgResSelected = listDialog.getListItemBgResSelected();
+
+listDialog.setItems(strings);
+listDialog.setItems(strings, listItemClick);
+listDialog.setItems(objects, listItemValue);
+listDialog.setItems(objects, listItemValue, listItemClickObj);
+
+listDialog.setItems(objects, listItemValues);
+
+listDialog.setItems(objects, listItemValues, listItemClickObj);
+
+listDialog.setItems(arrayList, listItemValue);
+listDialog.setItems(arrayList, listItemValue, listItemClickObj);
+listDialog.setItems(arrayList, listItemValues);
+listDialog.setItems(arrayList, listItemValues, listItemClickObj);
+
+
+//Set maximum dialog width. Default is 600dp
+listDialog.setMaxDialogWidth(width);
+        
+//Get maximum dialog width
+int dialogWidth = listDialog.getMaxDialogWidth();
+        
+//Get left button
+Button leftButton = listDialog.getLeftButton();
+
+//Get right button
+Button rightButton = listDialog.getRightButton();
+
+//Shew dialog
+listDialog.show();
+//Dismiss dialog
+listDialog.dismiss();
+```
