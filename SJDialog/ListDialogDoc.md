@@ -114,6 +114,124 @@ By default dialog colors will be set to material3 dynamic colors. With this meth
 ```java
 listDialog.setOldTheme();
 ```
+## Select multiple items in a list
+```java
+listDialog.setSelectableList();
+```
+## Add items in a list
+You can add item in a lis by setting [ReciclerView Adapter](#set-reciclerview-adapter) or using [setItems()](#setitems) method.
+### Set ReciclerView Adapter
+```java
+listDialog.setAdapter(recyclerViewAdapter);
+```
+### setItems
+This method uses [DefaultListAdapter](/SJDialog/src/main/java/com/sjapps/library/customdialog/adapter/DefaultListAdapter.java) for array of Strings or [DefaultListAdapterGeneric](/SJDialog/src/main/java/com/sjapps/library/customdialog/adapter/DefaultListAdapterGeneric.java) for array of Objects or ArrayList.
+
+#### Array of Strings
+You need to use [setSelectableList()](#select-multiple-items-in-a-list) firstly or add [onListItemClick](#array-of-strings-and-onlistitemclick)
+```java
+listDialog.setItems(strings);
+```
+#### Array of Strings and onListItemClick
+```java
+listDialog.setItems(strings,(position, value) -> {
+	// Do something
+});
+```
+#### Array of Objects
+You need to use [setSelectableList()](#select-multiple-items-in-a-list) firstly or add [onListItemClick](#array-of-objects-and-onlistitemclick)
+```java
+listDialog.setItems(objects, new ListItemValue<ExampleObject>() {
+	@Override
+     	public String getValue(ExampleObject obj) {
+  		return obj.value; // get value of an Object
+     	}
+});
+
+//or
+
+listDialog.setItems(objects,obj -> obj.value);
+```
+#### Array of Objects and onListItemClick
+```java
+listDialog.setItems(objects,obj -> obj.value,(position, obj) -> {
+            // Do something
+});
+```
+#### Array of Objects with two values
+You need to use [setSelectableList()](#select-multiple-items-in-a-list) firstly or add [onListItemClick](#array-of-objects-with-two-values-and-onlistitemclick)
+```java
+listDialog.setItems(objects, new ListItemValues<ExampleObject>() {
+	@Override
+	public String getValue1(ExampleObject obj) {
+      		return obj.value1;
+      	}
+
+      	@Override
+     	public String getValue2(ExampleObject obj) {
+       		return obj.value2;
+      	}
+});
+```
+#### Array of Objects with two values and onListItemClick
+```java
+listDialog.setItems(objects, new ListItemValues<ExampleObject>() {
+		@Override
+   		public String getValue1(ExampleObject obj) {
+       		return obj.value1;
+       		}
+
+     		@Override
+   		public String getValue2(ExampleObject obj) {
+       			return obj.value2;
+     		}
+	},(position, obj) -> {
+            	// Do something
+});
+```
+#### ArrayList
+You need to use [setSelectableList()](#select-multiple-items-in-a-list) firstly or add [onListItemClick](#arraylist-and-onlistitemclick)
+```java
+listDialog.setItems(arrayList,obj -> obj.value);
+```
+#### ArrayList and onListItemClick
+```java
+listDialog.setItems(arrayList,obj -> obj.value,(position, obj) -> {
+ 	// Do something
+});
+```
+#### ArrayList with two values
+You need to use [setSelectableList()](#select-multiple-items-in-a-list) firstly or add [onListItemClick](#arraylist-with-two-values-and-onlistitemclick)
+```java
+listDialog.setItems(arrayList, new ListItemValues<ExampleObject>() {
+	@Override
+     	public String getValue1(ExampleObject obj) {
+       		return obj.value1;
+      	}
+
+       	@Override
+     	public String getValue2(ExampleObject obj) {
+           	return obj.value2;
+     	}
+});
+```
+#### ArrayList with two values and onListItemClick
+```java
+listDialog.setItems(arrayList, new ListItemValues<ExampleObject>() {
+            @Override
+            public String getValue1(ExampleObject obj) {
+                return obj.value1;
+            }
+
+            @Override
+            public String getValue2(ExampleObject obj) {
+                return obj.value2;
+            }
+        },(position, obj) -> {
+            // Do something
+});
+```
+
 ## Add onClick Listener
 onClickListener for the right button if the dialog has [two buttons](#dialog-with-two-buttons), the left button is for dismissing dialog. If the dialog has only one button, onClickListener will be set to that button.
 ```java
@@ -123,7 +241,9 @@ listDialog.onButtonClick(new DialogButtonEvent() {
       		// Do something
       	}
 });
+
 //or
+
 listDialog.onButtonClick(() -> {
 	// Do something
 });
@@ -195,32 +315,37 @@ listDialog.setRightButtonBackgroundResource(drawable);
 //Set dialog background resource
 listDialog.setDialogBackgroundResource(drawable);
 
-
-
+//Selecting multiple items in a list
 listDialog.setSelectableList();
 
+//Set text color of an items in a list
 listDialog.setListItemTextColor(color);
+//Set a background resource for items in a list
 listDialog.setListItemBackgroundResource(drawable);
+//Set a background resource for selected items in a list
 listDialog.setListItemSelectedBackgroundResource(drawable);
+//Set a background resource of a list
 listDialog.setListBackgroundResource(drawable);
 
+//Get list item background resource
 int ItemBgRes = listDialog.getListItemBgRes();
+//Get list item selected background resource
 int ItemBgResSelected = listDialog.getListItemBgResSelected();
 
+//set RecyclerView Adapter
+listDialog.setAdapter(recyclerViewAdapter);
+
+//Add items in a list
 listDialog.setItems(strings);
 listDialog.setItems(strings, listItemClick);
 listDialog.setItems(objects, listItemValue);
 listDialog.setItems(objects, listItemValue, listItemClickObj);
-
 listDialog.setItems(objects, listItemValues);
-
 listDialog.setItems(objects, listItemValues, listItemClickObj);
-
 listDialog.setItems(arrayList, listItemValue);
 listDialog.setItems(arrayList, listItemValue, listItemClickObj);
 listDialog.setItems(arrayList, listItemValues);
 listDialog.setItems(arrayList, listItemValues, listItemClickObj);
-
 
 //Set maximum dialog width. Default is 600dp
 listDialog.setMaxDialogWidth(width);
@@ -233,6 +358,9 @@ Button leftButton = listDialog.getLeftButton();
 
 //Get right button
 Button rightButton = listDialog.getRightButton();
+
+//Set dialog animations
+listDialog.setDialogAnimations(styleRes);
 
 //Shew dialog
 listDialog.show();
