@@ -11,6 +11,7 @@ listDialog.Builder(this)
        	})
        	.show();
 ```
+![ListDialog example 1](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/ListDialog%20example%201.png)
 #### List of Objects
 ```java
 class ExampleObject{
@@ -35,6 +36,7 @@ listDialog.Builder(this)
                 })
        	.show();
 ```
+![ListDialog example 2](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/ListDialog%20example%202.png)
 #### ArrayList of Objects with two values
 ```java
 class ExampleObject{
@@ -73,6 +75,7 @@ listDialog.Builder(this)
                 })
    	.show();
 ```
+![ListDialog example 3](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/ListDialog%20example%203.png)
 #### Selecting multiple items in a list
 ```java
 ArrayList<String> stringArrayList = new ArrayList<>();
@@ -91,12 +94,13 @@ listDialog.Builder(this)
               	})
 	.show();
 ```
-
+![ListDialog example 4](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/ListDialog%20example%204.png)
 ## Builder
 Apply the default theme to a dialog
 ```java
 listDialog.Builder(context)
 ```
+![ListDialog day-night](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/ListDialog%20day-night.png)
 Apply the app theme to a dialog (only works with material3 theme)
 ```java
 listDialog.Builder(context,true)
@@ -114,6 +118,7 @@ By default dialog colors will be set to material3 dynamic colors. With this meth
 ```java
 listDialog.setOldTheme();
 ```
+![ListDialog oldTheme](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/ListDialog%20oldTheme.png)
 ## Select multiple items in a list
 ```java
 listDialog.setSelectableList();
