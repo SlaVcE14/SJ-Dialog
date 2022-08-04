@@ -17,7 +17,7 @@ Apply the default theme to a dialog
 ```java
 dialog.DialogBuilder(context)
 ```
-![SetupDialog day-night](/SJDialog/images/SetupDialog%20day-night.png)
+![SetupDialog day-night](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/SetupDialog%20day-night.png)
 
 Apply the app theme to a dialog (only works with material3 theme)
 ```java
