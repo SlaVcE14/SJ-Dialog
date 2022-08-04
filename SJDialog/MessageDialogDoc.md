@@ -43,7 +43,7 @@ messageDialog.onButtonClick(() -> {
 	// Do something
 });
 ```
-## All MessageDialog Functions
+## All MessageDialog Methods
 ```java
 //Create dialog
 messageDialog.Builder(context);
