@@ -26,7 +26,6 @@
             android:layout_weight="1"
             android:text="Title"
             android:textAlignment="center"
-            android:textColor="?colorOnSurface"
             android:textSize="25dp" />
 
         <TextView
