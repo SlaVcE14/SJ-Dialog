@@ -11,13 +11,13 @@ dialog.DialogBuilder(context)
 	})
        	.show();
 ```
-![SetupDialog example](/SJDialog/images/SetupDialog%20example%201.png?raw=true)
+![SetupDialog example](raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/SetupDialog%20example%201.png)
 ## DialogBuilder
 Apply the default theme to a dialog
 ```java
 dialog.DialogBuilder(context)
 ```
-![SetupDialog day-night](/SJDialog/images/SetupDialog%20day-night.png?raw=true)
+![SetupDialog day-night](raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/SetupDialog%20day-night.png)
 
 Apply the app theme to a dialog (only works with material3 theme)
 ```java
@@ -32,7 +32,7 @@ By default dialog colors will be set to material3 dynamic colors. With this meth
 ```java
 dialog.setOldTheme();
 ```
-![SetupDialog oldTheme](/SJDialog/images/SetupDialog%20oldTheme.png?raw=true)
+![SetupDialog oldTheme](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/SetupDialog%20oldTheme.png)
 ## Add onClick Listener
 onClickListener for right button. The left button is for dismissing dialog
 ```java
