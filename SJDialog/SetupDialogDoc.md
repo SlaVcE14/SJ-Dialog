@@ -4,18 +4,21 @@ Create dialog example
 SetupDialog dialog = new SetupDialog();
 dialog.DialogBuilder(context)
 	.setTitle("Title")
-  	.setLeftButtonText("text")
-  	.setRightButtonText("text")
+  	.setLeftButtonText("button1")
+  	.setRightButtonText("button2")
   	.onButtonClick(() -> {
 	// Do something
 	})
        	.show();
 ```
+![SetupDialog example](/SJDialog/images/SetupDialog%20example%201.png)
 ## DialogBuilder
 Apply the default theme to a dialog
 ```java
 dialog.DialogBuilder(context)
 ```
+![SetupDialog day-night](/SJDialog/images/SetupDialog%20day-night.png)
+
 Apply the app theme to a dialog (only works with material3 theme)
 ```java
 dialog.DialogBuilder(context,true)
@@ -29,7 +32,7 @@ By default dialog colors will be set to material3 dynamic colors. With this meth
 ```java
 dialog.setOldTheme();
 ```
-
+![SetupDialog oldTheme](/SJDialog/images/SetupDialog%20oldTheme.png)
 ## Add onClick Listener
 onClickListener for right button. The left button is for dismissing dialog
 ```java
@@ -112,6 +115,9 @@ int dialogWidth = dialog.getMaxDialogWidth();
 Button leftButton = dialog.getLeftButton();
 //Get right button
 Button rightButton = dialog.getRightButton();
+
+//Set dialog animations
+dialog.setDialogAnimations(styleRes);
 
 //Shew dialog
 dialog.show();
