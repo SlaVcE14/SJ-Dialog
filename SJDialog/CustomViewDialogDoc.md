@@ -61,6 +61,11 @@ By default dialog colors will be set to material3 dynamic colors. With this meth
 ```java
 customViewDialog.setOldTheme();
 ```
+## Add View
+```java
+customViewDialog.addCustomView(view);
+```
+
 ## Add onClick Listener
 onClickListener for the right button if the dialog has [two buttons](#dialog-with-two-buttons), the left button is for dismissing dialog. If the dialog has only one button, onClickListener will be set to that button.
 ```java
@@ -157,6 +162,9 @@ int dialogWidth = customViewDialog.getMaxDialogWidth();
 Button leftButton = customViewDialog.getLeftButton();
 //Get right button
 Button rightButton = customViewDialog.getRightButton();
+
+//Set dialog animations
+customViewDialog.setDialogAnimations(styleRes);
 
 //Shew dialog
 customViewDialog.show();
