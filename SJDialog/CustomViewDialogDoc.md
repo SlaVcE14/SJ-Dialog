@@ -1,6 +1,6 @@
 # CustomViewDialog Documentation
 ## Examples
-Add button example
+#### Add button example
 ```java
 Button button1 = new Button(this);
 button1.setText("Button");
@@ -11,7 +11,8 @@ customViewDialog.Builder(this)
        	.addCustomView(button1)
         .show();
 ```
-Add EditText example
+![CustomViewDialog example 1](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/CustomViewDialog%20example%201.png)
+#### Add EditText example
 ```java
 EditText editText = new EditText(this);
 editText.setHint("add text");
@@ -27,7 +28,8 @@ customViewDialog.Builder(this)
       	})
        	.show();
 ```
-Add custom xml layout example
+![CustomViewDialog example 2](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/CustomViewDialog%20example%202.png)
+#### Add custom xml layout example
 ```java
 View view = LayoutInflater.from(this).inflate(R.layout.custon_layout,null);
 
@@ -39,11 +41,13 @@ customViewDialog.Builder(this)
         .show();
 
 ```
+![CustomViewDialog example 3](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/CustomViewDialog%20example%203.png)
 ## Builder
 Apply the default theme to a dialog
 ```java
 customViewDialog.Builder(context)
 ```
+![CustomViewDialog day-night](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/CustomViewDialog%20day-night.png)
 Apply the app theme to a dialog (only works with material3 theme)
 ```java
 customViewDialog.Builder(context,true)
@@ -61,6 +65,7 @@ By default dialog colors will be set to material3 dynamic colors. With this meth
 ```java
 customViewDialog.setOldTheme();
 ```
+![CustomViewDialog oldTheme](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/dev/SJDialog/images/CustomViewDialog%20oldTheme.png)
 ## Add View
 ```java
 customViewDialog.addCustomView(view);
