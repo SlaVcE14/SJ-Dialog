@@ -1,13 +1,11 @@
 package com.sjapps.library.customdialog;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
 
 import com.sjapps.library.R;
 
@@ -15,19 +13,17 @@ import com.sjapps.library.R;
  * by SlaVcE
  * Setting up custom dialog.
  */
-public class SetupDialog {
+@SuppressWarnings("unused")
+public class SetupDialog extends SJDialog{
     @Deprecated
     public static final String LONG_TYPE = "long";
     @Deprecated
     public static final String SHORT_TYPE = "short";
-    public static final String RED_BUTTON = "RedBtn";
 
-    public Dialog dialog;
-    private Button button1, button2;
-    private int maxDialogWidth = 600;
-    Context context;
+    private boolean isDeleteDialog;
 
     public SetupDialog (){
+        twoButtons = true;
     }
     public SetupDialog Short(Context context, String Title){
         return Short(context,Title,null);
@@ -48,19 +44,33 @@ public class SetupDialog {
         return Long(context,Title,Text,null,Btn2Txt);
     }
     public SetupDialog Delete(Context context,String Title){
-        return DialogBuilder(context,Title,null,null,null).setRightButtonColor(RED_BUTTON);
+        return DialogBuilder(context,Title,null,null,null).deleteAttributes();
     }
     public SetupDialog Delete(Context context){
-        return DialogBuilder(context,null,null,null,null).setRightButtonColor(RED_BUTTON);
+        return DialogBuilder(context).deleteAttributes();
+    }
+    public SetupDialog Delete(Context context, int theme){
+        return DialogBuilder(context,theme).deleteAttributes();
+    }
+    public SetupDialog Delete(Context context, boolean useAppTheme){
+        return DialogBuilder(context,useAppTheme).deleteAttributes();
+    }
+    private SetupDialog deleteAttributes(){
+        isDeleteDialog = true;
+        return setTitle("Delete?")
+                .setRightButtonColor(MATERIAL3_RED_BUTTON)
+                .setRightButtonText("Delete");
     }
     public SetupDialog DialogBuilder(Context context){
-        this.context = context;
-        dialog = new Dialog(context);
-        dialog.setContentView(R.layout.popup_panel);
-        setDialogSize();
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        button1 = dialog.findViewById(R.id.Btn1);
-        button2 = dialog.findViewById(R.id.Btn2);
+        super.Builder(context,R.layout.dialog);
+        return this;
+    }
+    public SetupDialog DialogBuilder(Context context,boolean useAppTheme){
+        super.Builder(context,R.layout.dialog,useAppTheme);
+        return this;
+    }
+    public SetupDialog DialogBuilder(Context context,int theme){
+        super.Builder(context,R.layout.dialog,theme,false);
         return this;
     }
 
@@ -72,16 +82,9 @@ public class SetupDialog {
         return DialogBuilder(context);
     }
 
-
     public SetupDialog DialogBuilder(Context context,String Title,String Text, String Btn1Txt, String Btn2Txt){
-        this.context = context;
-        dialog = new Dialog(context);
-        dialog.setContentView(R.layout.popup_panel);
-        setDialogSize();
-        TextView TitleTv = dialog.findViewById(R.id.TitleText);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        button1 = dialog.findViewById(R.id.Btn1);
-        button2 = dialog.findViewById(R.id.Btn2);
+        super.Builder(context,R.layout.dialog);
+        TextView TitleTv = dialog.findViewById(R.id.titleText);
         if (Btn1Txt == null) {
             button1.setOnClickListener(v -> dialog.dismiss());
         }else button1.setText(Btn1Txt);
@@ -108,242 +111,167 @@ public class SetupDialog {
         //Noting here!!
         return this;
     }
-    /**
-     * Set a dialog title.
-     * @param title title of a dialog
-     * @return current class
-     * */
+
+    @Override
+    public SetupDialog setOldTheme(){
+        super.setOldTheme();
+        if (isDeleteDialog)
+            super.setRightButtonColor(RED_BUTTON);
+        return this;
+    }
+
+    @Override
     public SetupDialog setTitle(String title){
-        TextView TitleTv = dialog.findViewById(R.id.TitleText);
-        TitleTv.setText(title);
+        super.setTitle(title);
         return this;
     }
-    /**
-     * Set a dialog message.
-     * @param message message of a dialog
-     * @return current class
-     * */
+
+    @Override
     public SetupDialog setMessage(String message){
-        TextView msg = dialog.findViewById(R.id.messageTxt);
-        msg.setText(message);
-        msg.setVisibility(View.VISIBLE);
+        super.setMessage(message);
         return this;
     }
-    /**
-     * Set a text to left button.
-     * @param text button text
-     * @return current class
-     * */
+
+    @Override
     public SetupDialog setLeftButtonText(String text){
-        button1.setText(text);
+        super.setLeftButtonText(text);
         return this;
     }
-    /**
-     * Set a text to right button.
-     * @param text button text
-     * @return current class
-     * */
+
+    @Override
     public SetupDialog setRightButtonText(String text){
-        button2.setText(text);
-        return this;
-    }
-    /**
-     * Set background resource for all buttons.
-     * @param drawable resource id
-     * @return current class
-     * */
-    public SetupDialog setButtonsBackgroundResource(int drawable){
-        button1.setBackgroundResource(drawable);
-        button2.setBackgroundResource(drawable);
-        return this;
-    }
-    /**
-     * Set background resource for left button.
-     * @param drawable resource id
-     * @return current class
-     * */
-    public SetupDialog setLeftButtonBackgroundResource(int drawable){
-        button1.setBackgroundResource(drawable);
-        return this;
-    }
-    /**
-     * Set background resource for right button.
-     * @param drawable resource id
-     * @return current class
-     * */
-    public SetupDialog setRightButtonBackgroundResource(int drawable){
-        button2.setBackgroundResource(drawable);
-        return this;
-    }
-    /**
-     * Set background resource for dialog.
-     * @param drawable resource id
-     * @return current class
-     * */
-    public SetupDialog setDialogBackgroundResource(int drawable){
-        LinearLayout background = dialog.findViewById(R.id.dialogBackground);
-        background.setBackgroundResource(drawable);
-        return this;
-    }
-    /**
-     * Set background color for all buttons.
-     * @param color Color to use for tinting buttons
-     * @return current class
-     * */
-    public SetupDialog setButtonsColor(int color){
-        button1.getBackground().setTint(color);
-        button2.getBackground().setTint(color);
+        super.setRightButtonText(text);
         return this;
     }
 
-    /**
-     * Set background color for left button.
-     * @param color Color to use for tinting this drawable
-     * @return current class
-     * */
-    public SetupDialog setLeftButtonColor(int color){
-        button1.getBackground().setTint(color);
-        return this;
-    }
-    /**
-     * Set background color for right button.
-     * @param color Color to use for tinting this drawable
-     * @return current class
-     * */
-    public SetupDialog setRightButtonColor(int color){
-        button2.getBackground().setTint(color);
-        return this;
-    }
-    /**
-     * Set text color for all buttons.
-     * @param color Color to use for tinting this drawable
-     * @return current class
-     * */
-    public SetupDialog setButtonsTextColor(int color){
-        button1.setTextColor(color);
-        button2.setTextColor(color);
-        return this;
-    }
-    /**
-     * Set text color for left button.
-     * @param color Color to use for tinting this drawable
-     * @return current class
-     * */
-    public SetupDialog setLeftButtonTextColor(int color){
-        button1.setTextColor(color);
-//        button1.setTextAppearance(R.style.ButtonColor);
-        return this;
-    }
-    /**
-     * Set text color for right button.
-     * @param color Color to use for tinting this drawable
-     * @return current class
-     * */
-    public SetupDialog setRightButtonTextColor(int color){
-        button2.setTextColor(color);
+    @Override
+    public SetupDialog setButtonsTextColor(@ColorInt int color){
+        super.setButtonsTextColor(color);
         return this;
     }
 
-
-    public SetupDialog setLeftButtonColor(String color){
-        switch (color){
-            case RED_BUTTON:
-                setLeftButtonBackgroundResource(R.drawable.ripple_button_red);
-                setLeftButtonTextColor(context.getResources().getColor(R.color.md_theme_onError,context.getTheme()));
-                break;
-            default:
-                throw new IllegalArgumentException(color + " is not a valid argument");
-        }
+    @Override
+    public SetupDialog setLeftButtonTextColor(@ColorInt int color){
+        super.setLeftButtonTextColor(color);
         return this;
     }
 
-    public SetupDialog setRightButtonColor(String color){
-        switch (color){
-            case RED_BUTTON:
-                setRightButtonBackgroundResource(R.drawable.ripple_button_red);
-                setRightButtonTextColor(context.getResources().getColor(R.color.md_theme_onError,context.getTheme()));
-                break;
-            default:
-                throw new IllegalArgumentException(color + " is not a valid argument");
-        }
+    @Override
+    public SetupDialog setRightButtonTextColor(@ColorInt int color){
+        super.setRightButtonTextColor(color);
         return this;
     }
 
-
-
-    public SetupDialog setButtonsColor(String color){
-        setLeftButtonColor(color);
-        setRightButtonColor(color);
+    @Override
+    public SetupDialog setButtonsColor(@ColorInt int color){
+        super.setButtonsColor(color);
         return this;
     }
 
-
-    /**
-     * Set onClick listener for both buttons
-     * @param dialogButtonEvents dialog button events
-     *
-     * @return current class
-     * */
-    public SetupDialog onButtonClick(DialogButtonEvents dialogButtonEvents){
-
-        button1.setOnClickListener(v -> dialogButtonEvents.onLeftButtonClick());
-        button2.setOnClickListener(v -> dialogButtonEvents.onRightButtonClick());
+    @Override
+    public SetupDialog setLeftButtonColor(@ColorInt int color){
+        super.setLeftButtonColor(color);
         return this;
     }
-    /**
-     * Set onClick listener for right button
-     * @param dialogButtonEvent dialog button events
-     * @return current class
-     * */
+
+    @Override
+    public SetupDialog setRightButtonColor(@ColorInt int color){
+        super.setRightButtonColor(color);
+        return this;
+    }
+
+    @Override
+    public SetupDialog setButtonsColor(@ButtonColor String color){
+        super.setButtonsColor(color);
+        return this;
+    }
+
+    @Override
+    public SetupDialog setLeftButtonColor(@ButtonColor String color){
+        super.setLeftButtonColor(color);
+        return this;
+    }
+
+    @Override
+    public SetupDialog setRightButtonColor(@ButtonColor String color){
+        super.setRightButtonColor(color);
+        return this;
+    }
+
+    @Override
+    public SetupDialog setDialogBackgroundResource(@DrawableRes int drawable){
+        super.setDialogBackgroundResource(drawable);
+        return this;
+    }
+
+    @Override
+    public SetupDialog setButtonsBackgroundResource(@DrawableRes int drawable){
+        super.setButtonsBackgroundResource(drawable);
+        return this;
+    }
+
+    @Override
+    public SetupDialog setLeftButtonBackgroundResource(@DrawableRes int drawable){
+        super.setLeftButtonBackgroundResource(drawable);
+        return this;
+    }
+
+    @Override
+    public SetupDialog setRightButtonBackgroundResource(@DrawableRes int drawable){
+        super.setRightButtonBackgroundResource(drawable);
+        return this;
+    }
+
+    @Override
     public SetupDialog onButtonClick(DialogButtonEvent dialogButtonEvent){
-        button1.setOnClickListener(v -> dialog.dismiss());
-        button2.setOnClickListener(v -> dialogButtonEvent.onButtonClick());
+        super.onButtonClick(dialogButtonEvent);
         return this;
-    }
-    /**
-     * show dialog
-     * */
-    public SetupDialog show(){
-        dialog.show();
-        return this;
-    }
-    /**
-     * dismiss dialog
-     * */
-    public void dismiss(){
-        dialog.dismiss();
     }
 
+    @Override
+    public SetupDialog onButtonClick(DialogButtonEvents dialogButtonEvents) {
+        super.onButtonClick(dialogButtonEvents);
+        return this;
+    }
+
+    @Override
+    public SetupDialog show() {
+        super.show();
+        return this;
+    }
+
+    @Override
+    protected int setButtonsRootLayoutID() {
+        return R.id.buttons;
+    }
+
+    @Override
+    public SetupDialog setMaxDialogWidth(int maxDialogWidth) {
+        super.setMaxDialogWidth(maxDialogWidth);
+        return this;
+
+    }
+
+    @Override
+    public SetupDialog setDialogAnimations(int styleRes) {
+        super.setDialogAnimations(styleRes);
+        return this;
+    }
+
+    @Override
+    protected void setButtons() {
+        setButton1(R.id.btn1);
+        setButton2(R.id.btn2);
+    }
+
+    @Override
     public Button getLeftButton() {
-        return button1;
+        return super.getLeftButton();
     }
 
+    @Override
     public Button getRightButton() {
-        return button2;
-    }
-
-    /**
-     * Set a maximum width for dialog
-     * @param maxDialogWidth set value for {@link #maxDialogWidth}. Default is 600
-     * @return current class
-     */
-    public SetupDialog setMaxDialogWidth(int maxDialogWidth){
-        this.maxDialogWidth = maxDialogWidth;
-        setDialogSize();
-        return this;
-    }
-
-    public int getMaxDialogWidth(){
-        return this.maxDialogWidth;
-    }
-
-    private void setDialogSize(){
-        if (context == null)
-            throw new NullPointerException("context is null");
-        if (dialog == null) {
-            throw new NullPointerException("dialog is null");
-        }
-        functions.SetDialogSize(context,dialog, maxDialogWidth);
+        return super.getRightButton();
     }
 
 }

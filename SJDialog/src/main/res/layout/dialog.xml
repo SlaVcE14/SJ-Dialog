@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="10dp"
+
     >
 
     <LinearLayout
@@ -32,15 +33,16 @@
             android:id="@+id/messageTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Message"
             android:layout_gravity="center"
+            android:textSize="20dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
-            android:text="Message"
-            android:textSize="20dp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            />
 
         <LinearLayout
-            android:id="@+id/buttonRoot"
+            android:id="@+id/buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -50,7 +52,7 @@
 
 
             <Button
-                android:id="@+id/btn"
+                android:id="@+id/btn1"
                 style="@style/SJDialog.ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
@@ -61,8 +63,23 @@
                 android:autoSizeStepGranularity="1dp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
-                android:text="Ok" />
+                android:visibility="visible"
+                android:text="Cancel" />
 
+            <Button
+                android:id="@+id/btn2"
+                style="@style/SJDialog.ButtonStyle"
+
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:autoSizeMaxTextSize="14dp"
+                android:autoSizeMinTextSize="5dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:visibility="visible"
+                android:text="Ok" />
 
         </LinearLayout>
 

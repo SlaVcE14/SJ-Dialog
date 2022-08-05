@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/dialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="10dp"
+    android:paddingVertical="10dp"
 
     >
 
@@ -13,19 +14,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="10dp"
+
         android:background="@drawable/dialog_background"
         android:gravity="bottom"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/TitleText"
+            android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:text="Delete?"
+            android:text="Title"
             android:textAlignment="center"
             android:textSize="25dp" />
 
@@ -41,7 +42,18 @@
             android:visibility="gone"
             />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+
+            />
+
         <LinearLayout
+            android:id="@+id/buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -51,10 +63,10 @@
 
 
             <Button
-                android:id="@+id/Btn1"
-                style="@style/ButtonColor"
+                android:id="@+id/btn1"
+                style="@style/SJDialog.ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
                 android:autoSizeMaxTextSize="14dp"
@@ -62,20 +74,22 @@
                 android:autoSizeStepGranularity="1dp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
+                android:visibility="visible"
                 android:text="Cancel" />
 
             <Button
-                android:id="@+id/Btn2"
-                style="@style/ButtonColor"
+                android:id="@+id/btn2"
+                style="@style/SJDialog.ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:autoSizeMaxTextSize="14dp"
                 android:autoSizeMinTextSize="5dp"
                 android:autoSizeStepGranularity="1dp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
-                android:text="Delete" />
+                android:visibility="gone"
+                android:text="Ok" />
 
         </LinearLayout>
 

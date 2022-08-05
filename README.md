@@ -24,10 +24,12 @@ dependencyResolutionManagement {
 ### Step 2. Add the dependency
 ```gradle
 dependencies {
-	implementation 'com.github.slavce14:SJ-Dialog:1.4'
+	implementation 'com.github.slavce14:SJ-Dialog:1.5'
 }
 ```
 [![](https://jitpack.io/v/slavce14/SJ-Dialog.svg)](https://jitpack.io/#slavce14/SJ-Dialog)
 ## Documentation
-* [SetupDialogDoc](https://github.com/SlaVcE14/SJ-Dialog/blob/master/SJDialog/SetupDialogDoc.md): Documentation for SetupDialog
-* [MessageDialogDoc](https://github.com/SlaVcE14/SJ-Dialog/blob/master/SJDialog/MessageDialogDoc.md): Documentation for MessageDialog
+* [SetupDialogDoc](/SJDialog/SetupDialogDoc.md): Documentation for SetupDialog
+* [MessageDialogDoc](/SJDialog/MessageDialogDoc.md): Documentation for MessageDialog
+* [ListDialogDoc](/SJDialog/ListDialogDoc.md): Documentation for ListDialog
+* [CustomViewDialogDoc](/SJDialog/CustomViewDialogDoc.md): Documentation for CustomViewDialog
