@@ -19,11 +19,11 @@ dialog.DialogBuilder(context)
 ```
 ![SetupDialog day-night](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/SetupDialog%20day-night.png)
 
-Apply the app theme to a dialog (only works with material3 theme)
+Apply the app theme to a dialog **(only works with material3 theme)**
 ```java
 dialog.DialogBuilder(context,true)
 ```
-Apply the custom theme to a dialog (only works with material3 theme)
+Apply the custom theme to a dialog **(only works with material3 theme)**
 ```java
 dialog.DialogBuilder(context,theme)
 ```
