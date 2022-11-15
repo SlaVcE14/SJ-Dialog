@@ -101,11 +101,11 @@ Apply the default theme to a dialog
 listDialog.Builder(context)
 ```
 ![ListDialog day-night](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/ListDialog%20day-night.png)
-Apply the app theme to a dialog (only works with material3 theme)
+Apply the app theme to a dialog **(only works with material3 theme)**
 ```java
 listDialog.Builder(context,true)
 ```
-Apply the custom theme to a dialog (only works with material3 theme)
+Apply the custom theme to a dialog **(only works with material3 theme)**
 ```java
 listDialog.Builder(context,theme)
 ```
