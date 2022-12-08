@@ -117,6 +117,13 @@ customViewDialog.setTitle("Title");
 //Set message
 customViewDialog.setMessage("Message");
 
+//Set text color
+customViewDialog.setTextColor();
+//Set title text color
+customViewDialog.setTitleTextColor();
+//Set message text color
+customViewDialog.setMessageTextColor();
+
 //Set button text (one button dialog)
 customViewDialog.setButtonText("Text");
 //Set left button text

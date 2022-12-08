@@ -57,6 +57,24 @@ public class CustomViewDialog extends SJDialog{
         return this;
     }
 
+    @Override
+    public CustomViewDialog setTextColor(int color) {
+        super.setTextColor(color);
+        return this;
+    }
+
+    @Override
+    public CustomViewDialog setTitleTextColor(int color) {
+        super.setTitleTextColor(color);
+        return this;
+    }
+
+    @Override
+    public CustomViewDialog setMessageTextColor(int color) {
+        super.setMessageTextColor(color);
+        return this;
+    }
+
     /**
      * Set a button text.
      * @param text button text

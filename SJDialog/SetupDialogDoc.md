@@ -81,6 +81,13 @@ dialog.setLeftButtonText("Text");
 //Set right button text
 dialog.setRightButtonText("Text");
 
+//Set text color
+dialog.setTextColor();
+//Set title text color
+dialog.setTitleTextColor();
+//Set message text color
+dialog.setMessageTextColor();
+
 //Set buttons color
 dialog.setButtonsColor(color);
 //Set left button color

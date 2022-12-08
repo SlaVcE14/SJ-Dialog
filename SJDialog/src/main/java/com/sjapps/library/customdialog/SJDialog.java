@@ -125,6 +125,40 @@ public abstract class SJDialog {
     }
 
     /**
+     * Set text color.
+     *
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     */
+    protected SJDialog setTextColor(@ColorInt int color) {
+        setTitleTextColor(color);
+        setMessageTextColor(color);
+        return this;
+    }
+
+    /**
+     * Set title text color.
+     *
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     */
+    protected SJDialog setTitleTextColor(@ColorInt int color) {
+        getTitleTv().setTextColor(color);
+        return this;
+    }
+
+    /**
+     * Set message text color.
+     *
+     * @param color Color to use for tinting this drawable
+     * @return current class
+     */
+    protected SJDialog setMessageTextColor(@ColorInt int color) {
+        getMessageTv().setTextColor(color);
+        return this;
+    }
+
+    /**
      * Set a text to left button.
      *
      * @param text button text

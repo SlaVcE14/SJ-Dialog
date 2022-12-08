@@ -73,6 +73,25 @@ public class ListDialog extends SJDialog{
         return this;
     }
 
+    @Override
+    public ListDialog setTextColor(int color) {
+        super.setTextColor(color);
+        setListItemTextColor(color);
+        return this;
+    }
+
+    @Override
+    public ListDialog setTitleTextColor(int color) {
+        super.setTitleTextColor(color);
+        return this;
+    }
+
+    @Override
+    public ListDialog setMessageTextColor(int color) {
+        super.setMessageTextColor(color);
+        return this;
+    }
+
     /**
      * Set a button text.
      *
