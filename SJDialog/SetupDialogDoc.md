@@ -82,11 +82,11 @@ dialog.setLeftButtonText("Text");
 dialog.setRightButtonText("Text");
 
 //Set text color
-dialog.setTextColor();
+dialog.setTextColor(color);
 //Set title text color
-dialog.setTitleTextColor();
+dialog.setTitleTextColor(color);
 //Set message text color
-dialog.setMessageTextColor();
+dialog.setMessageTextColor(color);
 
 //Set buttons color
 dialog.setButtonsColor(color);
