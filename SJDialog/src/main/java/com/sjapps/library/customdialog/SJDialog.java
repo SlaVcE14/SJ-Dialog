@@ -32,6 +32,8 @@ public abstract class SJDialog {
     private @LayoutRes int Btn1Resource = R.layout.button_template;
     private @LayoutRes int Btn2Resource = R.layout.button_template;
 
+    @ColorInt int defaultOldThemeTextColor;
+
     private final int defaultTheme = R.style.Theme_SJDialog;
     private boolean usesDefaultTheme = true;
 
@@ -61,6 +63,7 @@ public abstract class SJDialog {
     }
     protected SJDialog Builder(Context context, @LayoutRes int layoutResID, @StyleRes int theme, boolean useAppTheme) {
         this.context = context;
+        defaultOldThemeTextColor = context.getResources().getColor(R.color.SJDialog_OldThemeTextColor,context.getTheme());
         dialog = useAppTheme ?
                 new Dialog(new ContextThemeWrapper(context, context.getTheme())) :
                 new Dialog(new ContextThemeWrapper(context, theme));
@@ -96,6 +99,7 @@ public abstract class SJDialog {
     protected SJDialog setOldTheme() {
         setButtonsColor(OLD_BUTTON_COLOR);
         setDialogBackgroundResource(R.drawable.dialog_background_old);
+        setTextColor(defaultOldThemeTextColor);
         return this;
     }
 
