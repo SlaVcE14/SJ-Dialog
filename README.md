@@ -28,6 +28,8 @@ dependencies {
 }
 ```
 [![](https://jitpack.io/v/slavce14/SJ-Dialog.svg)](https://jitpack.io/#slavce14/SJ-Dialog)
+![GitHub repo size](https://img.shields.io/github/repo-size/slavce14/sj-dialog?color=0064ff)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/slavce14/sj-dialog?color=0064ff)](../../releases/latest)
 ## Documentation
 * [SetupDialogDoc](/SJDialog/SetupDialogDoc.md): Documentation for SetupDialog
 * [MessageDialogDoc](/SJDialog/MessageDialogDoc.md): Documentation for MessageDialog

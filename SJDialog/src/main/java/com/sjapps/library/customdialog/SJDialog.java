@@ -306,9 +306,12 @@ public abstract class SJDialog {
      * @return current class
      */
     protected SJDialog setButtonsBackgroundResource(@DrawableRes int drawable) {
+        checkButtonResource(0);
         button1.setBackgroundResource(drawable);
-        if (twoButtons)
+        if (twoButtons){
+            checkButtonResource(1);
             button2.setBackgroundResource(drawable);
+        }
         return this;
     }
 
@@ -319,6 +322,7 @@ public abstract class SJDialog {
      * @return current class
      */
     protected SJDialog setLeftButtonBackgroundResource(@DrawableRes int drawable) {
+        checkButtonResource(0);
         button1.setBackgroundResource(drawable);
         return this;
     }
@@ -333,6 +337,7 @@ public abstract class SJDialog {
         if (!twoButtons)
             throw OneButtonException();
 
+        checkButtonResource(1);
         button2.setBackgroundResource(drawable);
         return this;
     }
