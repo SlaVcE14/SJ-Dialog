@@ -59,11 +59,11 @@ messageDialog.setMessage("Message");
 messageDialog.setButtonText("Text");
 
 //Set text color
-messageDialog.setTextColor();
+messageDialog.setTextColor(color);
 //Set title text color
-messageDialog.setTitleTextColor();
+messageDialog.setTitleTextColor(color);
 //Set message text color
-messageDialog.setMessageTextColor();
+messageDialog.setMessageTextColor(color);
 
 //Set button color
 messageDialog.setButtonColor(color);
