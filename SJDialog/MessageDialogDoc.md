@@ -58,6 +58,13 @@ messageDialog.setMessage("Message");
 //Set button text
 messageDialog.setButtonText("Text");
 
+//Set text color
+messageDialog.setTextColor(color);
+//Set title text color
+messageDialog.setTitleTextColor(color);
+//Set message text color
+messageDialog.setMessageTextColor(color);
+
 //Set button color
 messageDialog.setButtonColor(color);
 

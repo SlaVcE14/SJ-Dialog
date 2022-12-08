@@ -50,6 +50,25 @@ public class MessageDialog extends SJDialog{
         super.setMessage(message);
         return this;
     }
+
+    @Override
+    public MessageDialog setTextColor(int color) {
+        super.setTextColor(color);
+        return this;
+    }
+
+    @Override
+    public MessageDialog setTitleTextColor(int color) {
+        super.setTitleTextColor(color);
+        return this;
+    }
+
+    @Override
+    public MessageDialog setMessageTextColor(int color) {
+        super.setMessageTextColor(color);
+        return this;
+    }
+
     /**
      * Set a button text.
      * @param text button text

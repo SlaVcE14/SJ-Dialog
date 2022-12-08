@@ -133,6 +133,24 @@ public class SetupDialog extends SJDialog{
     }
 
     @Override
+    public SetupDialog setTextColor(int color) {
+        super.setTextColor(color);
+        return this;
+    }
+
+    @Override
+    public SetupDialog setTitleTextColor(int color) {
+        super.setTitleTextColor(color);
+        return this;
+    }
+
+    @Override
+    public SetupDialog setMessageTextColor(int color) {
+        super.setMessageTextColor(color);
+        return this;
+    }
+
+    @Override
     public SetupDialog setLeftButtonText(String text){
         super.setLeftButtonText(text);
         return this;

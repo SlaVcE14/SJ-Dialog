@@ -283,6 +283,13 @@ listDialog.setTitle("Title");
 //Set message
 listDialog.setMessage("Message");
 
+//Set text color
+listDialog.setTextColor(color);
+//Set title text color
+listDialog.setTitleTextColor(color);
+//Set message text color
+listDialog.setMessageTextColor(color);
+
 //Set button text (one button dialog)
 listDialog.setButtonText("Text");
 //Set left button text
