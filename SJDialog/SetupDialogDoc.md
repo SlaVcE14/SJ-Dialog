@@ -7,7 +7,7 @@ dialog.DialogBuilder(context)
   	.setLeftButtonText("button1")
   	.setRightButtonText("button2")
   	.onButtonClick(() -> {
-	// Do something
+		// Do something
 	})
        	.show();
 ```
