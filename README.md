@@ -36,7 +36,7 @@ dependencies {
 * [ListDialogDoc](/SJDialog/ListDialogDoc.md): Documentation for ListDialog
 * [CustomViewDialogDoc](/SJDialog/CustomViewDialogDoc.md): Documentation for CustomViewDialog
 
-# License:
+## License:
 ```
 MIT License
 
