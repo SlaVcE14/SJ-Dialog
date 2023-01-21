@@ -3,6 +3,7 @@ package com.sjapps.library.customdialog;
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
@@ -24,6 +25,7 @@ public class ListDialog extends SJDialog{
 
     RecyclerView listRV;
     boolean isSelectableList = false;
+    boolean hideEmptyListTxt = false;
 
     private @DrawableRes int listItemBgRes = R.drawable.ripple_list;
     private @DrawableRes int listItemBgResSelected = R.drawable.ripple_list_selected;
@@ -31,6 +33,7 @@ public class ListDialog extends SJDialog{
 
     RecyclerView.Adapter<?> adapter;
     ArrayList<?> selectedItems = new ArrayList<>();
+    TextView emptyListTxt;
 
     public ListDialog(){
 
@@ -44,6 +47,7 @@ public class ListDialog extends SJDialog{
         super.Builder(context,R.layout.list_dialog,theme, false);
         listRV = dialog.findViewById(R.id.list);
         onLeftButtonClick(dialog::dismiss);
+        emptyListTxt = dialog.findViewById(R.id.emptyListTxt);
         return this;
     }
 
@@ -51,6 +55,7 @@ public class ListDialog extends SJDialog{
         super.Builder(context,R.layout.list_dialog,useAppTheme);
         listRV = dialog.findViewById(R.id.list);
         onLeftButtonClick(dialog::dismiss);
+        emptyListTxt = dialog.findViewById(R.id.emptyListTxt);
         return this;
     }
 
@@ -77,6 +82,7 @@ public class ListDialog extends SJDialog{
     public ListDialog setTextColor(int color) {
         super.setTextColor(color);
         setListItemTextColor(color);
+        setEmptyListTxtColor(color);
         return this;
     }
 
@@ -250,6 +256,8 @@ public class ListDialog extends SJDialog{
     public ListDialog show() {
         listRV.setLayoutManager(new LinearLayoutManager(context));
         listRV.setAdapter(adapter);
+        if (adapter == null)
+            checkListsSize(0);
 
         super.show();
         return this;
@@ -334,6 +342,15 @@ public class ListDialog extends SJDialog{
         return this;
     }
 
+    private void setEmptyListTxtColor(int color) {
+        emptyListTxt.setTextColor(color);
+    }
+
+    public ListDialog hideEmptyListText(){
+        hideEmptyListTxt = true;
+        return this;
+    }
+
     /**
      * Get a dialog list
      * @return dialog list
@@ -374,6 +391,8 @@ public class ListDialog extends SJDialog{
 
         if (!isSelectableList && itemClick == null)
             throw nullListItemClick;
+
+        checkListsSize(listOfItems.length);
 
         adapter = new DefaultListAdapter(listOfItems,
                 isSelectableList,
@@ -447,6 +466,8 @@ public class ListDialog extends SJDialog{
         if (!isSelectableList && itemClick == null)
             throw nullListItemClick;
 
+        checkListsSize(objArray.length);
+
         adapter = new DefaultListAdapterGeneric<>(objArray,
                 value,
                 isSelectableList,
@@ -471,6 +492,8 @@ public class ListDialog extends SJDialog{
 
         if (!isSelectableList && itemClick == null)
             throw nullListItemClick;
+
+        checkListsSize(objArray.length);
 
         adapter = new DefaultListAdapterGeneric<>(objArray,
                 values,
@@ -499,6 +522,8 @@ public class ListDialog extends SJDialog{
         if (!isSelectableList && itemClick == null)
             throw nullListItemClick;
 
+        checkListsSize(arrayList.size());
+
         adapter = new DefaultListAdapterGeneric<>(arrayList,
                 value,
                 isSelectableList,
@@ -523,6 +548,8 @@ public class ListDialog extends SJDialog{
 
         if (!isSelectableList && itemClick == null)
             throw nullListItemClick;
+
+        checkListsSize(arrayList.size());
 
         adapter = new DefaultListAdapterGeneric<>(arrayList,
                 values,
@@ -587,6 +614,17 @@ public class ListDialog extends SJDialog{
      */
     public <T>  ArrayList<T> getSelectedItems(){
         return (ArrayList<T>) selectedItems;
+    }
+
+    void checkListsSize(int size){
+
+        if(hideEmptyListTxt){
+            emptyListTxt.setVisibility(View.GONE);
+            return;
+        }
+        emptyListTxt.setVisibility((size > 0)? View.GONE : View.VISIBLE);
+
+
     }
 
     private final NullPointerException nullListItemClick = new NullPointerException(
