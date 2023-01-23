@@ -126,6 +126,14 @@ Button rightButton = dialog.getRightButton();
 //Set dialog animations
 dialog.setDialogAnimations(styleRes);
 
+//Enable or disable swipe down to dismiss dialog. 
+//By default is set to true
+dialog.swipeToDismiss(booleon);
+
+//Set dialog onTouchListener.
+//This method will overide swipe down to dismiss action
+dialog.setOnTouchListener(onTouchListener);
+
 //Shew dialog
 dialog.show();
 //Dismiss dialog
