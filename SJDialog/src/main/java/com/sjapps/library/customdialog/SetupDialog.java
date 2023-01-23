@@ -1,6 +1,7 @@
 package com.sjapps.library.customdialog;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -268,6 +269,18 @@ public class SetupDialog extends SJDialog{
         super.setMaxDialogWidth(maxDialogWidth);
         return this;
 
+    }
+
+    @Override
+    public SetupDialog setOnTouchListener(View.OnTouchListener onTouchListener) {
+        super.setOnTouchListener(onTouchListener);
+        return this;
+    }
+
+    @Override
+    public SetupDialog swipeToDismiss(boolean isSwipeToDismiss) {
+        super.swipeToDismiss(isSwipeToDismiss);
+        return this;
     }
 
     @Override

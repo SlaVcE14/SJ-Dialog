@@ -581,6 +581,18 @@ public class ListDialog extends SJDialog{
         return isSelectableList;
     }
 
+    @Override
+    public ListDialog setOnTouchListener(View.OnTouchListener onTouchListener) {
+        super.setOnTouchListener(onTouchListener);
+        return this;
+    }
+
+    @Override
+    public ListDialog swipeToDismiss(boolean isSwipeToDismiss) {
+        super.swipeToDismiss(isSwipeToDismiss);
+        return this;
+    }
+
     /**
      * Get selected items in a list
      * @return ArrayList of selected items in a list

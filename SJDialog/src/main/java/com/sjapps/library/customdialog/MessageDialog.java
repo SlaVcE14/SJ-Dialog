@@ -1,6 +1,7 @@
 package com.sjapps.library.customdialog;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.ColorInt;
@@ -162,5 +163,17 @@ public class MessageDialog extends SJDialog{
     @Override
     protected int setButtonsRootLayoutID() {
         return R.id.buttonRoot;
+    }
+
+    @Override
+    public MessageDialog setOnTouchListener(View.OnTouchListener onTouchListener) {
+        super.setOnTouchListener(onTouchListener);
+        return this;
+    }
+
+    @Override
+    public MessageDialog swipeToDismiss(boolean isSwipeToDismiss) {
+        super.swipeToDismiss(isSwipeToDismiss);
+        return this;
     }
 }

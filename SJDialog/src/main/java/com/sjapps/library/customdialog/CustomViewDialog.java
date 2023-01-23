@@ -1,7 +1,6 @@
 package com.sjapps.library.customdialog;
 
 import android.content.Context;
-import android.opengl.Visibility;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -271,6 +270,18 @@ public class CustomViewDialog extends SJDialog{
     public CustomViewDialog dialogWithTwoButtons() {
         super.dialogWithTwoButtons();
         setButton2Visibility(View.VISIBLE);
+        return this;
+    }
+
+    @Override
+    public CustomViewDialog setOnTouchListener(View.OnTouchListener onTouchListener) {
+        super.setOnTouchListener(onTouchListener);
+        return this;
+    }
+
+    @Override
+    public CustomViewDialog swipeToDismiss(boolean isSwipeToDismiss) {
+        super.swipeToDismiss(isSwipeToDismiss);
         return this;
     }
 
