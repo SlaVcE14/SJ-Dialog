@@ -99,7 +99,7 @@ public class SwipeDismissTouchListener implements View.OnTouchListener {
                     dismiss = true;
                     dismissDown = deltaY > 0;
                     returnTrue = true;
-                } else if (deltaY < 0){
+                } else if (Math.abs(deltaY) > 0){
                     returnTrue = true;
                 }
                 if (dismiss) {
