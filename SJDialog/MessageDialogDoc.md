@@ -91,7 +91,7 @@ messageDialog.setDialogAnimations(styleRes);
 
 //Enable or disable swipe down to dismiss dialog. 
 //By default is set to true
-dialog.swipeToDismiss(booleon);
+dialog.swipeToDismiss(boolean);
 
 //Set dialog onTouchListener.
 //This method will overide swipe down to dismiss action
