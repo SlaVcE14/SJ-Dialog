@@ -42,6 +42,17 @@
             android:textSize="20dp"
             android:visibility="gone" />
 
+        <TextView
+            android:id="@+id/emptyListTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List is empty"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="?colorOnSecondaryContainer"
+            android:visibility="gone"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"
             android:layout_width="match_parent"
