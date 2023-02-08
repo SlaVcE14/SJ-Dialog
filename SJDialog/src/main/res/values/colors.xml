@@ -42,6 +42,8 @@
     <color name="SJDialog_oldBackground2">#D5D5D5</color>
     <color name="SJDialog_oldButton">#0060f4</color>
     <color name="SJDialog_red">#BA1B1B</color>
+    <color name="SJDialog_OldThemeErrorDialog">#930006</color>
 
     <color name="SJDialog_OldThemeTextColor">#333333</color>
+    <color name="SJDialog_ErrorTextColor">#410001</color>
 </resources>

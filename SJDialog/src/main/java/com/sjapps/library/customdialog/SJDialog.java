@@ -34,6 +34,8 @@ public abstract class SJDialog {
     private @LayoutRes int Btn2Resource = R.layout.button_template;
 
     @ColorInt int defaultOldThemeTextColor;
+    @ColorInt int defaultOldColorWhite = 0xFFE5E5E5;
+    @ColorInt int defaultOldColorBlack = 0xFF333333;
 
     private final int defaultTheme = R.style.Theme_SJDialog;
     private boolean usesDefaultTheme = true;

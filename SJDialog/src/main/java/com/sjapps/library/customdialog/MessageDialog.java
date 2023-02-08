@@ -13,6 +13,7 @@ import com.sjapps.library.R;
 @SuppressWarnings("unused")
 public class MessageDialog extends SJDialog{
 
+    private boolean isErrorDialog;
 
     public MessageDialog(){
         onlyOneButton = true;
@@ -33,10 +34,33 @@ public class MessageDialog extends SJDialog{
         onButtonClick(() -> dialog.dismiss());
         return this;
     }
+    public MessageDialog ErrorDialogBuilder(Context context){
+        return Builder(context).errorDialogAttributes();
+    }
+    public MessageDialog ErrorDialogBuilder(Context context,@StyleRes int theme){
+        return Builder(context,theme).errorDialogAttributes();
+    }
+    public MessageDialog ErrorDialogBuilder(Context context,boolean useAppTheme){
+        return Builder(context,useAppTheme).errorDialogAttributes();
+    }
+
+    private MessageDialog errorDialogAttributes(){
+        isErrorDialog = true;
+        return setDialogBackgroundResource(R.drawable.dialog_background_material3_red)
+                .setTextColor(context.getResources().getColor(R.color.SJDialog_ErrorTextColor, context.getTheme()))
+                .setButtonColor(MATERIAL3_RED_BUTTON)
+                .setTitle("Error");
+    }
 
     @Override
     public MessageDialog setOldTheme(){
         super.setOldTheme();
+        if (isErrorDialog) {
+            setDialogBackgroundResource(R.drawable.dialog_background_red);
+            setTextColor(defaultOldColorWhite);
+            setButtonColor(defaultOldColorWhite);
+            setButtonTextColor(defaultOldColorBlack);
+        }
         return this;
     }
 
