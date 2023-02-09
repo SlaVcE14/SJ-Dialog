@@ -105,11 +105,11 @@ public class SetupDialog extends SJDialog{
      * Set a dialog type.
      * @param dialogType type of a dialog. Supported types: {@link #SHORT_TYPE} and {@link #LONG_TYPE}
      * @return current class
-     * @deprecated Dialog type is automatic. Remove this.
+     * @deprecated Old method, not in use. Remove this.
      * */
     @Deprecated
     public SetupDialog setDialogType(String dialogType){
-        //Noting here!!
+        //Nothing here!!
         return this;
     }
 
