@@ -522,6 +522,9 @@ public abstract class SJDialog {
         Activity activity = (Activity) context;
         button2 = (Button) activity.getLayoutInflater().inflate(Btn2Resource, buttons, false);
         button2.setVisibility(btn2Visibility);
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) button2.getLayoutParams();
+        params.setMarginStart(functions.dpToPixels(context,10));
+        button2.setLayoutParams(params);
         button2.setText("Ok");
         buttons.addView(button2, 1);
     }

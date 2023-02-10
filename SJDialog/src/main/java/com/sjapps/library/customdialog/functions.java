@@ -24,7 +24,7 @@ public class functions {
         dialog.getWindow().setLayout(width, height);
 
     }
-    private static int dpToPixels(@NonNull Context context, float dp) {
+    public static int dpToPixels(@NonNull Context context, float dp) {
         Resources r = context.getResources();
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
