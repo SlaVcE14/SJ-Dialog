@@ -26,10 +26,12 @@ public class ListDialog extends SJDialog{
     RecyclerView listRV;
     boolean isSelectableList = false;
     boolean hideEmptyListTxt = false;
+    boolean waitForLayoutManager = false;
 
     private @DrawableRes int listItemBgRes = R.drawable.ripple_list;
     private @DrawableRes int listItemBgResSelected = R.drawable.ripple_list_selected;
     private int listItemTextColor = 1;
+    private RecyclerView.LayoutManager layoutManager = null;
 
     RecyclerView.Adapter<?> adapter;
     ArrayList<?> selectedItems = new ArrayList<>();
@@ -254,7 +256,11 @@ public class ListDialog extends SJDialog{
 
     @Override
     public ListDialog show() {
-        listRV.setLayoutManager(new LinearLayoutManager(context));
+        if (layoutManager == null)
+            layoutManager = new LinearLayoutManager(context);
+        if (!waitForLayoutManager)
+            listRV.setLayoutManager(layoutManager);
+
         listRV.setAdapter(adapter);
         if (adapter == null)
             checkListsSize(0);
@@ -569,6 +575,11 @@ public class ListDialog extends SJDialog{
      */
     public ListDialog setAdapter(RecyclerView.Adapter<?> adapter){
         this.adapter = adapter;
+        return this;
+    }
+
+    public ListDialog setLayoutManager(RecyclerView.LayoutManager layoutManager) {
+        this.layoutManager = layoutManager;
         return this;
     }
 
