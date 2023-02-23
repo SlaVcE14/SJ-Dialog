@@ -626,7 +626,7 @@ public class ListDialog extends SJDialog {
         adapter = new DefaultImageListAdapter(arrayList,
                 isSelectableList,
                 itemClick,
-                new ArrayList<>(),
+                (ArrayList<ImageListItem>) selectedItems,
                 listItemBgRes,
                 listItemBgResSelected,
                 listItemTextColor);
@@ -635,6 +635,8 @@ public class ListDialog extends SJDialog {
         waitForLayoutManager = true;
         listRV.post(() -> {
             int maxItemCount = listRV.getWidth() / functions.dpToPixels(context,80);
+            if (maxItemCount == 0)
+                maxItemCount = 1;
             setLayoutManager(new GridLayoutManager(context, arrayList.size()!=0 ? Math.min(maxItemCount, arrayList.size()):1));
             listRV.setLayoutManager(layoutManager);
             waitForLayoutManager = false;
