@@ -255,6 +255,10 @@ listDialog.setImageItems(listItems, (position, obj) -> {
  	// Do something
 });
 ```
+## Set RecyclerView LayoutManager
+```java
+listDialog.setLayoutManager(layoutManager);
+```
 
 ## Add onClick Listener
 onClickListener for the right button if the dialog has [two buttons](#dialog-with-two-buttons), the left button is for dismissing dialog. If the dialog has only one button, onClickListener will be set to that button.
