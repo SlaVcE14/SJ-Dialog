@@ -124,7 +124,7 @@ listDialog.setOldTheme();
 listDialog.setSelectableList();
 ```
 ## Add items in a list
-You can add item in a list by setting [ReciclerView Adapter](#set-reciclerview-adapter) or using [setItems()](#setitems) method.
+You can add item in a list by setting [ReciclerView Adapter](#set-reciclerview-adapter), using [setItems()](#setitems) method or using [setImageItems()](#setimageitems) method for list with icons.
 ### Set ReciclerView Adapter
 ```java
 listDialog.setAdapter(recyclerViewAdapter);
@@ -234,6 +234,25 @@ listDialog.setItems(arrayList, new ListItemValues<ExampleObject>() {
             }
         },(position, obj) -> {
             // Do something
+});
+```
+### setImageItems
+Creating ArrayList of [ImageListItem](/SJDialog/src/main/java/com/sjapps/library/customdialog/ImageListItem.java)
+```java
+ArrayList<ImageListItem> listItems = new ArrayList<>();
+listItems.add(new ImageListItem("item1", drawable1));
+// or adding data of type Object
+listItems.add(new ImageListItem("item2", drawable2,data));
+```
+#### ArrayList of ImageListItem
+You need to use [setSelectableList()](#select-multiple-items-in-a-list) firstly or add [onListItemClick](#arraylist-of-two-imagelistitem-and-onlistitemclick)
+```java
+listDialog.setImageItems(listItems);
+```
+#### ArrayList of ImageListItem and onListItemClick
+```java
+listDialog.setImageItems(listItems, (position, obj) -> {
+ 	// Do something
 });
 ```
 
@@ -346,6 +365,8 @@ int ItemBgResSelected = listDialog.getListItemBgResSelected();
 
 //set RecyclerView Adapter
 listDialog.setAdapter(recyclerViewAdapter);
+//Set Layout Manager
+listDialog.setLayoutManager
 
 //Add items in a list
 listDialog.setItems(strings);
@@ -358,6 +379,8 @@ listDialog.setItems(arrayList, listItemValue);
 listDialog.setItems(arrayList, listItemValue, listItemClickObj);
 listDialog.setItems(arrayList, listItemValues);
 listDialog.setItems(arrayList, listItemValues, listItemClickObj);
+listDialog.setImageItems(listItems);
+listDialog.setImageItems(listItems, listItemClickObj);
 
 //Set maximum dialog width. Default is 600dp
 listDialog.setMaxDialogWidth(width);
