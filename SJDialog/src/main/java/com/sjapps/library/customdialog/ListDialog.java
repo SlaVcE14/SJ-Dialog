@@ -22,7 +22,7 @@ import com.sjapps.library.customdialog.list.events.ListItemClickObj;
 
 import java.util.ArrayList;
 
-@SuppressWarnings({"unused", "unchecked"})
+@SuppressWarnings({"unused", "unchecked","UnusedReturnValue"})
 public class ListDialog extends SJDialog {
 
     RecyclerView listRV;
@@ -734,7 +734,8 @@ public class ListDialog extends SJDialog {
 
     }
 
-    private final NullPointerException nullListItemClick(Class className) {
+    @SuppressWarnings("rawtypes")
+    private NullPointerException nullListItemClick(Class className) {
         return new NullPointerException(
                 String.format("%s is null. Set %s event or use setSelectableList() for selecting multiple item in a list",
                         className.getSimpleName(),
