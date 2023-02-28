@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.StyleRes;
 
 import com.sjapps.library.R;
 
@@ -26,7 +27,7 @@ public class BasicDialog extends SJDialog{
         return Short(context,Title,null);
     }
     public BasicDialog Short(Context context, String Title, String Btn1Txt, String Btn2Txt){
-        return DialogBuilder(context,Title,null,Btn1Txt,Btn2Txt);
+        return Builder(context,Title,null,Btn1Txt,Btn2Txt);
     }
     public BasicDialog Short(Context context, String Title, String Btn2Txt){
         return Short(context,Title,null,Btn2Txt);
@@ -35,22 +36,22 @@ public class BasicDialog extends SJDialog{
         return Long(context,Title,Message,null);
     }
     public BasicDialog Long(Context context, String Title, String Text, String Btn1Txt, String Btn2Txt){
-        return DialogBuilder(context,Title,Text,Btn1Txt,Btn2Txt);
+        return Builder(context,Title,Text,Btn1Txt,Btn2Txt);
     }
     public BasicDialog Long(Context context, String Title, String Text, String Btn2Txt){
         return Long(context,Title,Text,null,Btn2Txt);
     }
     public BasicDialog Delete(Context context, String Title){
-        return DialogBuilder(context,Title,null,null,null).deleteAttributes();
+        return Builder(context,Title,null,null,null).deleteAttributes();
     }
     public BasicDialog Delete(Context context){
-        return DialogBuilder(context).deleteAttributes();
+        return Builder(context).deleteAttributes();
     }
     public BasicDialog Delete(Context context, int theme){
-        return DialogBuilder(context,theme).deleteAttributes();
+        return Builder(context,theme).deleteAttributes();
     }
     public BasicDialog Delete(Context context, boolean useAppTheme){
-        return DialogBuilder(context,useAppTheme).deleteAttributes();
+        return Builder(context,useAppTheme).deleteAttributes();
     }
     private BasicDialog deleteAttributes(){
         isDeleteDialog = true;
@@ -58,28 +59,60 @@ public class BasicDialog extends SJDialog{
                 .setRightButtonColor(MATERIAL3_RED_BUTTON)
                 .setRightButtonText("Delete");
     }
+    /**
+     * @deprecated Use {@link BasicDialog#Builder(Context)}
+     * @since 1.6
+     * */
+    @Deprecated
     public BasicDialog DialogBuilder(Context context){
-        super.Builder(context,R.layout.dialog);
-        return this;
+        return Builder(context);
     }
+    /**
+     * @deprecated Use {@link BasicDialog#Builder(Context, boolean)}
+     * @since 1.6
+     */
+    @Deprecated
     public BasicDialog DialogBuilder(Context context, boolean useAppTheme){
-        super.Builder(context,R.layout.dialog,useAppTheme);
-        return this;
+        return Builder(context, useAppTheme);
     }
+    /**
+     * @deprecated Use {@link BasicDialog#Builder(Context, int)}
+     * @since 1.6
+     */
+    @Deprecated
     public BasicDialog DialogBuilder(Context context, int theme){
-        super.Builder(context,R.layout.dialog,theme,false);
-        return this;
+        return Builder(context,theme);
     }
 
     /**
-     * @deprecated Dialog type is automatic. Use {@link BasicDialog#DialogBuilder(Context)}
+     * @deprecated Dialog type is automatic. Use {@link BasicDialog#Builder(Context)}
+     * @since 1.4
      */
     @Deprecated
     public BasicDialog DialogBuilder(Context context, String dialogType){
-        return DialogBuilder(context);
+        return Builder(context);
     }
-
+    /**
+     * @deprecated Use {@link BasicDialog#Builder(Context, String, String, String, String)}
+     * @since 1.6
+     */
+    @Deprecated
     public BasicDialog DialogBuilder(Context context, String Title, String Text, String Btn1Txt, String Btn2Txt){
+        return Builder(context,Title,Text,Btn1Txt,Btn2Txt);
+    }
+    public BasicDialog Builder(Context context){
+        super.Builder(context,R.layout.dialog);
+        return this;
+    }
+    public BasicDialog Builder(Context context, boolean useAppTheme){
+        super.Builder(context,R.layout.dialog,useAppTheme);
+        return this;
+    }
+    public BasicDialog Builder(Context context,@StyleRes int theme){
+        super.Builder(context,R.layout.dialog,theme,false);
+        return this;
+    }
+    public BasicDialog Builder(Context context, String Title, String Text, String Btn1Txt, String Btn2Txt){
         super.Builder(context,R.layout.dialog);
         TextView TitleTv = dialog.findViewById(R.id.titleText);
         if (Btn1Txt == null) {
@@ -102,6 +135,7 @@ public class BasicDialog extends SJDialog{
      * @param dialogType type of a dialog. Supported types: {@link #SHORT_TYPE} and {@link #LONG_TYPE}
      * @return current class
      * @deprecated Old method, not in use. Remove this.
+     * @since 1.4
      * */
     @Deprecated
     public BasicDialog setDialogType(String dialogType){
