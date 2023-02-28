@@ -101,19 +101,19 @@ public class BasicDialog extends SJDialog{
         return Builder(context,Title,Text,Btn1Txt,Btn2Txt);
     }
     public BasicDialog Builder(Context context){
-        super.Builder(context,R.layout.dialog);
+        super.Builder(context,R.layout.basic_dialog);
         return this;
     }
     public BasicDialog Builder(Context context, boolean useAppTheme){
-        super.Builder(context,R.layout.dialog,useAppTheme);
+        super.Builder(context,R.layout.basic_dialog,useAppTheme);
         return this;
     }
     public BasicDialog Builder(Context context,@StyleRes int theme){
-        super.Builder(context,R.layout.dialog,theme,false);
+        super.Builder(context,R.layout.basic_dialog,theme,false);
         return this;
     }
     public BasicDialog Builder(Context context, String Title, String Text, String Btn1Txt, String Btn2Txt){
-        super.Builder(context,R.layout.dialog);
+        super.Builder(context,R.layout.basic_dialog);
         TextView TitleTv = dialog.findViewById(R.id.titleText);
         if (Btn1Txt == null) {
             button1.setOnClickListener(v -> dialog.dismiss());
