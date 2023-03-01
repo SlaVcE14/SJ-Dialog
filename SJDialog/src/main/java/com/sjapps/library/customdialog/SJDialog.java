@@ -1,13 +1,13 @@
 package com.sjapps.library.customdialog;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import android.widget.Button;
@@ -38,6 +38,7 @@ public abstract class SJDialog {
     @ColorInt int defaultOldColorBlack = 0xFF333333;
 
     private final int defaultTheme = R.style.Theme_SJDialog;
+    private int newTheme = -1;
     private boolean usesDefaultTheme = true;
     private boolean isSwipeToDismiss = true;
     private boolean isDefaultOnTouchListener = true;
@@ -83,6 +84,7 @@ public abstract class SJDialog {
         setButtons();
         if (theme != defaultTheme || useAppTheme) {
             usesDefaultTheme = false;
+            newTheme = !useAppTheme ? theme : -1;
             regenerateButtons();
         }
         return this;
@@ -508,8 +510,9 @@ public abstract class SJDialog {
             buttons = dialog.findViewById(setButtonsRootLayoutID());
 
         buttons.removeView(button1);
-        Activity activity = (Activity) context;
-        button1 = (Button) activity.getLayoutInflater().inflate(Btn1Resource, buttons, false);
+        button1 = (Button) LayoutInflater
+                .from(newTheme != -1 ? new ContextThemeWrapper(context, newTheme) : context)
+                .inflate(Btn1Resource,buttons,false);
         button1.setText("Cancel");
         buttons.addView(button1, 0);
     }
@@ -521,8 +524,9 @@ public abstract class SJDialog {
 
         int btn2Visibility = button2.getVisibility();
         buttons.removeView(button2);
-        Activity activity = (Activity) context;
-        button2 = (Button) activity.getLayoutInflater().inflate(Btn2Resource, buttons, false);
+        button2 = (Button) LayoutInflater
+                .from(newTheme != -1 ? new ContextThemeWrapper(context, newTheme) : context)
+                .inflate(Btn2Resource,buttons,false);
         button2.setVisibility(btn2Visibility);
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) button2.getLayoutParams();
         params.setMarginStart(functions.dpToPixels(context,10));
