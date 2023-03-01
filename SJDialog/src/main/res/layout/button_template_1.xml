@@ -4,7 +4,7 @@
     android:theme="@style/Theme.SJDialog"
     android:layout_width="wrap_content"
     android:layout_height="45dp"
-    android:layout_marginHorizontal="5dp"
+
     android:layout_weight="1"
     android:autoSizeMaxTextSize="14dp"
     android:autoSizeMinTextSize="5dp"

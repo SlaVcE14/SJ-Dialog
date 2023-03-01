@@ -1,38 +1,38 @@
-# SetupDialog Documentation
+# BasicDialog Documentation
 Create dialog example
 ```java
-SetupDialog dialog = new SetupDialog();
-dialog.DialogBuilder(context)
+BasicDialog dialog = new BasicDialog();
+dialog.Builder(context)
 	.setTitle("Title")
   	.setLeftButtonText("button1")
   	.setRightButtonText("button2")
   	.onButtonClick(() -> {
-	// Do something
+		// Do something
 	})
        	.show();
 ```
-![SetupDialog example](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/SetupDialog%20example%201.png)
-## DialogBuilder
+![BasicDialog example](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/BasicDialog%20example%201.png)
+## Builder
 Apply the default theme to a dialog
 ```java
-dialog.DialogBuilder(context)
+dialog.Builder(context)
 ```
-![SetupDialog day-night](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/SetupDialog%20day-night.png)
+![BasicDialog day-night](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/BasicDialog%20day-night.png)
 
 Apply the app theme to a dialog **(only works with material3 theme)**
 ```java
-dialog.DialogBuilder(context,true)
+dialog.Builder(context,true)
 ```
 Apply the custom theme to a dialog **(only works with material3 theme)**
 ```java
-dialog.DialogBuilder(context,theme)
+dialog.Builder(context,theme)
 ```
 ## Old Dialog theme
 By default dialog colors will be set to material3 dynamic colors. With this method you can set the dialog color for the background and buttons to the older non-dynamic colors
 ```java
 dialog.setOldTheme();
 ```
-![SetupDialog oldTheme](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/SetupDialog%20oldTheme.png)
+![BasicDialog oldTheme](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/BasicDialog%20oldTheme.png)
 ## Add onClick Listener
 onClickListener for right button. The left button is for dismissing dialog
 ```java
@@ -64,10 +64,10 @@ dialog.onButtonClick(new DialogButtonEvents() {
 });
 ```
 
-## All SetupDialog Methods
+## All BasicDialog Methods
 ```java
 //Create dialog
-dialog.DialogBuilder(context);
+dialog.Builder(context);
 
 //Usin the old dialog theme
 dialog.setOldTheme();
@@ -125,6 +125,14 @@ Button rightButton = dialog.getRightButton();
 
 //Set dialog animations
 dialog.setDialogAnimations(styleRes);
+
+//Enable or disable swipe down to dismiss dialog. 
+//By default is set to true
+dialog.swipeToDismiss(boolean);
+
+//Set dialog onTouchListener.
+//This method will overide swipe down to dismiss action
+dialog.setOnTouchListener(onTouchListener);
 
 //Shew dialog
 dialog.show();

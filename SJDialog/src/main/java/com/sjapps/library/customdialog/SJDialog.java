@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.View;
 
 import android.widget.Button;
@@ -22,7 +23,7 @@ import androidx.annotation.StyleRes;
 
 import com.sjapps.library.R;
 
-@SuppressWarnings({"unused","UnusedReturnValue"})
+@SuppressWarnings({"unused", "UnusedReturnValue"})
 public abstract class SJDialog {
 
     public static final String RED_BUTTON = "RedBtn";
@@ -33,9 +34,14 @@ public abstract class SJDialog {
     private @LayoutRes int Btn2Resource = R.layout.button_template;
 
     @ColorInt int defaultOldThemeTextColor;
+    @ColorInt int defaultOldColorWhite = 0xFFE5E5E5;
+    @ColorInt int defaultOldColorBlack = 0xFF333333;
 
     private final int defaultTheme = R.style.Theme_SJDialog;
     private boolean usesDefaultTheme = true;
+    private boolean isSwipeToDismiss = true;
+    private boolean isDefaultOnTouchListener = true;
+    private View.OnTouchListener dialogOnTouchListener = null;
 
     public Dialog dialog;
     protected Button button1, button2;
@@ -54,21 +60,24 @@ public abstract class SJDialog {
     private boolean leftBtnOnClick = false;
 
     protected SJDialog Builder(Context context, @LayoutRes int layoutResID) {
-        Builder(context,layoutResID,defaultTheme,false);
+        Builder(context, layoutResID, defaultTheme, false);
         return this;
     }
-    protected SJDialog Builder(Context context, @LayoutRes int layoutResID,boolean useAppTheme) {
-        Builder(context,layoutResID,defaultTheme, useAppTheme);
+
+    protected SJDialog Builder(Context context, @LayoutRes int layoutResID, boolean useAppTheme) {
+        Builder(context, layoutResID, defaultTheme, useAppTheme);
         return this;
     }
+
     protected SJDialog Builder(Context context, @LayoutRes int layoutResID, @StyleRes int theme, boolean useAppTheme) {
         this.context = context;
-        defaultOldThemeTextColor = context.getResources().getColor(R.color.SJDialog_OldThemeTextColor,context.getTheme());
+        defaultOldThemeTextColor = context.getResources().getColor(R.color.SJDialog_OldThemeTextColor, context.getTheme());
         dialog = useAppTheme ?
                 new Dialog(new ContextThemeWrapper(context, context.getTheme())) :
                 new Dialog(new ContextThemeWrapper(context, theme));
         setContentView(layoutResID);
         setDialogSize();
+        dialog.getWindow().getAttributes().gravity = Gravity.BOTTOM;
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.SJDialogAnimation;
         setButtons();
@@ -232,7 +241,7 @@ public abstract class SJDialog {
     protected SJDialog setButtonsColor(@ColorInt int color) {
         checkButtonResource(0);
         button1.getBackground().setTint(color);
-        if (twoButtons){
+        if (twoButtons) {
             checkButtonResource(1);
             button2.getBackground().setTint(color);
         }
@@ -346,7 +355,7 @@ public abstract class SJDialog {
     protected SJDialog setButtonsBackgroundResource(@DrawableRes int drawable) {
         checkButtonResource(0);
         button1.setBackgroundResource(drawable);
-        if (twoButtons){
+        if (twoButtons) {
             checkButtonResource(1);
             button2.setBackgroundResource(drawable);
         }
@@ -420,7 +429,7 @@ public abstract class SJDialog {
 
     /**
      * Creating dialog with two buttons. Use this method before changing buttons attributes
-     * */
+     */
     protected SJDialog dialogWithTwoButtons() {
         twoButtons = true;
         return this;
@@ -430,12 +439,13 @@ public abstract class SJDialog {
      * show dialog
      */
     protected SJDialog show() {
+        setDialogTouchListener();
         addOnClickListener();
         dialog.show();
         return this;
     }
 
-    private void addOnClickListener(){
+    private void addOnClickListener() {
         if (dialogButtonEvents == null && dialogButtonEvent == null)
             return;
 
@@ -493,7 +503,7 @@ public abstract class SJDialog {
     }
 
     @SuppressLint("SetTextI18n")
-    private void regenerateLeftBtn(LinearLayout buttons){
+    private void regenerateLeftBtn(LinearLayout buttons) {
         if (buttons == null)
             buttons = dialog.findViewById(setButtonsRootLayoutID());
 
@@ -501,11 +511,11 @@ public abstract class SJDialog {
         Activity activity = (Activity) context;
         button1 = (Button) activity.getLayoutInflater().inflate(Btn1Resource, buttons, false);
         button1.setText("Cancel");
-        buttons.addView(button1,0);
+        buttons.addView(button1, 0);
     }
 
     @SuppressLint("SetTextI18n")
-    private void regenerateRightBtn(LinearLayout buttons){
+    private void regenerateRightBtn(LinearLayout buttons) {
         if (buttons == null)
             buttons = dialog.findViewById(setButtonsRootLayoutID());
 
@@ -514,22 +524,25 @@ public abstract class SJDialog {
         Activity activity = (Activity) context;
         button2 = (Button) activity.getLayoutInflater().inflate(Btn2Resource, buttons, false);
         button2.setVisibility(btn2Visibility);
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) button2.getLayoutParams();
+        params.setMarginStart(functions.dpToPixels(context,10));
+        button2.setLayoutParams(params);
         button2.setText("Ok");
-        buttons.addView(button2,1);
+        buttons.addView(button2, 1);
     }
 
     private void checkButtonResource(int i) {
         if (usesDefaultTheme)
             return;
 
-        if (i == 0){
-            if (Btn1Resource == R.layout.button_template){
+        if (i == 0) {
+            if (Btn1Resource == R.layout.button_template) {
                 Btn1Resource = R.layout.button_template_1;
                 regenerateLeftBtn(null);
             }
             return;
         }
-        if (i == 1){
+        if (i == 1) {
             if (Btn2Resource == R.layout.button_template) {
                 Btn2Resource = R.layout.button_template_1;
                 regenerateRightBtn(null);
@@ -576,20 +589,67 @@ public abstract class SJDialog {
 
     /**
      * Set animation for a dialog
+     *
      * @param styleRes style resource
      * @return current class
      */
-    protected SJDialog setDialogAnimations(@StyleRes int styleRes){
+    protected SJDialog setDialogAnimations(@StyleRes int styleRes) {
         dialog.getWindow().getAttributes().windowAnimations = styleRes;
         return this;
+    }
+
+    /**
+     * Enable or disable swipe down to dismiss dialog. Default is set to true
+     *
+     * @param isSwipeToDismiss Enable or disable swipe action
+     * @return current class
+     */
+    protected SJDialog swipeToDismiss(boolean isSwipeToDismiss){
+        this.isSwipeToDismiss = isSwipeToDismiss;
+        return this;
+    }
+
+    /**
+     * Set dialog OnTouchListener. by default is set to {@link SwipeDismissTouchListener}.
+     * If this method is used, swipe to dismiss will not work.
+     *
+     * @param onTouchListener onTouchListener for dialog view
+     * @return current class
+     */
+    protected SJDialog setOnTouchListener(View.OnTouchListener onTouchListener) {
+        dialogOnTouchListener = onTouchListener;
+        isDefaultOnTouchListener = false;
+        return this;
+    }
+
+    private void setDialogTouchListener() {
+
+        if (isDefaultOnTouchListener)
+            dialogOnTouchListener = new SwipeDismissTouchListener(
+                    dialog.getWindow().getDecorView(),
+                    new SwipeDismissTouchListener.DismissCallbacks() {
+                        @Override
+                        public boolean canDismiss() {
+                            return isSwipeToDismiss;
+                        }
+
+                        @Override
+                        public void onDismiss(View view) {
+                            dialog.dismiss();
+                        }
+                    }
+            );
+
+        dialog.getWindow().getDecorView().setOnTouchListener(dialogOnTouchListener);
     }
 
     private OneButtonException OneButtonException() {
         return new OneButtonException("Trying to access right button when dialog has only one button. Use 'dialogWithTwoButtons()' to fix the problem.");
     }
 }
- class OneButtonException extends RuntimeException{
-     public OneButtonException(String message){
-         super(message);
-     }
+
+class OneButtonException extends RuntimeException {
+    public OneButtonException(String message) {
+        super(message);
+    }
 }

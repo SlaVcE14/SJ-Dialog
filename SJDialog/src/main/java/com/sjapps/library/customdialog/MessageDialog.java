@@ -1,6 +1,7 @@
 package com.sjapps.library.customdialog;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.ColorInt;
@@ -12,6 +13,7 @@ import com.sjapps.library.R;
 @SuppressWarnings("unused")
 public class MessageDialog extends SJDialog{
 
+    private boolean isErrorDialog;
 
     public MessageDialog(){
         onlyOneButton = true;
@@ -32,10 +34,33 @@ public class MessageDialog extends SJDialog{
         onButtonClick(() -> dialog.dismiss());
         return this;
     }
+    public MessageDialog ErrorDialogBuilder(Context context){
+        return Builder(context).errorDialogAttributes();
+    }
+    public MessageDialog ErrorDialogBuilder(Context context,@StyleRes int theme){
+        return Builder(context,theme).errorDialogAttributes();
+    }
+    public MessageDialog ErrorDialogBuilder(Context context,boolean useAppTheme){
+        return Builder(context,useAppTheme).errorDialogAttributes();
+    }
+
+    private MessageDialog errorDialogAttributes(){
+        isErrorDialog = true;
+        return setDialogBackgroundResource(R.drawable.dialog_background_material3_red)
+                .setTextColor(context.getResources().getColor(R.color.SJDialog_ErrorTextColor, context.getTheme()))
+                .setButtonColor(MATERIAL3_RED_BUTTON)
+                .setTitle("Error");
+    }
 
     @Override
     public MessageDialog setOldTheme(){
         super.setOldTheme();
+        if (isErrorDialog) {
+            setDialogBackgroundResource(R.drawable.dialog_background_red);
+            setTextColor(defaultOldColorWhite);
+            setButtonColor(defaultOldColorWhite);
+            setButtonTextColor(defaultOldColorBlack);
+        }
         return this;
     }
 
@@ -162,5 +187,17 @@ public class MessageDialog extends SJDialog{
     @Override
     protected int setButtonsRootLayoutID() {
         return R.id.buttonRoot;
+    }
+
+    @Override
+    public MessageDialog setOnTouchListener(View.OnTouchListener onTouchListener) {
+        super.setOnTouchListener(onTouchListener);
+        return this;
+    }
+
+    @Override
+    public MessageDialog swipeToDismiss(boolean isSwipeToDismiss) {
+        super.swipeToDismiss(isSwipeToDismiss);
+        return this;
     }
 }
