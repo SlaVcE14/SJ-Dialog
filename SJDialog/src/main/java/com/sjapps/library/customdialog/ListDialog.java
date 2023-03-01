@@ -346,8 +346,23 @@ public class ListDialog extends SJDialog{
         emptyListTxt.setTextColor(color);
     }
 
+    /**
+     * Hide {@link #emptyListTxt} when list is empty
+     * @since 1.6
+     * @return current class
+     */
     public ListDialog hideEmptyListText(){
         hideEmptyListTxt = true;
+        return this;
+    }
+    /**
+     * Set text to  display when list is empty
+     * @param text Text
+     * @since 1.6
+     * @return current class
+     */
+    public ListDialog setEmptyListText(String text){
+        emptyListTxt.setText(text);
         return this;
     }
 
