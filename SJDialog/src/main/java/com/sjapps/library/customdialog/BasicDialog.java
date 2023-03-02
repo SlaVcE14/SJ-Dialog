@@ -247,6 +247,14 @@ public class BasicDialog extends SJDialog{
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6*/
+    @Override
+    public BasicDialog setDialogBackgroundColor(int color) {
+        super.setDialogBackgroundColor(color);
+        return this;
+    }
+
     @Override
     public BasicDialog setDialogBackgroundResource(@DrawableRes int drawable){
         super.setDialogBackgroundResource(drawable);

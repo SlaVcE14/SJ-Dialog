@@ -347,6 +347,8 @@ listDialog.setLeftButtonBackgroundResource(drawable);
 //Set right button background resource
 listDialog.setRightButtonBackgroundResource(drawable);
 
+//Set dialog color
+listDialog.setDialogBackgroundColor(color);
 //Set dialog background resource
 listDialog.setDialogBackgroundResource(drawable);
 

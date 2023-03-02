@@ -173,6 +173,14 @@ public class CustomViewDialog extends SJDialog{
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6*/
+    @Override
+    public CustomViewDialog setDialogBackgroundColor(int color) {
+        super.setDialogBackgroundColor(color);
+        return this;
+    }
+
     @Override
     public CustomViewDialog setDialogBackgroundResource(@DrawableRes int drawable){
         super.setDialogBackgroundResource(drawable);

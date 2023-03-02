@@ -205,6 +205,14 @@ public class ListDialog extends SJDialog {
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6*/
+    @Override
+    public ListDialog setDialogBackgroundColor(int color) {
+        super.setDialogBackgroundColor(color);
+        return this;
+    }
+
     @Override
     public ListDialog setDialogBackgroundResource(@DrawableRes int drawable) {
         super.setDialogBackgroundResource(drawable);
