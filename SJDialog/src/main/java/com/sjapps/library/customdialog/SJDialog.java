@@ -46,6 +46,7 @@ public abstract class SJDialog {
 
     public Dialog dialog;
     protected Button button1, button2;
+    private LinearLayout background;
     private int maxDialogWidth = 600;
     Context context;
 
@@ -81,6 +82,7 @@ public abstract class SJDialog {
         dialog.getWindow().getAttributes().gravity = Gravity.BOTTOM;
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.SJDialogAnimation;
+        background = dialog.findViewById(R.id.dialogBackground);
         setButtons();
         if (theme != defaultTheme || useAppTheme) {
             usesDefaultTheme = false;
@@ -336,6 +338,18 @@ public abstract class SJDialog {
         return this;
     }
 
+
+    /**
+     * Change dialog color
+     * @param color {@link ColorInt}
+     * @return current class
+     * @since 1.6
+     */
+    protected SJDialog setDialogBackgroundColor(@ColorInt int color){
+        background.getBackground().mutate().setTint(color);
+        return this;
+    }
+
     /**
      * Set background resource for dialog.
      *
@@ -343,7 +357,6 @@ public abstract class SJDialog {
      * @return current class
      */
     protected SJDialog setDialogBackgroundResource(@DrawableRes int drawable) {
-        LinearLayout background = dialog.findViewById(R.id.dialogBackground);
         background.setBackgroundResource(drawable);
         return this;
     }

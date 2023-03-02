@@ -73,7 +73,9 @@ messageDialog.setButtonTextColor(color);
 
 //Set button background resource
 messageDialog.setButtonBackgroundResource(drawable);
-        
+
+//Set dialog color
+messageDialog.setDialogBackgroundColor(color);
 //Set dialog background resource
 messageDialog.setDialogBackgroundResource(drawable);
 

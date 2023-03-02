@@ -109,6 +109,8 @@ dialog.setLeftButtonBackgroundResource(drawable);
 //Set right button background resource
 dialog.setRightButtonBackgroundResource(drawable);
 
+//Set dialog color
+dialog.setDialogBackgroundColor(color);
 //Set dialog background resource
 dialog.setDialogBackgroundResource(drawable);
 

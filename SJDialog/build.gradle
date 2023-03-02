@@ -7,8 +7,8 @@ android {
 
     defaultConfig {
         minSdk 23
-        versionCode 19
-        versionName "1.6 (dev 5)"
+        versionCode 20
+        versionName "1.6 (dev 5.1)"
 
         buildConfigField 'int', 'VERSION_CODE', "${versionCode}"
         buildConfigField 'String', 'VERSION_NAME', "\"${versionName}\""

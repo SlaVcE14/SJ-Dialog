@@ -130,6 +130,14 @@ public class MessageDialog extends SJDialog{
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6*/
+    @Override
+    public MessageDialog setDialogBackgroundColor(int color) {
+        super.setDialogBackgroundColor(color);
+        return this;
+    }
+
     @Override
     public MessageDialog setDialogBackgroundResource(@DrawableRes int drawable){
         super.setDialogBackgroundResource(drawable);

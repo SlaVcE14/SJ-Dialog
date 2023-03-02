@@ -158,6 +158,8 @@ customViewDialog.setLeftButtonBackgroundResource(drawable);
 //Set right button background resource
 customViewDialog.setRightButtonBackgroundResource(drawable);
 
+//Set dialog color
+customViewDialog.setDialogBackgroundColor(color);
 //Set dialog background resource
 customViewDialog.setDialogBackgroundResource(drawable);
 
