@@ -509,11 +509,12 @@ public abstract class SJDialog {
         if (buttons == null)
             buttons = dialog.findViewById(setButtonsRootLayoutID());
 
+        String txt = button1.getText().toString();
         buttons.removeView(button1);
         button1 = (Button) LayoutInflater
                 .from(newTheme != -1 ? new ContextThemeWrapper(context, newTheme) : context)
                 .inflate(Btn1Resource,buttons,false);
-        button1.setText("Cancel");
+        button1.setText(txt);
         buttons.addView(button1, 0);
     }
 
@@ -523,6 +524,7 @@ public abstract class SJDialog {
             buttons = dialog.findViewById(setButtonsRootLayoutID());
 
         int btn2Visibility = button2.getVisibility();
+        String txt = button2.getText().toString();
         buttons.removeView(button2);
         button2 = (Button) LayoutInflater
                 .from(newTheme != -1 ? new ContextThemeWrapper(context, newTheme) : context)
@@ -531,7 +533,7 @@ public abstract class SJDialog {
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) button2.getLayoutParams();
         params.setMarginStart(functions.dpToPixels(context,10));
         button2.setLayoutParams(params);
-        button2.setText("Ok");
+        button2.setText(txt);
         buttons.addView(button2, 1);
     }
 
