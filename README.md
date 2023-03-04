@@ -31,7 +31,7 @@ dependencies {
 ![GitHub repo size](https://img.shields.io/github/repo-size/slavce14/sj-dialog?color=0064ff)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/slavce14/sj-dialog?color=0064ff)](../../releases/latest)
 ## Documentation
-* [SetupDialogDoc](/SJDialog/SetupDialogDoc.md): Documentation for SetupDialog
+* [BasicDialogDoc](/SJDialog/BasicDialogDoc.md): Documentation for BasicDialog
 * [MessageDialogDoc](/SJDialog/MessageDialogDoc.md): Documentation for MessageDialog
 * [ListDialogDoc](/SJDialog/ListDialogDoc.md): Documentation for ListDialog
 * [CustomViewDialogDoc](/SJDialog/CustomViewDialogDoc.md): Documentation for CustomViewDialog

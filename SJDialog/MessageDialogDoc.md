@@ -73,7 +73,9 @@ messageDialog.setButtonTextColor(color);
 
 //Set button background resource
 messageDialog.setButtonBackgroundResource(drawable);
-        
+
+//Set dialog color
+messageDialog.setDialogBackgroundColor(color);
 //Set dialog background resource
 messageDialog.setDialogBackgroundResource(drawable);
 
@@ -88,6 +90,14 @@ Button Button = messageDialog.getButton();
         
 //Set dialog animations
 messageDialog.setDialogAnimations(styleRes);
+
+//Enable or disable swipe down to dismiss dialog. 
+//By default is set to true
+dialog.swipeToDismiss(boolean);
+
+//Set dialog onTouchListener.
+//This method will overide swipe down to dismiss action
+dialog.setOnTouchListener(onTouchListener);
 
 //Shew dialog
 messageDialog.show();
