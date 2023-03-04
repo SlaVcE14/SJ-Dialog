@@ -21,7 +21,7 @@ import com.sjapps.library.customdialog.list.events.ListItemClick;
 import com.sjapps.library.customdialog.list.events.ListItemClickObj;
 
 import java.util.ArrayList;
-
+/**@since 1.5*/
 @SuppressWarnings({"unused", "unchecked","UnusedReturnValue"})
 public class ListDialog extends SJDialog {
 
@@ -64,6 +64,8 @@ public class ListDialog extends SJDialog {
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setOldTheme() {
         super.setOldTheme();
@@ -71,18 +73,24 @@ public class ListDialog extends SJDialog {
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setTitle(String title) {
         super.setTitle(title);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setMessage(String message) {
         super.setMessage(message);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6*/
     @Override
     public ListDialog setTextColor(int color) {
         super.setTextColor(color);
@@ -91,12 +99,16 @@ public class ListDialog extends SJDialog {
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6*/
     @Override
     public ListDialog setTitleTextColor(int color) {
         super.setTitleTextColor(color);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6*/
     @Override
     public ListDialog setMessageTextColor(int color) {
         super.setMessageTextColor(color);
@@ -108,17 +120,22 @@ public class ListDialog extends SJDialog {
      *
      * @param text button text
      * @return current class
+     * @since 1.5
      */
     public ListDialog setButtonText(String text) {
         return setLeftButtonText(text);
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setLeftButtonText(String text) {
         super.setLeftButtonText(text);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setRightButtonText(String text) {
         super.setRightButtonText(text);
@@ -130,23 +147,30 @@ public class ListDialog extends SJDialog {
      *
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @since 1.5
      */
     public ListDialog setButtonTextColor(@ColorInt int color) {
         return setLeftButtonTextColor(color);
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setButtonsTextColor(@ColorInt int color) {
         super.setButtonsTextColor(color);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setLeftButtonTextColor(@ColorInt int color) {
         super.setLeftButtonTextColor(color);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setRightButtonTextColor(@ColorInt int color) {
         super.setRightButtonTextColor(color);
@@ -158,23 +182,30 @@ public class ListDialog extends SJDialog {
      *
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @since 1.5
      */
     public ListDialog setButtonColor(@ColorInt int color) {
         return setLeftButtonColor(color);
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setButtonsColor(@ColorInt int color) {
         super.setButtonsColor(color);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setLeftButtonColor(@ColorInt int color) {
         super.setLeftButtonColor(color);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setRightButtonColor(@ColorInt int color) {
         super.setRightButtonColor(color);
@@ -213,6 +244,8 @@ public class ListDialog extends SJDialog {
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setDialogBackgroundResource(@DrawableRes int drawable) {
         super.setDialogBackgroundResource(drawable);
@@ -224,23 +257,30 @@ public class ListDialog extends SJDialog {
      *
      * @param drawable resource id
      * @return current class
+     * @since 1.5
      */
     public ListDialog setButtonBackgroundResource(@DrawableRes int drawable) {
         return setLeftButtonBackgroundResource(drawable);
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setButtonsBackgroundResource(@DrawableRes int drawable) {
         super.setButtonsBackgroundResource(drawable);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setLeftButtonBackgroundResource(@DrawableRes int drawable) {
         super.setLeftButtonBackgroundResource(drawable);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setRightButtonBackgroundResource(@DrawableRes int drawable) {
         super.setRightButtonBackgroundResource(drawable);
@@ -252,6 +292,7 @@ public class ListDialog extends SJDialog {
      *
      * @param dialogButtonEvent dialog button event
      * @return current class
+     * @since 1.5
      */
     @Override
     public ListDialog onButtonClick(DialogButtonEvent dialogButtonEvent) {
@@ -262,12 +303,16 @@ public class ListDialog extends SJDialog {
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog onButtonClick(DialogButtonEvents dialogButtonEvents) {
         super.onButtonClick(dialogButtonEvents);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog show() {
         if (layoutManager == null)
@@ -284,12 +329,16 @@ public class ListDialog extends SJDialog {
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setMaxDialogWidth(int maxDialogWidth) {
         super.setMaxDialogWidth(maxDialogWidth);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog setDialogAnimations(int styleRes) {
         super.setDialogAnimations(styleRes);
@@ -306,6 +355,8 @@ public class ListDialog extends SJDialog {
         return super.getRightButton();
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public ListDialog dialogWithTwoButtons() {
         super.dialogWithTwoButtons();
@@ -328,6 +379,7 @@ public class ListDialog extends SJDialog {
      *
      * @param drawable drawable resource
      * @return current class
+     * @since 1.5
      */
     public ListDialog setListBackgroundResource(@DrawableRes int drawable) {
         listRV.setBackgroundResource(drawable);
@@ -339,6 +391,7 @@ public class ListDialog extends SJDialog {
      *
      * @param drawable drawable resource
      * @return current class
+     * @since 1.5
      */
     public ListDialog setListItemBackgroundResource(@DrawableRes int drawable) {
         listItemBgRes = drawable;
@@ -350,6 +403,7 @@ public class ListDialog extends SJDialog {
      *
      * @param drawable drawable resource
      * @return current class
+     * @since 1.5
      */
     public ListDialog setListItemSelectedBackgroundResource(@DrawableRes int drawable) {
         listItemBgResSelected = drawable;
@@ -361,6 +415,7 @@ public class ListDialog extends SJDialog {
      *
      * @param listItemTextColor color for a text
      * @return current class
+     * @since 1.6
      */
     public ListDialog setListItemTextColor(int listItemTextColor) {
         this.listItemTextColor = listItemTextColor;
@@ -396,6 +451,7 @@ public class ListDialog extends SJDialog {
      * Get a dialog list
      *
      * @return dialog list
+     * @since 1.5
      */
     public RecyclerView getRecycleView() {
         return listRV;
@@ -418,6 +474,7 @@ public class ListDialog extends SJDialog {
      *
      * @param listOfItems Array of {@link String}
      * @return current class
+     * @since 1.5
      */
     public ListDialog setItems(String[] listOfItems) {
         return setItems(listOfItems, (ListItemClick) null);
@@ -430,6 +487,7 @@ public class ListDialog extends SJDialog {
      * @param listOfItems Array of {@link String}
      * @param itemClick   ListItemClick event
      * @return current class
+     * @since 1.5
      */
     public ListDialog setItems(String[] listOfItems, @Nullable ListItemClick itemClick) {
 
@@ -459,6 +517,7 @@ public class ListDialog extends SJDialog {
      * @param value    {@link ListItemValue} for getting String value of an object
      * @param <T>      Type of an Object
      * @return current class
+     * @since 1.5
      */
     public <T> ListDialog setItems(T[] objArray, ListItemValue<T> value) {
         return setItems(objArray, value, null);
@@ -472,6 +531,7 @@ public class ListDialog extends SJDialog {
      *                 for first value and {@link ListItemValues#getValue1(Object)} for second value
      * @param <T>      Type of an Object
      * @return current class
+     * @since 1.5
      */
     public <T> ListDialog setItems(T[] objArray, ListItemValues<T> values) {
         return setItems(objArray, values, null);
@@ -485,6 +545,7 @@ public class ListDialog extends SJDialog {
      * @param value     {@link ListItemValue} for getting String value of an object
      * @param <T>       Type of an Object
      * @return current class
+     * @since 1.5
      */
     public <T> ListDialog setItems(ArrayList<T> arrayList, ListItemValue<T> value) {
         return setItems(arrayList, value, null);
@@ -499,6 +560,7 @@ public class ListDialog extends SJDialog {
      *                  for first value and {@link ListItemValues#getValue1(Object)} for second value
      * @param <T>       Type of an Object
      * @return current class
+     * @since 1.5
      */
     public <T> ListDialog setItems(ArrayList<T> arrayList, ListItemValues<T> values) {
         return setItems(arrayList, values, null);
@@ -513,6 +575,7 @@ public class ListDialog extends SJDialog {
      * @param itemClick ListItemClick event
      * @param <T>       Type of an Object
      * @return current class
+     * @since 1.5
      */
     public <T> ListDialog setItems(T[] objArray, ListItemValue<T> value, @Nullable ListItemClickObj<T> itemClick) {
 
@@ -545,6 +608,7 @@ public class ListDialog extends SJDialog {
      * @param itemClick ListItemClick event
      * @param <T>       Type of an Object
      * @return current class
+     * @since 1.5
      */
     public <T> ListDialog setItems(T[] objArray, ListItemValues<T> values, @Nullable ListItemClickObj<T> itemClick) {
 
@@ -578,6 +642,7 @@ public class ListDialog extends SJDialog {
      * @param itemClick ListItemClick event
      * @param <T>       Type of an Object
      * @return current class
+     * @since 1.5
      */
     public <T> ListDialog setItems(ArrayList<T> arrayList, ListItemValue<T> value, @Nullable ListItemClickObj<T> itemClick) {
 
@@ -610,6 +675,7 @@ public class ListDialog extends SJDialog {
      * @param itemClick ListItemClick event
      * @param <T>       Type of an Object
      * @return current class
+     * @since 1.5
      */
     public <T> ListDialog setItems(ArrayList<T> arrayList, ListItemValues<T> values, @Nullable ListItemClickObj<T> itemClick) {
 
@@ -633,10 +699,23 @@ public class ListDialog extends SJDialog {
         return this;
     }
 
+    /**
+     * Set image items for a list
+     * @param arrayList {@link ArrayList} of {@link ImageListItem}
+     * @return current class
+     * @since 1.6
+     */
     public ListDialog setImageItems(ArrayList<ImageListItem> arrayList) {
         return setImageItems(arrayList, null);
     }
 
+    /**
+     * Set image items for a list and ListItemClick event
+     * @param arrayList {@link ArrayList} of {@link ImageListItem}
+     * @param itemClick ListItemClick event
+     * @return current class
+     * @since 1.6
+     */
     public ListDialog setImageItems(ArrayList<ImageListItem> arrayList, @Nullable ListItemClickObj<ImageListItem> itemClick) {
 
         if (hasAdapter)
@@ -672,8 +751,9 @@ public class ListDialog extends SJDialog {
     /**
      * Set a list adapter
      *
-     * @param adapter RecycleView adapter
+     * @param adapter RecycleView {@link RecyclerView.Adapter adapter}
      * @return current class
+     * @since 1.5
      */
     public ListDialog setAdapter(RecyclerView.Adapter<?> adapter) {
         if (hasAdapter)
@@ -683,6 +763,11 @@ public class ListDialog extends SJDialog {
         return this;
     }
 
+    /**
+     * @param layoutManager {@link RecyclerView.LayoutManager LayoutManager }
+     * @return current class
+     * @since 1.6
+     */
     public ListDialog setLayoutManager(RecyclerView.LayoutManager layoutManager) {
         this.layoutManager = layoutManager;
         return this;
@@ -692,6 +777,7 @@ public class ListDialog extends SJDialog {
      * Get a list adapter
      *
      * @return current class
+     * @since 1.5
      */
     public RecyclerView.Adapter<?> getListAdapter() {
         return adapter;
@@ -700,6 +786,7 @@ public class ListDialog extends SJDialog {
 
     /**
      * @return Background resource for views in RecycleView
+     * @since 1.5
      */
     public int getListItemBgRes() {
         return listItemBgRes;
@@ -707,6 +794,7 @@ public class ListDialog extends SJDialog {
 
     /**
      * @return Background resource for selected views in RecycleView
+     * @since 1.5
      */
     public int getListItemBgResSelected() {
         return listItemBgResSelected;
@@ -716,6 +804,7 @@ public class ListDialog extends SJDialog {
      * Create list with multi selectable items. Use {@link #getSelectedItems()} fet getting selected items
      *
      * @return current class
+     * @since 1.5
      */
     public ListDialog setSelectableList() {
         isSelectableList = true;
@@ -742,6 +831,7 @@ public class ListDialog extends SJDialog {
      * Get selected items in a list
      *
      * @return ArrayList of selected items in a list
+     * @since 1.5
      */
     public <T> ArrayList<T> getSelectedItems() {
         return (ArrayList<T>) selectedItems;

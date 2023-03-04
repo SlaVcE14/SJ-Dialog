@@ -108,6 +108,7 @@ public abstract class SJDialog {
      * and buttons to the older non-dynamic colors
      *
      * @return current class
+     * @since 1.5
      */
     protected SJDialog setOldTheme() {
         setButtonsColor(OLD_BUTTON_COLOR);
@@ -121,6 +122,7 @@ public abstract class SJDialog {
      *
      * @param title title of a dialog
      * @return current class
+     * @since 1.3
      */
     protected SJDialog setTitle(String title) {
         TextView TitleTv = getTitleTv();
@@ -133,6 +135,7 @@ public abstract class SJDialog {
      *
      * @param message message of a dialog
      * @return current class
+     * @since 1.3
      */
     protected SJDialog setMessage(String message) {
         TextView msg = getMessageTv();
@@ -146,6 +149,7 @@ public abstract class SJDialog {
      *
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @since 1.6
      */
     protected SJDialog setTextColor(@ColorInt int color) {
         setTitleTextColor(color);
@@ -158,6 +162,7 @@ public abstract class SJDialog {
      *
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @since 1.6
      */
     protected SJDialog setTitleTextColor(@ColorInt int color) {
         getTitleTv().setTextColor(color);
@@ -169,6 +174,7 @@ public abstract class SJDialog {
      *
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @since 1.6
      */
     protected SJDialog setMessageTextColor(@ColorInt int color) {
         getMessageTv().setTextColor(color);
@@ -180,6 +186,7 @@ public abstract class SJDialog {
      *
      * @param text button text
      * @return current class
+     * @since 1.4
      */
     protected SJDialog setLeftButtonText(String text) {
         button1.setText(text);
@@ -191,6 +198,7 @@ public abstract class SJDialog {
      *
      * @param text button text
      * @return current class
+     * @since 1.4
      */
     protected SJDialog setRightButtonText(String text) {
         if (!twoButtons)
@@ -204,6 +212,7 @@ public abstract class SJDialog {
      *
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @since 1.4
      */
     protected SJDialog setButtonsTextColor(@ColorInt int color) {
         button1.setTextColor(color);
@@ -217,6 +226,7 @@ public abstract class SJDialog {
      *
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @since 1.4
      */
     protected SJDialog setLeftButtonTextColor(@ColorInt int color) {
         button1.setTextColor(color);
@@ -228,6 +238,7 @@ public abstract class SJDialog {
      *
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @since 1.4
      */
     protected SJDialog setRightButtonTextColor(@ColorInt int color) {
         if (!twoButtons)
@@ -241,6 +252,7 @@ public abstract class SJDialog {
      *
      * @param color Color to use for tinting buttons
      * @return current class
+     * @since 1.4
      */
     protected SJDialog setButtonsColor(@ColorInt int color) {
         checkButtonResource(0);
@@ -257,6 +269,7 @@ public abstract class SJDialog {
      *
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @since 1.4
      */
     protected SJDialog setLeftButtonColor(@ColorInt int color) {
         checkButtonResource(0);
@@ -269,6 +282,7 @@ public abstract class SJDialog {
      *
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @since 1.4
      */
     protected SJDialog setRightButtonColor(@ColorInt int color) {
         if (!twoButtons)
@@ -355,6 +369,7 @@ public abstract class SJDialog {
      *
      * @param drawable resource id
      * @return current class
+     * @since 1.3
      */
     protected SJDialog setDialogBackgroundResource(@DrawableRes int drawable) {
         background.setBackgroundResource(drawable);
@@ -366,6 +381,7 @@ public abstract class SJDialog {
      *
      * @param drawable resource id
      * @return current class
+     * @since 1.3
      */
     protected SJDialog setButtonsBackgroundResource(@DrawableRes int drawable) {
         checkButtonResource(0);
@@ -382,6 +398,7 @@ public abstract class SJDialog {
      *
      * @param drawable resource id
      * @return current class
+     * @since 1.3
      */
     protected SJDialog setLeftButtonBackgroundResource(@DrawableRes int drawable) {
         checkButtonResource(0);
@@ -394,6 +411,7 @@ public abstract class SJDialog {
      *
      * @param drawable resource id
      * @return current class
+     * @since 1.3
      */
     protected SJDialog setRightButtonBackgroundResource(@DrawableRes int drawable) {
         if (!twoButtons)
@@ -409,6 +427,7 @@ public abstract class SJDialog {
      *
      * @param dialogButtonEvent dialog button events
      * @return current class
+     * @since 1.0
      */
     protected SJDialog onButtonClick(DialogButtonEvent dialogButtonEvent) {
         leftBtnOnClick = false;
@@ -422,6 +441,7 @@ public abstract class SJDialog {
      *
      * @param dialogButtonEvents dialog button events
      * @return current class
+     * @since 1.0
      */
     protected SJDialog onButtonClick(DialogButtonEvents dialogButtonEvents) {
         this.dialogButtonEvents = dialogButtonEvents;
@@ -444,6 +464,7 @@ public abstract class SJDialog {
 
     /**
      * Creating dialog with two buttons. Use this method before changing buttons attributes
+     * @since 1.5
      */
     protected SJDialog dialogWithTwoButtons() {
         twoButtons = true;
@@ -452,6 +473,7 @@ public abstract class SJDialog {
 
     /**
      * show dialog
+     * @since 1.3
      */
     protected SJDialog show() {
         setDialogTouchListener();
@@ -486,6 +508,7 @@ public abstract class SJDialog {
 
     /**
      * dismiss dialog
+     * @since 1.3
      */
     public void dismiss() {
         dialog.dismiss();
@@ -598,6 +621,7 @@ public abstract class SJDialog {
      *
      * @param maxDialogWidth set value for {@link #maxDialogWidth}. Default is 600dp
      * @return current class
+     * @since 1.4
      */
     protected SJDialog setMaxDialogWidth(int maxDialogWidth) {
         this.maxDialogWidth = maxDialogWidth;
@@ -611,6 +635,7 @@ public abstract class SJDialog {
      *
      * @param styleRes style resource
      * @return current class
+     * @since 1.5
      */
     protected SJDialog setDialogAnimations(@StyleRes int styleRes) {
         dialog.getWindow().getAttributes().windowAnimations = styleRes;
@@ -622,6 +647,7 @@ public abstract class SJDialog {
      *
      * @param isSwipeToDismiss Enable or disable swipe action
      * @return current class
+     * @since 1.6
      */
     protected SJDialog swipeToDismiss(boolean isSwipeToDismiss){
         this.isSwipeToDismiss = isSwipeToDismiss;
@@ -634,6 +660,7 @@ public abstract class SJDialog {
      *
      * @param onTouchListener onTouchListener for dialog view
      * @return current class
+     * @since 1.6
      */
     protected SJDialog setOnTouchListener(View.OnTouchListener onTouchListener) {
         dialogOnTouchListener = onTouchListener;

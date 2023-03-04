@@ -10,7 +10,7 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.StyleRes;
 
 import com.sjapps.library.R;
-
+/**@since 1.5*/
 @SuppressWarnings("unused")
 public class CustomViewDialog extends SJDialog{
 
@@ -38,36 +38,48 @@ public class CustomViewDialog extends SJDialog{
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setOldTheme(){
         super.setOldTheme();
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setTitle(String title){
         super.setTitle(title);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setMessage(String message) {
         super.setMessage(message);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setTextColor(int color) {
         super.setTextColor(color);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6*/
     @Override
     public CustomViewDialog setTitleTextColor(int color) {
         super.setTitleTextColor(color);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6*/
     @Override
     public CustomViewDialog setMessageTextColor(int color) {
         super.setMessageTextColor(color);
@@ -78,17 +90,22 @@ public class CustomViewDialog extends SJDialog{
      * Set a button text.
      * @param text button text
      * @return current class
+     * @since 1.5
      * */
     public CustomViewDialog setButtonText(String text){
         return setLeftButtonText(text);
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setLeftButtonText(String text){
         super.setLeftButtonText(text);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setRightButtonText(String text){
         super.setRightButtonText(text);
@@ -99,23 +116,30 @@ public class CustomViewDialog extends SJDialog{
      * Set button text color.
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @since 1.5
      * */
     public CustomViewDialog setButtonTextColor(@ColorInt int color){
         return setLeftButtonTextColor(color);
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setButtonsTextColor(@ColorInt int color){
         super.setButtonsTextColor(color);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setLeftButtonTextColor(@ColorInt int color){
         super.setLeftButtonTextColor(color);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setRightButtonTextColor(@ColorInt int color){
         super.setRightButtonTextColor(color);
@@ -126,23 +150,30 @@ public class CustomViewDialog extends SJDialog{
      * Set button color.
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @since 1.5
      * */
     public CustomViewDialog setButtonColor(@ColorInt int color){
         return setLeftButtonColor(color);
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setButtonsColor(@ColorInt int color){
         super.setButtonsColor(color);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setLeftButtonColor(@ColorInt int color){
         super.setLeftButtonColor(color);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setRightButtonColor(@ColorInt int color){
         super.setRightButtonColor(color);
@@ -181,6 +212,8 @@ public class CustomViewDialog extends SJDialog{
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setDialogBackgroundResource(@DrawableRes int drawable){
         super.setDialogBackgroundResource(drawable);
@@ -191,23 +224,30 @@ public class CustomViewDialog extends SJDialog{
      * Set background resource for button.
      * @param drawable resource id
      * @return current class
+     * @since 1.5
      * */
     public CustomViewDialog setButtonBackgroundResource(@DrawableRes int drawable){
         return setLeftButtonBackgroundResource(drawable);
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setButtonsBackgroundResource(@DrawableRes int drawable){
         super.setButtonsBackgroundResource(drawable);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setLeftButtonBackgroundResource(@DrawableRes int drawable){
         super.setLeftButtonBackgroundResource(drawable);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setRightButtonBackgroundResource(@DrawableRes int drawable){
         super.setRightButtonBackgroundResource(drawable);
@@ -219,6 +259,7 @@ public class CustomViewDialog extends SJDialog{
      *
      * @param dialogButtonEvent dialog button event
      * @return current class
+     * @since 1.5
      */
     @Override
     public CustomViewDialog onButtonClick(DialogButtonEvent dialogButtonEvent){
@@ -229,12 +270,16 @@ public class CustomViewDialog extends SJDialog{
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog onButtonClick(DialogButtonEvents dialogButtonEvents) {
         super.onButtonClick(dialogButtonEvents);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog show() {
         super.show();
@@ -246,12 +291,16 @@ public class CustomViewDialog extends SJDialog{
         return R.id.buttons;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setMaxDialogWidth(int maxDialogWidth) {
         super.setMaxDialogWidth(maxDialogWidth);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog setDialogAnimations(int styleRes) {
         super.setDialogAnimations(styleRes);
@@ -274,6 +323,8 @@ public class CustomViewDialog extends SJDialog{
         return super.getRightButton();
     }
 
+    /**{@inheritDoc}
+     * @since 1.5*/
     @Override
     public CustomViewDialog dialogWithTwoButtons() {
         super.dialogWithTwoButtons();
@@ -281,12 +332,16 @@ public class CustomViewDialog extends SJDialog{
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6*/
     @Override
     public CustomViewDialog setOnTouchListener(View.OnTouchListener onTouchListener) {
         super.setOnTouchListener(onTouchListener);
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6*/
     @Override
     public CustomViewDialog swipeToDismiss(boolean isSwipeToDismiss) {
         super.swipeToDismiss(isSwipeToDismiss);
