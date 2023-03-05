@@ -20,6 +20,8 @@ public class DefaultListAdapter extends RecyclerView.Adapter<DefaultListAdapterG
     ArrayList<String> selectedItems;
     int itemBgRes;
     int itemBgResSelected;
+    int listItemBgColor;
+    int listItemBgColorSelected;
     int textColor;
 
 
@@ -29,7 +31,9 @@ public class DefaultListAdapter extends RecyclerView.Adapter<DefaultListAdapterG
                               ArrayList<String> selectedItems,
                               int itemBgRes,
                               int itemBgResSelected,
-                              int textColor) {
+                              int textColor,
+                              int listItemBgColor,
+                              int listItemBgColorSelected) {
         this.items = items;
         this.isSelectable = isSelectable;
         this.itemClick = itemClick;
@@ -37,7 +41,8 @@ public class DefaultListAdapter extends RecyclerView.Adapter<DefaultListAdapterG
         this.itemBgRes = itemBgRes;
         this.itemBgResSelected = itemBgResSelected;
         this.textColor = textColor;
-
+        this.listItemBgColor = listItemBgColor;
+        this.listItemBgColorSelected = listItemBgColorSelected;
 
     }
 
@@ -52,10 +57,14 @@ public class DefaultListAdapter extends RecyclerView.Adapter<DefaultListAdapterG
     public void onBindViewHolder(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int position) {
         holder.getVal1Txt().setText(items[position]);
 
-        if (selectedItems.contains(items[position]))
-            setItemColor(holder,itemBgResSelected);
-        else setItemColor(holder,itemBgRes);
-
+        if (selectedItems.contains(items[position])) {
+            setItemResource(holder, itemBgResSelected);
+            setItemColor(holder,listItemBgColorSelected);
+        }
+        else {
+            setItemResource(holder, itemBgRes);
+            setItemColor(holder,listItemBgColor);
+        }
         if (textColor != 1)
             holder.getVal1Txt().setTextColor(textColor);
 
@@ -74,17 +83,25 @@ public class DefaultListAdapter extends RecyclerView.Adapter<DefaultListAdapterG
 
     private void selectItem(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int position){
         selectedItems.add(items[position]);
-        setItemColor(holder,itemBgResSelected);
+        setItemResource(holder,itemBgResSelected);
+        setItemColor(holder,listItemBgColorSelected);
 
     }
 
     private void deselectItem(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int position){
         selectedItems.remove(items[position]);
-        setItemColor(holder,itemBgRes);
+        setItemResource(holder,itemBgRes);
+        setItemColor(holder,listItemBgColor);
     }
 
-    private void setItemColor(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int drawable){
+    private void setItemResource(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int drawable){
         holder.getView().setBackgroundResource(drawable);
+    }
+
+    private void setItemColor(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int color){
+        if (color == -1)
+            return;
+        holder.getView().getBackground().mutate().setTint(color);
     }
 
     @Override
