@@ -34,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Message"
+            android:textAlignment="viewStart"
             android:layout_gravity="center"
             android:textSize="20dp"
             android:textColor="?colorOnSecondaryContainer"

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
+import androidx.annotation.IntDef;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.StringDef;
 import androidx.annotation.StyleRes;
@@ -29,6 +30,18 @@ public abstract class SJDialog {
     public static final String RED_BUTTON = "RedBtn";
     public static final String MATERIAL3_RED_BUTTON = "Material3RedBtn";
     public static final String OLD_BUTTON_COLOR = "OldBtnColor";
+    /** Sets text alignment to {@link View#TEXT_ALIGNMENT_VIEW_START}
+     * @since 1.6
+     * */
+    public static final int TEXT_ALIGNMENT_LEFT = View.TEXT_ALIGNMENT_VIEW_START;
+    /** Sets text alignment to {@link View#TEXT_ALIGNMENT_VIEW_END}
+     * @since 1.6
+     * */
+    public static final int TEXT_ALIGNMENT_RIGHT = View.TEXT_ALIGNMENT_VIEW_END;
+    /** Sets text alignment to {@link View#TEXT_ALIGNMENT_CENTER}
+     * @since 1.6
+     * */
+    public static final int TEXT_ALIGNMENT_CENTER = View.TEXT_ALIGNMENT_CENTER;
 
     private @LayoutRes int Btn1Resource = R.layout.button_template;
     private @LayoutRes int Btn2Resource = R.layout.button_template;
@@ -55,6 +68,10 @@ public abstract class SJDialog {
 
     @StringDef({RED_BUTTON, MATERIAL3_RED_BUTTON, OLD_BUTTON_COLOR})
     public @interface ButtonColor {
+    }
+
+    @IntDef({TEXT_ALIGNMENT_LEFT, TEXT_ALIGNMENT_RIGHT, TEXT_ALIGNMENT_CENTER})
+    public @interface TextAlignment {
     }
 
     protected boolean onlyOneButton = false;
@@ -125,7 +142,7 @@ public abstract class SJDialog {
      * @since 1.3
      */
     protected SJDialog setTitle(String title) {
-        TextView TitleTv = getTitleTv();
+        TextView TitleTv = getTitleTextView();
         TitleTv.setText(title);
         return this;
     }
@@ -138,9 +155,35 @@ public abstract class SJDialog {
      * @since 1.3
      */
     protected SJDialog setMessage(String message) {
-        TextView msg = getMessageTv();
+        TextView msg = getMessageTextView();
         msg.setText(message);
         msg.setVisibility(View.VISIBLE);
+        return this;
+    }
+
+    /**
+     * Set the text alignment for Title TextView. Default is set to {@link SJDialog#TEXT_ALIGNMENT_CENTER}
+     * @param textAlignment The text alignment to set. Supported types: {@link SJDialog#TEXT_ALIGNMENT_LEFT}, {@link SJDialog#TEXT_ALIGNMENT_RIGHT} and {@link SJDialog#TEXT_ALIGNMENT_CENTER}
+     * @return current class
+     * @since 1.6
+     * */
+    protected SJDialog setTitleAlignment(@TextAlignment int textAlignment){
+        TextView title = getTitleTextView();
+        title.setGravity(Gravity.RIGHT);
+        title.setTextAlignment(textAlignment);
+
+        return this;
+    }
+
+    /**
+     * Set the text alignment for Message TextView. Default is set to {@link SJDialog#TEXT_ALIGNMENT_LEFT}
+     * @param textAlignment The text alignment to set. Supported types: {@link SJDialog#TEXT_ALIGNMENT_LEFT}, {@link SJDialog#TEXT_ALIGNMENT_RIGHT} and {@link SJDialog#TEXT_ALIGNMENT_CENTER}
+     * @return current class
+     * @since 1.6
+     * */
+    protected SJDialog setMessageAlignment(@TextAlignment int textAlignment){
+        TextView msg = getMessageTextView();
+        msg.setTextAlignment(textAlignment);
         return this;
     }
 
@@ -165,7 +208,7 @@ public abstract class SJDialog {
      * @since 1.6
      */
     protected SJDialog setTitleTextColor(@ColorInt int color) {
-        getTitleTv().setTextColor(color);
+        getTitleTextView().setTextColor(color);
         return this;
     }
 
@@ -177,7 +220,7 @@ public abstract class SJDialog {
      * @since 1.6
      */
     protected SJDialog setMessageTextColor(@ColorInt int color) {
-        getMessageTv().setTextColor(color);
+        getMessageTextView().setTextColor(color);
         return this;
     }
 
@@ -596,11 +639,11 @@ public abstract class SJDialog {
         button2.setVisibility(visibility);
     }
 
-    protected TextView getTitleTv() {
+    protected TextView getTitleTextView() {
         return dialog.findViewById(R.id.titleText);
     }
 
-    private TextView getMessageTv() {
+    protected TextView getMessageTextView() {
         return dialog.findViewById(R.id.messageTxt);
     }
 

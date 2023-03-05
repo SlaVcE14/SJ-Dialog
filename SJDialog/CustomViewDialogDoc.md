@@ -117,6 +117,11 @@ customViewDialog.setTitle("Title");
 //Set message
 customViewDialog.setMessage("Message");
 
+//Set title text alignment
+customViewDialog.setTitleAlignment(TextAlignment);
+//Set message text alignment
+customViewDialog.setMessageAlignment(TextAlignment);
+
 //Set text color
 customViewDialog.setTextColor(color);
 //Set title text color

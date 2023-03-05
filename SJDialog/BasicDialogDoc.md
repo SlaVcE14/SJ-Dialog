@@ -76,6 +76,10 @@ dialog.setOldTheme();
 dialog.setTitle("Title");
 //Set message
 dialog.setMessage("Message");
+//Set title text alignment
+dialog.setTitleAlignment(TextAlignment);
+//Set message text alignment
+dialog.setMessageAlignment(TextAlignment);
 //Set left button text
 dialog.setLeftButtonText("Text");
 //Set right button text

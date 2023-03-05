@@ -306,6 +306,11 @@ listDialog.setTitle("Title");
 //Set message
 listDialog.setMessage("Message");
 
+//Set title text alignment
+listDialog.setTitleAlignment(TextAlignment);
+//Set message text alignment
+listDialog.setMessageAlignment(TextAlignment);
+
 //Set text color
 listDialog.setTextColor(color);
 //Set title text color

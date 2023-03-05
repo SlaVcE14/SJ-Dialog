@@ -55,6 +55,12 @@ messageDialog.setOldTheme();
 messageDialog.setTitle("Title");
 //Set message
 messageDialog.setMessage("Message");
+
+//Set title text alignment
+messageDialog.setTitleAlignment(TextAlignment);
+//Set message text alignment
+messageDialog.setMessageAlignment(TextAlignment);
+
 //Set button text
 messageDialog.setButtonText("Text");
 
