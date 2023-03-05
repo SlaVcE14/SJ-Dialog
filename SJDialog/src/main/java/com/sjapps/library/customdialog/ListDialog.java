@@ -89,6 +89,26 @@ public class ListDialog extends SJDialog {
         return this;
     }
 
+    /**
+     * {@inheritDoc}
+     * @since 1.6
+     * */
+    @Override
+    public ListDialog setTitleAlignment(int textAlignment) {
+        super.setTitleAlignment(textAlignment);
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @since 1.6
+     * */
+    @Override
+    public ListDialog setMessageAlignment(int textAlignment) {
+        super.setMessageAlignment(textAlignment);
+        return this;
+    }
+
     /**{@inheritDoc}
      * @since 1.6*/
     @Override
@@ -345,16 +365,6 @@ public class ListDialog extends SJDialog {
         return this;
     }
 
-    @Override
-    public Button getLeftButton() {
-        return super.getLeftButton();
-    }
-
-    @Override
-    public Button getRightButton() {
-        return super.getRightButton();
-    }
-
     /**{@inheritDoc}
      * @since 1.5*/
     @Override
@@ -468,6 +478,27 @@ public class ListDialog extends SJDialog {
         setButton2(R.id.btn2);
     }
 
+    @Override
+    public Button getLeftButton() {
+        return super.getLeftButton();
+    }
+
+    @Override
+    public Button getRightButton() {
+        return super.getRightButton();
+    }
+
+    /**@since 1.6*/
+    @Override
+    public TextView getTitleTextView() {
+        return super.getTitleTextView();
+    }
+
+    /**@since 1.6*/
+    @Override
+    public TextView getMessageTextView() {
+        return super.getMessageTextView();
+    }
 
     /**
      * Set items for a list

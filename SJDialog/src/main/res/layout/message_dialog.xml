@@ -37,6 +37,7 @@
             android:layout_marginTop="10dp"
             android:textColor="?colorOnSecondaryContainer"
             android:text="Message"
+            android:textAlignment="viewStart"
             android:textSize="20dp"
             android:visibility="gone" />
 

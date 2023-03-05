@@ -3,6 +3,7 @@ package com.sjapps.library.customdialog;
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
@@ -79,6 +80,26 @@ public class MessageDialog extends SJDialog{
     @Override
     public MessageDialog setMessage(String message) {
         super.setMessage(message);
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @since 1.6
+     * */
+    @Override
+    public MessageDialog setTitleAlignment(int textAlignment) {
+        super.setTitleAlignment(textAlignment);
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @since 1.6
+     * */
+    @Override
+    public MessageDialog setMessageAlignment(int textAlignment) {
+        super.setMessageAlignment(textAlignment);
         return this;
     }
 
@@ -190,6 +211,18 @@ public class MessageDialog extends SJDialog{
 
     public Button getButton() {
         return super.getLeftButton();
+    }
+
+    /**@since 1.6*/
+    @Override
+    public TextView getTitleTextView() {
+        return super.getTitleTextView();
+    }
+
+    /**@since 1.6*/
+    @Override
+    public TextView getMessageTextView() {
+        return super.getMessageTextView();
     }
 
     /**{@inheritDoc}

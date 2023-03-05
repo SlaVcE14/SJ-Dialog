@@ -178,6 +178,26 @@ public class BasicDialog extends SJDialog{
         return this;
     }
 
+    /**
+     * {@inheritDoc}
+     * @since 1.6
+     * */
+    @Override
+    public BasicDialog setTitleAlignment(int textAlignment) {
+        super.setTitleAlignment(textAlignment);
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @since 1.6
+     * */
+    @Override
+    public BasicDialog setMessageAlignment(int textAlignment) {
+        super.setMessageAlignment(textAlignment);
+        return this;
+    }
+
     /**{@inheritDoc}
      * @since 1.6*/
     @Override
@@ -402,5 +422,16 @@ public class BasicDialog extends SJDialog{
         return super.getRightButton();
     }
 
+    /**@since 1.6*/
+    @Override
+    public TextView getTitleTextView() {
+        return super.getTitleTextView();
+    }
+
+    /**@since 1.6*/
+    @Override
+    public TextView getMessageTextView() {
+        return super.getMessageTextView();
+    }
 }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
@@ -59,6 +60,26 @@ public class CustomViewDialog extends SJDialog{
     @Override
     public CustomViewDialog setMessage(String message) {
         super.setMessage(message);
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @since 1.6
+     * */
+    @Override
+    public CustomViewDialog setTitleAlignment(int textAlignment) {
+        super.setTitleAlignment(textAlignment);
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @since 1.6
+     * */
+    @Override
+    public CustomViewDialog setMessageAlignment(int textAlignment) {
+        super.setMessageAlignment(textAlignment);
         return this;
     }
 
@@ -321,6 +342,18 @@ public class CustomViewDialog extends SJDialog{
     @Override
     public Button getRightButton() {
         return super.getRightButton();
+    }
+
+    /**@since 1.6*/
+    @Override
+    public TextView getTitleTextView() {
+        return super.getTitleTextView();
+    }
+
+    /**@since 1.6*/
+    @Override
+    public TextView getMessageTextView() {
+        return super.getMessageTextView();
     }
 
     /**{@inheritDoc}
