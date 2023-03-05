@@ -31,6 +31,8 @@ public class DefaultListAdapterGeneric<T> extends RecyclerView.Adapter<DefaultLi
 
     int itemBgRes;
     int itemBgResSelected;
+    int listItemBgColor;
+    int listItemBgColorSelected;
     int textColor;
 
     ListItemClickObj<T> itemClick;
@@ -68,7 +70,9 @@ public class DefaultListAdapterGeneric<T> extends RecyclerView.Adapter<DefaultLi
                                      ArrayList<T> selectedItems,
                                      int itemBgRes,
                                      int itemBgResSelected,
-                                     int textColor){
+                                     int textColor,
+                                     int listItemBgColor,
+                                     int listItemBgColorSelected){
         this.value = value;
         this.itemClick = itemClick;
         this.isSelectable = isSelectable;
@@ -76,6 +80,8 @@ public class DefaultListAdapterGeneric<T> extends RecyclerView.Adapter<DefaultLi
         this.itemBgRes = itemBgRes;
         this.itemBgResSelected = itemBgResSelected;
         this.textColor = textColor;
+        this.listItemBgColor = listItemBgColor;
+        this.listItemBgColorSelected = listItemBgColorSelected;
         ObjArrayAdapter(objArray);
     }
 
@@ -86,7 +92,9 @@ public class DefaultListAdapterGeneric<T> extends RecyclerView.Adapter<DefaultLi
                                      ArrayList<T> selectedItems,
                                      int itemBgRes,
                                      int itemBgResSelected,
-                                     int textColor){
+                                     int textColor,
+                                     int listItemBgColor,
+                                     int listItemBgColorSelected){
         this.values = values;
         this.itemClick = itemClick;
         hasTwoVal = true;
@@ -95,6 +103,8 @@ public class DefaultListAdapterGeneric<T> extends RecyclerView.Adapter<DefaultLi
         this.itemBgRes = itemBgRes;
         this.itemBgResSelected = itemBgResSelected;
         this.textColor = textColor;
+        this.listItemBgColor = listItemBgColor;
+        this.listItemBgColorSelected = listItemBgColorSelected;
         ObjArrayAdapter(objArray);
     }
 
@@ -105,7 +115,9 @@ public class DefaultListAdapterGeneric<T> extends RecyclerView.Adapter<DefaultLi
                                      ArrayList<T> selectedItems,
                                      int itemBgRes,
                                      int itemBgResSelected,
-                                     int textColor){
+                                     int textColor,
+                                     int listItemBgColor,
+                                     int listItemBgColorSelected){
         this.value = value;
         this.itemClick = itemClick;
         this.isSelectable = isSelectable;
@@ -113,6 +125,8 @@ public class DefaultListAdapterGeneric<T> extends RecyclerView.Adapter<DefaultLi
         this.itemBgRes = itemBgRes;
         this.itemBgResSelected = itemBgResSelected;
         this.textColor = textColor;
+        this.listItemBgColor = listItemBgColor;
+        this.listItemBgColorSelected = listItemBgColorSelected;
         ArrayListAdapter(arrayList);
     }
 
@@ -123,7 +137,9 @@ public class DefaultListAdapterGeneric<T> extends RecyclerView.Adapter<DefaultLi
                                      ArrayList<T> selectedItems,
                                      int itemBgRes,
                                      int itemBgResSelected,
-                                     int textColor){
+                                     int textColor,
+                                     int listItemBgColor,
+                                     int listItemBgColorSelected){
         this.values = values;
         this.itemClick = itemClick;
         hasTwoVal = true;
@@ -132,6 +148,8 @@ public class DefaultListAdapterGeneric<T> extends RecyclerView.Adapter<DefaultLi
         this.itemBgRes = itemBgRes;
         this.itemBgResSelected = itemBgResSelected;
         this.textColor = textColor;
+        this.listItemBgColor = listItemBgColor;
+        this.listItemBgColorSelected = listItemBgColorSelected;
         ArrayListAdapter(arrayList);
     }
 
@@ -184,19 +202,29 @@ public class DefaultListAdapterGeneric<T> extends RecyclerView.Adapter<DefaultLi
 
     private void setBackground(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int position) {
         if (!isSelectable) {
-            setItemColor(holder,itemBgRes);
+            setItemResource(holder,itemBgRes);
             return;
         }
         if (isArrList) {
-            if (selectedItems.contains(arrayListItems.get(position)))
-                setItemColor(holder, itemBgResSelected);
-            else setItemColor(holder, itemBgRes);
+            if (selectedItems.contains(arrayListItems.get(position))) {
+                setItemResource(holder, itemBgResSelected);
+                setItemColor(holder,listItemBgColorSelected);
+            }
+            else {
+                setItemResource(holder, itemBgRes);
+                setItemColor(holder,listItemBgColor);
+            }
             return;
         }
         if (isObjArr)
-            if (selectedItems.contains(listObj[position]))
-                setItemColor(holder,itemBgResSelected);
-            else setItemColor(holder, itemBgRes);
+            if (selectedItems.contains(listObj[position])) {
+                setItemResource(holder, itemBgResSelected);
+                setItemColor(holder,listItemBgColorSelected);
+            }
+            else {
+                setItemResource(holder, itemBgRes);
+                setItemColor(holder,listItemBgColor);
+            }
     }
 
     private void setValues(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int position){
@@ -229,18 +257,26 @@ public class DefaultListAdapterGeneric<T> extends RecyclerView.Adapter<DefaultLi
 
     private void selectItem(@NonNull DefaultListAdapterGeneric.ViewHolder holder, T obj){
         selectedItems.add(obj);
-        setItemColor(holder, itemBgResSelected);
+        setItemResource(holder, itemBgResSelected);
+        setItemColor(holder,listItemBgColorSelected);
 
     }
 
     private void deselectItem(@NonNull DefaultListAdapterGeneric.ViewHolder holder, T obj){
         selectedItems.remove(obj);
-        setItemColor(holder,itemBgRes);
+        setItemResource(holder,itemBgRes);
+        setItemColor(holder,listItemBgColor);
 
     }
 
-    private void setItemColor(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int drawable){
+    private void setItemResource(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int drawable){
         holder.getView().setBackgroundResource(drawable);
+    }
+
+    private void setItemColor(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int color){
+        if (color == -1)
+            return;
+        holder.getView().getBackground().mutate().setTint(color);
     }
 
     @Override
