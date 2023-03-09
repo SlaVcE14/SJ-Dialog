@@ -24,7 +24,7 @@ dependencyResolutionManagement {
 ### Step 2. Add the dependency
 ```gradle
 dependencies {
-	implementation 'com.github.slavce14:SJ-Dialog:1.5'
+	implementation 'com.github.slavce14:SJ-Dialog:1.6'
 }
 ```
 [![](https://jitpack.io/v/slavce14/SJ-Dialog.svg)](https://jitpack.io/#slavce14/SJ-Dialog)
