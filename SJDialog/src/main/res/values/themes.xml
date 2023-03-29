@@ -31,4 +31,8 @@
         <item name="materialButtonStyle">@style/SJDialog.ButtonStyle</item>
     </style>
 
+    <style name="Theme.SJDialog.NoInsets" parent="Theme.SJDialog">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
 </resources>

@@ -896,6 +896,22 @@ public class ListDialog extends SJDialog {
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6.1*/
+    @Override
+    public ListDialog applyInsets(boolean applyInsets) {
+        super.applyInsets(applyInsets);
+        return this;
+    }
+
+    /**{@inheritDoc}
+     * @since 1.6.1*/
+    @Override
+    public ListDialog applyInsets(int insets) {
+        super.applyInsets(insets);
+        return this;
+    }
+
     /**
      * Get selected items in a list
      *

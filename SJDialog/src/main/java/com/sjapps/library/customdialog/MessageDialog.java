@@ -267,4 +267,21 @@ public class MessageDialog extends SJDialog{
         super.swipeToDismiss(isSwipeToDismiss);
         return this;
     }
+
+
+    /**{@inheritDoc}
+     * @since 1.6.1*/
+    @Override
+    public MessageDialog applyInsets(boolean applyInsets) {
+        super.applyInsets(applyInsets);
+        return this;
+    }
+
+    /**{@inheritDoc}
+     * @since 1.6.1*/
+    @Override
+    public MessageDialog applyInsets(int insets) {
+        super.applyInsets(insets);
+        return this;
+    }
 }

@@ -406,6 +406,22 @@ public class BasicDialog extends SJDialog{
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6.1*/
+    @Override
+    public BasicDialog applyInsets(boolean applyInsets) {
+        super.applyInsets(applyInsets);
+        return this;
+    }
+
+    /**{@inheritDoc}
+     * @since 1.6.1*/
+    @Override
+    public BasicDialog applyInsets(int insets) {
+        super.applyInsets(insets);
+        return this;
+    }
+
     @Override
     protected void setButtons() {
         setButton1(R.id.btn1);
