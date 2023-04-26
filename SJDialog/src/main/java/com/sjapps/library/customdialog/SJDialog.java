@@ -62,7 +62,6 @@ public abstract class SJDialog {
     private boolean isNotDefaultInsets = false;
     private boolean setInsets = true;
     private boolean leftInsets;
-    private boolean topInsets;
     private boolean rightInsets;
     private boolean bottomInsets;
 
@@ -76,11 +75,6 @@ public abstract class SJDialog {
      * @since 1.6.1
      * */
     public static final int INSETS_LEFT = 1;
-    /**
-     * Apply top {@link Insets}
-     * @since 1.6.1
-     * */
-    public static final int INSETS_TOP = 2;
     /**
      * Apply right {@link Insets}
      * @since 1.6.1
@@ -97,15 +91,10 @@ public abstract class SJDialog {
      * */
     public static final int INSETS_HORIZONTAL = 5;
     /**
-     * Apply vertical {@link Insets} ({@link #INSETS_TOP} and {@link #INSETS_BOTTOM})
+     * Apply all {@link Insets} ({@link #INSETS_LEFT}, {@link #INSETS_RIGHT} and {@link #INSETS_BOTTOM})
      * @since 1.6.1
      * */
-    public static final int INSETS_VERTICAL = 10;
-    /**
-     * Apply all {@link Insets} ({@link #INSETS_LEFT}, {@link #INSETS_RIGHT}, {@link #INSETS_TOP} and {@link #INSETS_BOTTOM})
-     * @since 1.6.1
-     * */
-    public static final int INSETS_ALL = 15;
+    public static final int INSETS_ALL = 13;
 
 
     private View.OnTouchListener dialogOnTouchListener = null;
@@ -121,17 +110,15 @@ public abstract class SJDialog {
 
 
     /**
-     * values for <b>DialogInsets</b>: {@link #INSETS_LEFT}, {@link #INSETS_TOP}, {@link #INSETS_RIGHT},
-     *       {@link #INSETS_BOTTOM}, {@link #INSETS_HORIZONTAL}, {@link #INSETS_VERTICAL}, {@link #INSETS_ALL} and {@link #INSETS_NONE}
+     * values for <b>DialogInsets</b>: {@link #INSETS_LEFT}, {@link #INSETS_RIGHT},
+     *       {@link #INSETS_BOTTOM}, {@link #INSETS_HORIZONTAL}, {@link #INSETS_ALL} and {@link #INSETS_NONE}
      */
     @IntDef(flag = true,
             value = {
                     INSETS_LEFT,
-                    INSETS_TOP,
                     INSETS_RIGHT,
                     INSETS_BOTTOM,
                     INSETS_HORIZONTAL,
-                    INSETS_VERTICAL,
                     INSETS_ALL,
                     INSETS_NONE
             }
@@ -617,8 +604,8 @@ public abstract class SJDialog {
 
     /**
      * Apply {@link Insets} to a dialog <br>
-     * supported values: {@link #INSETS_LEFT}, {@link #INSETS_TOP}, {@link #INSETS_RIGHT},
-     *       {@link #INSETS_BOTTOM}, {@link #INSETS_HORIZONTAL}, {@link #INSETS_VERTICAL}, {@link #INSETS_ALL} or {@link #INSETS_NONE}.
+     * supported values: {@link #INSETS_LEFT}, {@link #INSETS_RIGHT},
+     *       {@link #INSETS_BOTTOM}, {@link #INSETS_HORIZONTAL}, {@link #INSETS_ALL} or {@link #INSETS_NONE}.
      *       You can combine multiple values with bitwise-OR (<b> | </b>) operator
      * @param insets bitwise-OR combination of {@link DialogInsets}
      *
@@ -636,8 +623,6 @@ public abstract class SJDialog {
         setInsets = true;
         if ((insets & INSETS_LEFT) == INSETS_LEFT)
             leftInsets = true;
-        if ((insets & INSETS_TOP) == INSETS_TOP)
-            topInsets = true;
         if ((insets & INSETS_RIGHT) == INSETS_RIGHT)
             rightInsets = true;
         if ((insets & INSETS_BOTTOM) == INSETS_BOTTOM)
@@ -649,19 +634,19 @@ public abstract class SJDialog {
     private void applyWindowInsets() {
 
         ViewCompat.setOnApplyWindowInsetsListener(dialog.getWindow().getDecorView(),(v, insets) -> {
-            Insets insetsNB = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            Insets insetsSB = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             Insets insetsDC = insets.getInsets(WindowInsetsCompat.Type.displayCutout());
 
             Insets insetsFinal = Insets.of(
-              insetsNB.left + insetsDC.left,
-              insetsNB.top != 0? insetsNB.top : insetsDC.top,
-              insetsNB.right + insetsDC.right,
-              insetsNB.bottom + insetsDC.bottom
+                    insetsSB.left + insetsDC.left,
+                    0,
+                    insetsSB.right + insetsDC.right,
+                    insetsSB.bottom + insetsDC.bottom
             );
 
             v.setPadding(
                     leftInsets ? insetsFinal.left : 0,
-                    topInsets ? insetsFinal.top : 0,
+                    0,
                     rightInsets ? insetsFinal.right : 0,
                     bottomInsets ? insetsFinal.bottom : 0
             );
