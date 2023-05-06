@@ -33,6 +33,8 @@ public class ListDialog extends SJDialog {
 
     private @DrawableRes int listItemBgRes = R.drawable.ripple_list;
     private @DrawableRes int listItemBgResSelected = R.drawable.ripple_list_selected;
+    private @ColorInt int listItemBgColor = -1;
+    private @ColorInt int listItemBgColorSelected = -1;
     private int listItemTextColor = 1;
     private RecyclerView.LayoutManager layoutManager = null;
 
@@ -421,6 +423,30 @@ public class ListDialog extends SJDialog {
     }
 
     /**
+     * Set background color for a item in a list
+     *
+     * @param color {@link ColorInt}
+     * @return current class
+     * @since 1.6
+     */
+    public ListDialog setListItemBackgroundColor(@ColorInt int color) {
+        listItemBgColor = color;
+        return this;
+    }
+
+    /**
+     * Set background color for a selected item in a list
+     *
+     * @param color {@link ColorInt}
+     * @return current class
+     * @since 1.6
+     */
+    public ListDialog setListItemSelectedBackgroundColor(@ColorInt int color) {
+        listItemBgColorSelected = color;
+        return this;
+    }
+
+    /**
      * Set text color for item in a list
      *
      * @param listItemTextColor color for a text
@@ -536,7 +562,9 @@ public class ListDialog extends SJDialog {
                 (ArrayList<String>) selectedItems,
                 listItemBgRes,
                 listItemBgResSelected,
-                listItemTextColor);
+                listItemTextColor,
+                listItemBgColor,
+                listItemBgColorSelected);
         hasAdapter = true;
         return this;
     }
@@ -625,7 +653,9 @@ public class ListDialog extends SJDialog {
                 (ArrayList<T>) selectedItems,
                 listItemBgRes,
                 listItemBgResSelected,
-                listItemTextColor);
+                listItemTextColor,
+                listItemBgColor,
+                listItemBgColorSelected);
         hasAdapter = true;
         return this;
     }
@@ -658,7 +688,9 @@ public class ListDialog extends SJDialog {
                 (ArrayList<T>) selectedItems,
                 listItemBgRes,
                 listItemBgResSelected,
-                listItemTextColor);
+                listItemTextColor,
+                listItemBgColor,
+                listItemBgColorSelected);
         hasAdapter = true;
         return this;
 
@@ -692,7 +724,9 @@ public class ListDialog extends SJDialog {
                 (ArrayList<T>) selectedItems,
                 listItemBgRes,
                 listItemBgResSelected,
-                listItemTextColor);
+                listItemTextColor,
+                listItemBgColor,
+                listItemBgColorSelected);
         hasAdapter = true;
         return this;
     }
@@ -725,7 +759,9 @@ public class ListDialog extends SJDialog {
                 (ArrayList<T>) selectedItems,
                 listItemBgRes,
                 listItemBgResSelected,
-                listItemTextColor);
+                listItemTextColor,
+                listItemBgColor,
+                listItemBgColorSelected);
         hasAdapter = true;
         return this;
     }
@@ -763,7 +799,9 @@ public class ListDialog extends SJDialog {
                 (ArrayList<ImageListItem>) selectedItems,
                 listItemBgRes,
                 listItemBgResSelected,
-                listItemTextColor);
+                listItemTextColor,
+                listItemBgColor,
+                listItemBgColorSelected);
 
         hasAdapter = true;
         waitForLayoutManager = true;

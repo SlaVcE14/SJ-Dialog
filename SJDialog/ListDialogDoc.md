@@ -377,7 +377,7 @@ int ItemBgResSelected = listDialog.getListItemBgResSelected();
 //set RecyclerView Adapter
 listDialog.setAdapter(recyclerViewAdapter);
 //Set Layout Manager
-listDialog.setLayoutManager
+listDialog.setLayoutManager(layoutManager);
 
 //Add items in a list
 listDialog.setItems(strings);
@@ -392,6 +392,11 @@ listDialog.setItems(arrayList, listItemValues);
 listDialog.setItems(arrayList, listItemValues, listItemClickObj);
 listDialog.setImageItems(listItems);
 listDialog.setImageItems(listItems, listItemClickObj);
+
+//Hide 'List is empty' text 
+listDialog.hideEmptyListText();
+//Change empty list text
+listDialog.setEmptyListText("text");
 
 //Set maximum dialog width. Default is 600dp
 listDialog.setMaxDialogWidth(width);
