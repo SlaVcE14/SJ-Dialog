@@ -381,6 +381,22 @@ public class CustomViewDialog extends SJDialog{
         return this;
     }
 
+    /**{@inheritDoc}
+     * @since 1.6.1*/
+    @Override
+    public CustomViewDialog applyInsets(boolean applyInsets) {
+        super.applyInsets(applyInsets);
+        return this;
+    }
+
+    /**{@inheritDoc}
+     * @since 1.6.1*/
+    @Override
+    public CustomViewDialog applyInsets(int insets) {
+        super.applyInsets(insets);
+        return this;
+    }
+
     @Override
     public void setButton2Visibility(int visibility) {
         super.setButton2Visibility(visibility);
