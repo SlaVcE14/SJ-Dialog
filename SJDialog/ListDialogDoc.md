@@ -393,6 +393,14 @@ listDialog.setItems(arrayList, listItemValues, listItemClickObj);
 listDialog.setImageItems(listItems);
 listDialog.setImageItems(listItems, listItemClickObj);
 
+//Select item in a list
+listDialog.selectItem(id);
+//Get select item in a list
+int id = listDialog.getSelectedItem();
+
+//Update list
+listDialog.updateList();
+
 //Hide 'List is empty' text 
 listDialog.hideEmptyListText();
 //Change empty list text

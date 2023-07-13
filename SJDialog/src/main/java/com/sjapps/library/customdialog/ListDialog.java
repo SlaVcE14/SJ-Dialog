@@ -471,7 +471,7 @@ public class ListDialog extends SJDialog {
         hideEmptyListTxt = true;
         return this;
     }
-    
+
     /**
      * Set text to  display when list is empty
      * @param text Text
@@ -852,6 +852,10 @@ public class ListDialog extends SJDialog {
         return adapter;
     }
 
+    public void updateList(){
+        adapter.notifyItemRangeChanged(0,adapter.getItemCount());
+    }
+
 
     /**
      * @return Background resource for views in RecycleView
@@ -878,6 +882,48 @@ public class ListDialog extends SJDialog {
     public ListDialog setSelectableList() {
         isSelectableList = true;
         return this;
+    }
+
+    /**
+     * Select an item in a list
+     *
+     * @param id id of a item
+     * @return current class
+     * @since 1.6.1
+     */
+    public ListDialog selectItem(int id){
+
+        if (adapter == null)
+            throw nullAdapterException;
+
+        if (adapter instanceof DefaultListAdapterGeneric){
+            ((DefaultListAdapterGeneric<?>) adapter).selectItem(id);
+            return this;
+        }
+        if (adapter instanceof DefaultListAdapter){
+            ((DefaultListAdapter) adapter).selectItem(id);
+            return this;
+        }
+
+        throw  AdapterNotSupportedException;
+    }
+
+    /**
+     * Get a index of a selected item in a list
+     *
+     * @return index of a selected item in a list
+     * @since 1.6.1
+     */
+    public int getSelectedItem(){
+        if (adapter == null)
+            throw nullAdapterException;
+
+        if (adapter instanceof DefaultListAdapterGeneric)
+            return ((DefaultListAdapterGeneric<?>) adapter).getSelectedItem();
+        if (adapter instanceof DefaultListAdapter)
+            return ((DefaultListAdapter) adapter).getSelectedItem();
+
+        throw  AdapterNotSupportedException;
     }
 
     public boolean isSelectableList() {
@@ -922,6 +968,8 @@ public class ListDialog extends SJDialog {
         return (ArrayList<T>) selectedItems;
     }
 
+
+
     void checkListsSize(int size) {
 
         if (hideEmptyListTxt) {
@@ -944,4 +992,6 @@ public class ListDialog extends SJDialog {
     }
 
     private final UnsupportedOperationException tooManyAdapters = new UnsupportedOperationException("Too many Adapters for RecyclerView");
+    private final UnsupportedOperationException AdapterNotSupportedException = new UnsupportedOperationException("Current adapter for the ListDialog is not supported for this method");
+    private final NullPointerException nullAdapterException = new NullPointerException("The adapter for the ListDialog is null");
 }
