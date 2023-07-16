@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         minSdk 23
-        versionCode 21
+        versionCode 22
         versionName "1.6.1 (dev 2)"
 
         buildConfigField 'int', 'VERSION_CODE', "${versionCode}"
