@@ -23,7 +23,7 @@ public class DefaultListAdapter extends RecyclerView.Adapter<DefaultListAdapterG
     int listItemBgColor;
     int listItemBgColorSelected;
     int textColor;
-
+    int selected = -1;
 
     public DefaultListAdapter(String[] items,
                               boolean isSelectable,
@@ -77,6 +77,13 @@ public class DefaultListAdapter extends RecyclerView.Adapter<DefaultListAdapterG
             return;
         }
 
+        if (selected != -1){
+            if (selected == position)
+                selectItem(holder, position);
+            else
+                deselectItem(holder, position);
+        }
+
         holder.getView().setOnClickListener(v -> itemClick.onClick(position,items[position]));
 
     }
@@ -86,6 +93,13 @@ public class DefaultListAdapter extends RecyclerView.Adapter<DefaultListAdapterG
         setItemResource(holder,itemBgResSelected);
         setItemColor(holder,listItemBgColorSelected);
 
+    }
+
+    public void selectItem(int id) {
+        selected = id;
+    }
+    public int getSelectedItem(){
+        return selected;
     }
 
     private void deselectItem(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int position){
