@@ -101,6 +101,15 @@ customViewDialog.onButtonClick(new DialogButtonEvents() {
       	}
 });
 ```
+## Apply Insets
+supported values: `INSETS_LEFT`, `INSETS_RIGHT`, `INSETS_BOTTOM`, `INSETS_HORIZONTAL`, `INSETS_ALL` or `INSETS_NONE`.
+```java
+customViewDialog.applyInsets(INSETS_HORIZONTAL);
+```
+You can combine multiple values with bitwise-OR ( | ) operator
+```java
+customViewDialog.applyInsets(INSETS_LEFT | INSETS_RIGHT);
+```
 ## All CustomViewDialog Methods
 ```java
 //Create dialog
@@ -192,6 +201,9 @@ dialog.swipeToDismiss(boolean);
 //Set dialog onTouchListener.
 //This method will overide swipe down to dismiss action
 dialog.setOnTouchListener(onTouchListener);
+
+//Apply insets (INSETS_LEFT, INSETS_RIGHT, INSETS_BOTTOM, INSETS_HORIZONTAL, INSETS_ALL or INSETS_NONE)
+customViewDialog.applyInsets(insets);
 
 //Shew dialog
 customViewDialog.show();
