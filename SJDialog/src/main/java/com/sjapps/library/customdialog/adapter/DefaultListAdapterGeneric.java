@@ -211,6 +211,7 @@ public class DefaultListAdapterGeneric<T> extends RecyclerView.Adapter<DefaultLi
     private void setBackground(@NonNull DefaultListAdapterGeneric.ViewHolder holder, int position) {
         if (!isSelectable) {
             setItemResource(holder,itemBgRes);
+            setItemColor(holder,listItemBgColor);
             return;
         }
         if (isArrList) {
