@@ -116,6 +116,7 @@ public class DefaultImageListAdapter extends RecyclerView.Adapter<DefaultImageLi
     private void setBackground(@NonNull ViewHolder holder, int position) {
         if (!isSelectable) {
             setItemResource(holder, itemBgRes);
+            setItemColor(holder,listItemBgColor);
             return;
         }
 
