@@ -362,6 +362,10 @@ listDialog.setSelectableList();
 
 //Set text color of an items in a list
 listDialog.setListItemTextColor(color);
+//Set a background color for items in a list
+listDialog.setListItemBackgroundColor(color);
+//Set a background color for selected items in a list
+listDialog.setListItemSelectedBackgroundColor(color);
 //Set a background resource for items in a list
 listDialog.setListItemBackgroundResource(drawable);
 //Set a background resource for selected items in a list
