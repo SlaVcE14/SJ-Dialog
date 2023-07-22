@@ -904,8 +904,12 @@ public class ListDialog extends SJDialog {
             ((DefaultListAdapter) adapter).selectItem(id);
             return this;
         }
+        if (adapter instanceof DefaultImageListAdapter){
+            ((DefaultImageListAdapter) adapter).selectItem(id);
+            return this;
+        }
 
-        throw  AdapterNotSupportedException;
+        throw AdapterNotSupportedException;
     }
 
     /**
