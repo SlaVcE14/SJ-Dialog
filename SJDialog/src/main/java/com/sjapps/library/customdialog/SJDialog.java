@@ -21,6 +21,9 @@ import androidx.annotation.IntDef;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.StringDef;
 import androidx.annotation.StyleRes;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.sjapps.library.R;
 
@@ -55,6 +58,45 @@ public abstract class SJDialog {
     private boolean usesDefaultTheme = true;
     private boolean isSwipeToDismiss = true;
     private boolean isDefaultOnTouchListener = true;
+
+    private boolean isNotDefaultInsets = false;
+    private boolean setInsets = true;
+    private boolean leftInsets;
+    private boolean rightInsets;
+    private boolean bottomInsets;
+
+    /**
+     * Don't apply any {@link Insets}
+     * @since 1.6.1
+     * */
+    public static final int INSETS_NONE = 0;
+    /**
+     * Apply left {@link Insets}
+     * @since 1.6.1
+     * */
+    public static final int INSETS_LEFT = 1;
+    /**
+     * Apply right {@link Insets}
+     * @since 1.6.1
+     * */
+    public static final int INSETS_RIGHT = 4;
+    /**
+     * Apply bottom {@link Insets}
+     * @since 1.6.1
+     * */
+    public static final int INSETS_BOTTOM = 8;
+    /**
+     * Apply horizontal {@link Insets} ({@link #INSETS_LEFT} and {@link #INSETS_RIGHT})
+     * @since 1.6.1
+     * */
+    public static final int INSETS_HORIZONTAL = 5;
+    /**
+     * Apply all {@link Insets} ({@link #INSETS_LEFT}, {@link #INSETS_RIGHT} and {@link #INSETS_BOTTOM})
+     * @since 1.6.1
+     * */
+    public static final int INSETS_ALL = 13;
+
+
     private View.OnTouchListener dialogOnTouchListener = null;
 
     public Dialog dialog;
@@ -65,6 +107,24 @@ public abstract class SJDialog {
 
     DialogButtonEvent dialogButtonEvent;
     DialogButtonEvents dialogButtonEvents;
+
+
+    /**
+     * values for <b>DialogInsets</b>: {@link #INSETS_LEFT}, {@link #INSETS_RIGHT},
+     *       {@link #INSETS_BOTTOM}, {@link #INSETS_HORIZONTAL}, {@link #INSETS_ALL} and {@link #INSETS_NONE}
+     */
+    @IntDef(flag = true,
+            value = {
+                    INSETS_LEFT,
+                    INSETS_RIGHT,
+                    INSETS_BOTTOM,
+                    INSETS_HORIZONTAL,
+                    INSETS_ALL,
+                    INSETS_NONE
+            }
+    )
+
+    public @interface DialogInsets{}
 
     @StringDef({RED_BUTTON, MATERIAL3_RED_BUTTON, OLD_BUTTON_COLOR})
     public @interface ButtonColor {
@@ -521,9 +581,81 @@ public abstract class SJDialog {
     protected SJDialog show() {
         setDialogTouchListener();
         addOnClickListener();
+        if (!isNotDefaultInsets)
+            applyInsets(true);
+        if (setInsets)
+            applyWindowInsets();
         dialog.show();
         return this;
     }
+
+    /**
+     * Apply default {@link Insets}
+     *
+     * @param applyInsets If it's true it will apply {@link Insets} to all sides otherwise it will remove all insets. Default value is <b>true</b>
+     * @return current class
+     * @since 1.6.1
+     * */
+    protected SJDialog applyInsets(boolean applyInsets){
+        if (applyInsets)
+            return applyInsets(INSETS_ALL);
+        return applyInsets(INSETS_NONE);
+    }
+
+    /**
+     * Apply {@link Insets} to a dialog <br>
+     * supported values: {@link #INSETS_LEFT}, {@link #INSETS_RIGHT},
+     *       {@link #INSETS_BOTTOM}, {@link #INSETS_HORIZONTAL}, {@link #INSETS_ALL} or {@link #INSETS_NONE}.
+     *       You can combine multiple values with bitwise-OR (<b> | </b>) operator
+     * @param insets bitwise-OR combination of {@link DialogInsets}
+     *
+     * @return current class
+     * @since 1.6.1
+     * */
+    protected SJDialog applyInsets(@DialogInsets int insets){
+        isNotDefaultInsets = true;
+
+        if (insets == INSETS_NONE){
+            setInsets = false;
+            return this;
+        }
+
+        setInsets = true;
+        if ((insets & INSETS_LEFT) == INSETS_LEFT)
+            leftInsets = true;
+        if ((insets & INSETS_RIGHT) == INSETS_RIGHT)
+            rightInsets = true;
+        if ((insets & INSETS_BOTTOM) == INSETS_BOTTOM)
+            bottomInsets = true;
+
+        return this;
+    }
+
+    private void applyWindowInsets() {
+
+        ViewCompat.setOnApplyWindowInsetsListener(dialog.getWindow().getDecorView(),(v, insets) -> {
+            Insets insetsSB = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            Insets insetsDC = insets.getInsets(WindowInsetsCompat.Type.displayCutout());
+
+            Insets insetsFinal = Insets.of(
+                    insetsSB.left + insetsDC.left,
+                    0,
+                    insetsSB.right + insetsDC.right,
+                    insetsSB.bottom + insetsDC.bottom
+            );
+
+            v.setPadding(
+                    leftInsets ? insetsFinal.left : 0,
+                    0,
+                    rightInsets ? insetsFinal.right : 0,
+                    bottomInsets ? insetsFinal.bottom : 0
+            );
+
+            return WindowInsetsCompat.CONSUMED;
+        });
+    }
+
+
 
     private void addOnClickListener() {
         if (dialogButtonEvents == null && dialogButtonEvent == null)

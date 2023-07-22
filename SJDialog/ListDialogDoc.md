@@ -289,6 +289,15 @@ listDialog.onButtonClick(new DialogButtonEvents() {
       	}
 });
 ```
+## Apply Insets
+supported values: `INSETS_LEFT`, `INSETS_RIGHT`, `INSETS_BOTTOM`, `INSETS_HORIZONTAL`, `INSETS_ALL` or `INSETS_NONE`.
+```java
+listDialog.applyInsets(INSETS_HORIZONTAL);
+```
+You can combine multiple values with bitwise-OR ( | ) operator
+```java
+listDialog.applyInsets(INSETS_LEFT | INSETS_RIGHT);
+```
 ## All ListDialog Methods
 ```java
 //Create dialog
@@ -362,6 +371,10 @@ listDialog.setSelectableList();
 
 //Set text color of an items in a list
 listDialog.setListItemTextColor(color);
+//Set a background color for items in a list
+listDialog.setListItemBackgroundColor(color);
+//Set a background color for selected items in a list
+listDialog.setListItemSelectedBackgroundColor(color);
 //Set a background resource for items in a list
 listDialog.setListItemBackgroundResource(drawable);
 //Set a background resource for selected items in a list
@@ -393,6 +406,14 @@ listDialog.setItems(arrayList, listItemValues, listItemClickObj);
 listDialog.setImageItems(listItems);
 listDialog.setImageItems(listItems, listItemClickObj);
 
+//Select item in a list
+listDialog.selectItem(id);
+//Get select item in a list
+int id = listDialog.getSelectedItem();
+
+//Update list
+listDialog.updateList();
+
 //Hide 'List is empty' text 
 listDialog.hideEmptyListText();
 //Change empty list text
@@ -420,6 +441,9 @@ dialog.swipeToDismiss(boolean);
 //Set dialog onTouchListener.
 //This method will overide swipe down to dismiss action
 dialog.setOnTouchListener(onTouchListener);
+
+//Apply insets (INSETS_LEFT, INSETS_RIGHT, INSETS_BOTTOM, INSETS_HORIZONTAL, INSETS_ALL or INSETS_NONE)
+listDialog.applyInsets(insets);
 
 //Shew dialog
 listDialog.show();

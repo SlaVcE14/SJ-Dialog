@@ -63,7 +63,15 @@ dialog.onButtonClick(new DialogButtonEvents() {
       	}
 });
 ```
-
+## Apply Insets
+supported values: `INSETS_LEFT`, `INSETS_RIGHT`, `INSETS_BOTTOM`, `INSETS_HORIZONTAL`, `INSETS_ALL` or `INSETS_NONE`.
+```java
+dialog.applyInsets(INSETS_HORIZONTAL);
+```
+You can combine multiple values with bitwise-OR ( | ) operator
+```java
+dialog.applyInsets(INSETS_LEFT | INSETS_RIGHT);
+```
 ## All BasicDialog Methods
 ```java
 //Create dialog
@@ -139,6 +147,9 @@ dialog.swipeToDismiss(boolean);
 //Set dialog onTouchListener.
 //This method will overide swipe down to dismiss action
 dialog.setOnTouchListener(onTouchListener);
+
+//Apply insets (INSETS_LEFT, INSETS_RIGHT, INSETS_BOTTOM, INSETS_HORIZONTAL, INSETS_ALL or INSETS_NONE)
+dialog.applyInsets(insets);
 
 //Shew dialog
 dialog.show();
