@@ -124,8 +124,8 @@ listDialog.setOldTheme();
 listDialog.setSelectableList();
 ```
 ## Add items in a list
-You can add item in a list by setting [ReciclerView Adapter](#set-reciclerview-adapter), using [setItems()](#setitems) method or using [setImageItems()](#setimageitems) method for list with icons.
-### Set ReciclerView Adapter
+You can add item in a list by setting [RecyclerView Adapter](#set-recyclerview-adapter), using [setItems()](#setitems) method or using [setImageItems()](#setimageitems) method for list with icons.
+### Set RecyclerView Adapter
 ```java
 listDialog.setAdapter(recyclerViewAdapter);
 ```
