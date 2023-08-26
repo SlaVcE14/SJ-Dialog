@@ -1,5 +1,5 @@
 # SJ-Dialog
-Android library for creating custom dialogs. It has several types of dialogs:
+Android library for creating custom dialogs. You can change color and background resouce of a buttons and dialog background and color of a text. Supports material 3 colors. It has several types of dialogs:
 * BasicDialog
 * MessageDialog
 * ListDialog
