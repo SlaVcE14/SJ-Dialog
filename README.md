@@ -1,5 +1,9 @@
 # SJ-Dialog
-Android Studio library for dialog builder
+Android library for creating custom dialogs. It has several types of dialogs:
+* BasicDialog
+* MessageDialog
+* ListDialog
+* CustomDialog
 
 ## Download
 ### Step 1. Add the JitPack repository 
