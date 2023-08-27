@@ -35,11 +35,15 @@ dependencies {
 [![](https://jitpack.io/v/slavce14/SJ-Dialog.svg)](https://jitpack.io/#slavce14/SJ-Dialog)
 ![GitHub repo size](https://img.shields.io/github/repo-size/slavce14/sj-dialog?color=0064ff)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/slavce14/sj-dialog?color=0064ff)](../../releases/latest)
-## Demo
+## Dialog types
 ### BasicDialog
+![](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/BasicDialog%20day-night.gif)
 ### MessageDialog
+![](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/MessageDialog%20day-night.gif)
 ### ListDialog
+![](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/ListDialog%20day-night.gif)
 ### CustomDialog
+![](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/CustomViewDialog%20day-night.gif)
 ## Documentation
 * [BasicDialogDoc](/SJDialog/BasicDialogDoc.md): Documentation for BasicDialog
 * [MessageDialogDoc](/SJDialog/MessageDialogDoc.md): Documentation for MessageDialog
