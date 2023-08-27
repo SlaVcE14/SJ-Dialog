@@ -23,6 +23,8 @@ Apply the app theme to a dialog **(only works with material3 theme)**
 ```java
 dialog.Builder(context,true)
 ```
+![BasicDialog day-night theme](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/BasicDialog%20day-night.gif)
+
 Apply the custom theme to a dialog **(only works with material3 theme)**
 ```java
 dialog.Builder(context,theme)
