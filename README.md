@@ -4,7 +4,7 @@ Android library for creating custom dialogs. You can change color and background
 * [BasicDialog](#BasicDialog)
 * [MessageDialog](#MessageDialog)
 * [ListDialog](#ListDialog)
-* [CustomDialog](#CustomDialog)
+* [CustomViewDialog](#CustomViewDialog)
 
 ## Download
 ### Step 1. Add the JitPack repository 
@@ -42,7 +42,7 @@ dependencies {
 ![](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/MessageDialog%20day-night.gif)
 ### ListDialog
 ![](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/ListDialog%20day-night.gif)
-### CustomDialog
+### CustomViewDialog
 ![](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/CustomViewDialog%20day-night.gif)
 ## Documentation
 * [BasicDialogDoc](/SJDialog/BasicDialogDoc.md): Documentation for BasicDialog
