@@ -132,7 +132,7 @@ You can add item in a list by setting [RecyclerView Adapter](#set-recyclerview-a
 listDialog.setAdapter(recyclerViewAdapter);
 ```
 ### setItems
-This method uses [DefaultListAdapter](/SJDialog/src/main/java/com/sjapps/library/customdialog/adapter/DefaultListAdapter.java) for array of Strings or [DefaultListAdapterGeneric](/SJDialog/src/main/java/com/sjapps/library/customdialog/adapter/DefaultListAdapterGeneric.java) for array of Objects or ArrayList.
+This method uses [DefaultListAdapter](/SJDialog/src/main/java/com/sjapps/library/customdialog/adapter/DefaultListAdapter.java) if the argument is array of Strings and [DefaultListAdapterGeneric](/SJDialog/src/main/java/com/sjapps/library/customdialog/adapter/DefaultListAdapterGeneric.java) for array of Objects or ArrayList.
 
 #### Array of Strings
 You need to use [setSelectableList()](#select-multiple-items-in-a-list) firstly or add [onListItemClick](#array-of-strings-and-onlistitemclick)
