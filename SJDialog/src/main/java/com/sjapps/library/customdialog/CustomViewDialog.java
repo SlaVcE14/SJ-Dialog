@@ -1,6 +1,7 @@
 package com.sjapps.library.customdialog;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -296,6 +297,22 @@ public class CustomViewDialog extends SJDialog{
     @Override
     public CustomViewDialog onButtonClick(DialogButtonEvents dialogButtonEvents) {
         super.onButtonClick(dialogButtonEvents);
+        return this;
+    }
+
+    /**{@inheritDoc}
+     * @since 1.7*/
+    @Override
+    public CustomViewDialog onDismissListener(DialogInterface.OnDismissListener listener) {
+        super.onDismissListener(listener);
+        return this;
+    }
+
+    /**{@inheritDoc}
+     * @since 1.7*/
+    @Override
+    public CustomViewDialog onShowListener(DialogInterface.OnShowListener listener) {
+        super.onShowListener(listener);
         return this;
     }
 

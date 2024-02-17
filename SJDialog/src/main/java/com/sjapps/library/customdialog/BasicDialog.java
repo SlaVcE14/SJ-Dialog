@@ -1,6 +1,7 @@
 package com.sjapps.library.customdialog;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -357,6 +358,22 @@ public class BasicDialog extends SJDialog{
     @Override
     public BasicDialog onButtonClick(DialogButtonEvents dialogButtonEvents) {
         super.onButtonClick(dialogButtonEvents);
+        return this;
+    }
+
+    /**{@inheritDoc}
+     * @since 1.7*/
+    @Override
+    public BasicDialog onDismissListener(DialogInterface.OnDismissListener listener) {
+        super.onDismissListener(listener);
+        return this;
+    }
+
+    /**{@inheritDoc}
+     * @since 1.7*/
+    @Override
+    public BasicDialog onShowListener(DialogInterface.OnShowListener listener) {
+        super.onShowListener(listener);
         return this;
     }
 
