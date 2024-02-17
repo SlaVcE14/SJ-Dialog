@@ -3,6 +3,8 @@ plugins {
     id 'maven-publish'
 }
 
+group = 'com.github.slavce14'
+
 android {
     compileSdk 31
 
