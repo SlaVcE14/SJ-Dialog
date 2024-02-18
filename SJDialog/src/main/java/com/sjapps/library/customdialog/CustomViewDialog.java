@@ -84,6 +84,15 @@ public class CustomViewDialog extends SJDialog{
         return this;
     }
 
+    /**
+     * Hide title text
+     * @since 1.7
+     * */
+    public CustomViewDialog hideTitle(){
+        getTitleTextView().setVisibility(View.GONE);
+        return this;
+    }
+
     /**{@inheritDoc}
      * @since 1.5*/
     @Override
