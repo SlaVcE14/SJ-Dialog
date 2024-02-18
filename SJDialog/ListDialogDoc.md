@@ -291,6 +291,18 @@ listDialog.onButtonClick(new DialogButtonEvents() {
       	}
 });
 ```
+## Add onShowListener
+```java
+listDialog.onShowListener(dialogInterface -> {
+    // Do something
+});
+```
+## Add onDismissListener
+```java
+listDialog.onDismissListener(dialogInterface -> {
+    // Do something
+});
+```
 ## Apply Insets
 supported values: `INSETS_LEFT`, `INSETS_RIGHT`, `INSETS_BOTTOM`, `INSETS_HORIZONTAL`, `INSETS_ALL` or `INSETS_NONE`.
 ```java

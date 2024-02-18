@@ -103,6 +103,18 @@ customViewDialog.onButtonClick(new DialogButtonEvents() {
       	}
 });
 ```
+## Add onShowListener
+```java
+customViewDialog.onShowListener(dialogInterface -> {
+    // Do something
+});
+```
+## Add onDismissListener
+```java
+customViewDialog.onDismissListener(dialogInterface -> {
+    // Do something
+});
+```
 ## Apply Insets
 supported values: `INSETS_LEFT`, `INSETS_RIGHT`, `INSETS_BOTTOM`, `INSETS_HORIZONTAL`, `INSETS_ALL` or `INSETS_NONE`.
 ```java
