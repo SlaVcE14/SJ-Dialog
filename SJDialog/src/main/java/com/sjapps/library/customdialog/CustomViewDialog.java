@@ -423,6 +423,17 @@ public class CustomViewDialog extends SJDialog{
         return this;
     }
 
+    /**
+     * Apply presets on a dialog
+     * @param presets {@link DialogPreset presets} that will be applied to the dialog
+     * @return current class
+     * @since 1.7
+     * */
+    public CustomViewDialog setPresets(DialogPreset<CustomViewDialog> presets){
+        presets.addPresets(this);
+        return this;
+    }
+
     @Override
     public void setButton2Visibility(int visibility) {
         super.setButton2Visibility(visibility);

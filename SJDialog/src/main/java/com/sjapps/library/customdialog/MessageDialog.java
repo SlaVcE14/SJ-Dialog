@@ -301,4 +301,15 @@ public class MessageDialog extends SJDialog{
         super.applyInsets(insets);
         return this;
     }
+
+    /**
+     * Apply presets on a dialog
+     * @param presets {@link DialogPreset presets} that will be applied to the dialog
+     * @return current class
+     * @since 1.7
+     * */
+    public MessageDialog setPresets(DialogPreset<MessageDialog> presets){
+        presets.addPresets(this);
+        return this;
+    }
 }

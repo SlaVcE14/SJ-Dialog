@@ -439,6 +439,17 @@ public class BasicDialog extends SJDialog{
         return this;
     }
 
+    /**
+     * Apply presets on a dialog
+     * @param presets {@link DialogPreset presets} that will be applied to the dialog
+     * @return current class
+     * @since 1.7
+     * */
+    public BasicDialog setPresets(DialogPreset<BasicDialog> presets){
+        presets.addPresets(this);
+        return this;
+    }
+
     @Override
     protected void setButtons() {
         setButton1(R.id.btn1);
