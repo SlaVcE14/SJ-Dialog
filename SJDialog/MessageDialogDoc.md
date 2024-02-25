@@ -30,6 +30,26 @@ By default dialog colors will be set to material3 dynamic colors. With this meth
 messageDialog.setOldTheme();
 ```
 ![MessageDialog oldTheme](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/MessageDialog%20oldTheme.png)
+## DialogPreset
+With **DialogPreset**, you can create customized dialogs with consistent customizations. Simply create a DialogPreset and implement it across all dialogs that you want to have that customizations.
+### Creating a DialogPreset
+```java
+DialogPreset<MessageDialog> preset = dialog -> {
+    // add customization here  
+};
+```
+#### Example
+```java
+DialogPreset<MessageDialog> preset = dialog -> {
+    dialog.setDialogBackgroundResource(background)
+        .setTextColor(textColor)
+        .setButtonColor(btnColor);
+};
+```
+### Apply presets to a dialog
+```java
+messageDialog.setPresets(preset);
+```
 ## Add onClick Listener
 ```java
 messageDialog.onButtonClick(new DialogButtonEvent() {

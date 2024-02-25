@@ -68,6 +68,27 @@ By default dialog colors will be set to material3 dynamic colors. With this meth
 customViewDialog.setOldTheme();
 ```
 ![CustomViewDialog oldTheme](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/CustomViewDialog%20oldTheme.png)
+## DialogPreset
+With **DialogPreset**, you can create customized dialogs with consistent customizations. Simply create a DialogPreset and implement it across all dialogs that you want to have that customizations.
+### Creating a DialogPreset
+```java
+DialogPreset<CustomViewDialog> preset = dialog -> {
+    // add customization here  
+};
+```
+#### Example
+```java
+DialogPreset<CustomViewDialog> preset = dialog -> {
+    dialog.dialogWithTwoButtons()
+        .setDialogBackgroundResource(background)
+        .setTextColor(textColor)
+        .setButtonsColor(btnColor);
+};
+```
+### Apply presets to a dialog
+```java
+customViewDialog.setPresets(preset);
+```
 ## Add View
 ```java
 customViewDialog.addCustomView(view);
