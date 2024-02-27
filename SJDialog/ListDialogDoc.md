@@ -142,6 +142,17 @@ DialogPreset<ListDialog> preset = dialog -> {
 ```java
 listDialog.setPresets(preset);
 ```
+It's recommended to apply the presets first before modifying any other properties.
+If you using [Dialog with two buttons](#dialog-with-two-buttons), add that before applying the presets
+#### Example
+```java
+listDialog.Builder(context,true)
+    .dialogWithTwoButtons()
+    .setPresets(preset)
+    .setTitle("Title")
+    .setMessage("Message")
+    ...
+```
 ## Select multiple items in a list
 ```java
 listDialog.setSelectableList();

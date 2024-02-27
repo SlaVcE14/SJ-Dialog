@@ -50,6 +50,15 @@ DialogPreset<MessageDialog> preset = dialog -> {
 ```java
 messageDialog.setPresets(preset);
 ```
+It's recommended to apply the presets first before modifying any other properties
+#### Example
+```java
+messageDialog.Builder(context,true)
+    .setPresets(preset)
+    .setTitle("Title")
+    .setMessage("Message")
+    ...
+```
 ## Add onClick Listener
 ```java
 messageDialog.onButtonClick(new DialogButtonEvent() {

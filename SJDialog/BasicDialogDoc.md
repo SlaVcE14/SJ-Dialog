@@ -55,6 +55,15 @@ DialogPreset<BasicDialog> preset = dialog -> {
 ```java
 dialog.setPresets(preset);
 ```
+It's recommended to apply the presets first before modifying any other properties
+#### Example
+```java
+dialog.Builder(context,true)
+    .setPresets(preset)
+    .setTitle("Title")
+    .setMessage("Message")
+    ...
+```
 ## Add onClick Listener
 onClickListener for right button. The left button is for dismissing dialog
 ```java
