@@ -90,7 +90,7 @@ DialogPreset<CustomViewDialog> preset = dialog -> {
 customViewDialog.setPresets(preset);
 ```
 It's recommended to apply the presets first before modifying any other properties.
-If you using [Dialog with two buttons](#dialog-with-two-buttons), add that before applying the presets
+If you want to use [Dialog with two buttons](#dialog-with-two-buttons) and is not specified in the preset, add that before applying the presets
 #### Example
 ```java
 customViewDialog.Builder(context,true)
