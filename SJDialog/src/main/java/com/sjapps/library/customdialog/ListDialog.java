@@ -980,6 +980,17 @@ public class ListDialog extends SJDialog {
     }
 
     /**
+     * Apply presets on a dialog
+     * @param presets {@link DialogPreset presets} that will be applied to the dialog
+     * @return current class
+     * @since 1.7
+     * */
+    public ListDialog setPresets(DialogPreset<ListDialog> presets){
+        presets.addPresets(this);
+        return this;
+    }
+
+    /**
      * Get selected items in a list
      *
      * @return ArrayList of selected items in a list
