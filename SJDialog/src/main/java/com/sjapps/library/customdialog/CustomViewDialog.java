@@ -78,6 +78,8 @@ import com.sjapps.library.R;
  * @see #setMaxDialogWidth(int)
  * @see #setDialogAnimations(int)
  * @see #swipeToDismiss(boolean)
+ * @see #onButtonClick(DialogButtonEvent)
+ * @see #onButtonClick(DialogButtonEvents)
  * @see #setOnTouchListener(View.OnTouchListener)
  * @see #onShowListener(DialogInterface.OnShowListener)
  * @see #onDismissListener(DialogInterface.OnDismissListener)
@@ -265,6 +267,9 @@ public class CustomViewDialog extends SJDialog{
      * Set button color.
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @see #setButtonsColor(int)
+     * @see #setLeftButtonColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.5
      * */
     public CustomViewDialog setButtonColor(@ColorInt int color){
@@ -272,6 +277,9 @@ public class CustomViewDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #setButtonColor(int)
+     * @see #setLeftButtonColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.5*/
     @Override
     public CustomViewDialog setButtonsColor(@ColorInt int color){
@@ -280,6 +288,9 @@ public class CustomViewDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #setButtonColor(int)
+     * @see #setButtonsColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.5*/
     @Override
     public CustomViewDialog setLeftButtonColor(@ColorInt int color){
@@ -288,6 +299,8 @@ public class CustomViewDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #setButtonsColor(int)
+     * @see #setLeftButtonColor(int)
      * @since 1.5*/
     @Override
     public CustomViewDialog setRightButtonColor(@ColorInt int color){
@@ -374,6 +387,7 @@ public class CustomViewDialog extends SJDialog{
      *
      * @param dialogButtonEvent dialog button event
      * @return current class
+     * @see #onButtonClick(DialogButtonEvents)
      * @since 1.5
      */
     @Override
@@ -386,6 +400,7 @@ public class CustomViewDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #onButtonClick(DialogButtonEvent)
      * @since 1.5*/
     @Override
     public CustomViewDialog onButtonClick(DialogButtonEvents dialogButtonEvents) {

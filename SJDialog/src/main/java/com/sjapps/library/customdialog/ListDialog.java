@@ -147,6 +147,8 @@ import java.util.ArrayList;
  * @see #setMaxDialogWidth(int)
  * @see #setDialogAnimations(int)
  * @see #swipeToDismiss(boolean)
+ * @see #onButtonClick(DialogButtonEvent)
+ * @see #onButtonClick(DialogButtonEvents)
  * @see #setOnTouchListener(View.OnTouchListener)
  * @see #onShowListener(DialogInterface.OnShowListener)
  * @see #onDismissListener(DialogInterface.OnDismissListener)
@@ -348,6 +350,9 @@ public class ListDialog extends SJDialog {
      *
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @see #setButtonsColor(int)
+     * @see #setLeftButtonColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.5
      */
     public ListDialog setButtonColor(@ColorInt int color) {
@@ -355,6 +360,9 @@ public class ListDialog extends SJDialog {
     }
 
     /**{@inheritDoc}
+     * @see #setButtonColor(int)
+     * @see #setLeftButtonColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.5*/
     @Override
     public ListDialog setButtonsColor(@ColorInt int color) {
@@ -363,6 +371,9 @@ public class ListDialog extends SJDialog {
     }
 
     /**{@inheritDoc}
+     * @see #setButtonColor(int)
+     * @see #setButtonsColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.5*/
     @Override
     public ListDialog setLeftButtonColor(@ColorInt int color) {
@@ -371,6 +382,8 @@ public class ListDialog extends SJDialog {
     }
 
     /**{@inheritDoc}
+     * @see #setButtonsColor(int)
+     * @see #setLeftButtonColor(int)
      * @since 1.5*/
     @Override
     public ListDialog setRightButtonColor(@ColorInt int color) {
@@ -458,6 +471,7 @@ public class ListDialog extends SJDialog {
      *
      * @param dialogButtonEvent dialog button event
      * @return current class
+     * @see #onButtonClick(DialogButtonEvents)
      * @since 1.5
      */
     @Override
@@ -470,6 +484,7 @@ public class ListDialog extends SJDialog {
     }
 
     /**{@inheritDoc}
+     * @see #onButtonClick(DialogButtonEvent)
      * @since 1.5*/
     @Override
     public ListDialog onButtonClick(DialogButtonEvents dialogButtonEvents) {

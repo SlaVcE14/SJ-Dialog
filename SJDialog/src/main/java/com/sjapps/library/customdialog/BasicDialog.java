@@ -42,6 +42,8 @@ import com.sjapps.library.R;
  * @see #setMaxDialogWidth(int)
  * @see #setDialogAnimations(int)
  * @see #swipeToDismiss(boolean)
+ * @see #onButtonClick(DialogButtonEvent)
+ * @see #onButtonClick(DialogButtonEvents)
  * @see #setOnTouchListener(View.OnTouchListener)
  * @see #onShowListener(DialogInterface.OnShowListener)
  * @see #onDismissListener(DialogInterface.OnDismissListener)
@@ -316,6 +318,8 @@ public class BasicDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #setLeftButtonColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.4*/
     @Override
     public BasicDialog setButtonsColor(@ColorInt int color){
@@ -324,6 +328,8 @@ public class BasicDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #setButtonsColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.4*/
     @Override
     public BasicDialog setLeftButtonColor(@ColorInt int color){
@@ -332,6 +338,8 @@ public class BasicDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #setButtonsColor(int)
+     * @see #setLeftButtonColor(int)
      * @since 1.4*/
     @Override
     public BasicDialog setRightButtonColor(@ColorInt int color){
@@ -398,6 +406,7 @@ public class BasicDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #onButtonClick(DialogButtonEvents)
      * @since 1.0*/
     @Override
     public BasicDialog onButtonClick(DialogButtonEvent dialogButtonEvent){
@@ -406,6 +415,7 @@ public class BasicDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #onButtonClick(DialogButtonEvent)
      * @since 1.0*/
     @Override
     public BasicDialog onButtonClick(DialogButtonEvents dialogButtonEvents) {

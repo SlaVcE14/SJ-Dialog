@@ -37,6 +37,7 @@ import com.sjapps.library.R;
  * @see #setMaxDialogWidth(int)
  * @see #setDialogAnimations(int)
  * @see #swipeToDismiss(boolean)
+ * @see #onButtonClick(DialogButtonEvent)
  * @see #setOnTouchListener(View.OnTouchListener)
  * @see #onShowListener(DialogInterface.OnShowListener)
  * @see #onDismissListener(DialogInterface.OnDismissListener)
