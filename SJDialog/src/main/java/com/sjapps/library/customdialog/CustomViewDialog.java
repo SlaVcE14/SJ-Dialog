@@ -12,7 +12,77 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.StyleRes;
 
 import com.sjapps.library.R;
-/**@since 1.5*/
+/**
+ * Creating a dialog with a custom view. Use the {@link #Builder(Context)}, {@link #Builder(Context, int)} or {@link #Builder(Context, boolean)} to build a dialog
+ *
+ *  <h2>Examples</h2>
+ * <h3>Add button example</h3>
+ * <pre>
+ * Button button1 = new Button(this);
+ * button1.setText("Button");
+ *
+ * CustomViewDialog customViewDialog = new CustomViewDialog();
+ * customViewDialog.Builder(this)
+ * 	    .setTitle("Title")
+ *      .addCustomView(button1)
+ *      .show();
+ * </pre>
+ *
+ * <h3>Add EditText example</h3>
+ * <pre>
+ * EditText editText = new EditText(this);
+ * editText.setHint("add text");
+ *
+ * CustomViewDialog customViewDialog = new CustomViewDialog();
+ * customViewDialog.Builder(this)
+ *      .setTitle("Title")
+ * 	    .dialogWithTwoButtons()
+ *      .addCustomView(editText)
+ *      .onButtonClick(() -> {
+ *          String text = editText.getText().toString();
+ *                 // Do something
+ *          })
+ *      .show();
+ * </pre>
+ *
+ * <h3>Add custom xml layout example</h3>
+ * <pre>
+ * View view = LayoutInflater.from(this).inflate(R.layout.custon_layout,null);
+ *
+ * CustomViewDialog customViewDialog = new CustomViewDialog();
+ * customViewDialog.Builder(this)
+ * 	    .setTitle("Title")
+ * 	    .dialogWithTwoButtons()
+ *      .addCustomView(view)
+ *      .show();
+ * </pre>
+ *
+ * @see #dialogWithTwoButtons()
+ * @see #setOldTheme()
+ * @see #setTitle(String)
+ * @see #setMessage(String)
+ * @see #setTitleAlignment(int)
+ * @see #setMessageAlignment(int)
+ * @see #setLeftButtonText(String)
+ * @see #setRightButtonText(String)
+ * @see #hideTitle()
+ * @see #setTextColor(int)
+ * @see #setTitleTextColor(int)
+ * @see #setMessageTextColor(int)
+ * @see #setButtonsColor(int)
+ * @see #setButtonsTextColor(int)
+ * @see #setButtonsBackgroundResource(int)
+ * @see #setDialogBackgroundColor(int)
+ * @see #setDialogBackgroundResource(int)
+ * @see #addCustomView(View)
+ * @see #setMaxDialogWidth(int)
+ * @see #setDialogAnimations(int)
+ * @see #swipeToDismiss(boolean)
+ * @see #setOnTouchListener(View.OnTouchListener)
+ * @see #onShowListener(DialogInterface.OnShowListener)
+ * @see #onDismissListener(DialogInterface.OnDismissListener)
+ * @see #applyInsets(int)
+ * @since 1.5*/
 @SuppressWarnings("unused")
 public class CustomViewDialog extends SJDialog{
 
@@ -21,18 +91,32 @@ public class CustomViewDialog extends SJDialog{
     public CustomViewDialog(){
 
     }
-
+    /**
+     * Build a dialog with the default theme
+     * @param context the base context
+     * @return current class
+     * */
     public CustomViewDialog Builder(Context context){
         return Builder(context,false);
     }
-
+    /**
+     * Build a dialog with a custom theme <b>(only works with Material3 themes)</b>
+     * @param context the base context
+     * @param theme theme that will be applied to the dialog
+     * @return current class
+     * */
     public CustomViewDialog Builder(Context context,@StyleRes int theme){
         super.Builder(context,R.layout.custom_view_dialog,theme, false);
         rootView = dialog.findViewById(R.id.customViewRoot);
         onLeftButtonClick(dialog::dismiss);
         return this;
     }
-
+    /**
+     * Build a dialog with the app theme <b>(only works with Material3 themes)</b>
+     * @param context the base context
+     * @param useAppTheme if it's true, the app theme will be applied to the dialog
+     * @return current class
+     * */
     public CustomViewDialog Builder(Context context,boolean useAppTheme){
         super.Builder(context,R.layout.custom_view_dialog,useAppTheme);
         rootView = dialog.findViewById(R.id.customViewRoot);

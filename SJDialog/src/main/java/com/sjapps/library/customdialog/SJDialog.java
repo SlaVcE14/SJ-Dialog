@@ -28,6 +28,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.sjapps.library.R;
 
+/**
+ * @see BasicDialog
+ * @see MessageDialog
+ * @see ListDialog
+ * @see CustomViewDialog
+ * */
 @SuppressWarnings({"unused", "UnusedReturnValue"})
 public abstract class SJDialog {
 

@@ -11,7 +11,37 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.StyleRes;
 
 import com.sjapps.library.R;
-/**@since 1.3*/
+/**
+ * Creating a simple message dialog. Use the {@link #Builder(Context)}, {@link #Builder(Context, int)} or {@link #Builder(Context, boolean)} to build a dialog
+ * <pre>
+ * MessageDialog messageDialog = new MessageDialog();
+ * messageDialog.Builder(context)
+ * 	    .setTitle("Title")
+ *      .setMessage("Message")
+ *      .show();
+ * </pre>
+ * @see #setOldTheme()
+ * @see #setTitle(String)
+ * @see #setMessage(String)
+ * @see #setTitleAlignment(int)
+ * @see #setMessageAlignment(int)
+ * @see #setButtonText(String)
+ * @see #setTextColor(int)
+ * @see #setTitleTextColor(int)
+ * @see #setMessageTextColor(int)
+ * @see #setButtonColor(int)
+ * @see #setButtonTextColor(int)
+ * @see #setButtonBackgroundResource(int)
+ * @see #setDialogBackgroundColor(int)
+ * @see #setDialogBackgroundResource(int)
+ * @see #setMaxDialogWidth(int)
+ * @see #setDialogAnimations(int)
+ * @see #swipeToDismiss(boolean)
+ * @see #setOnTouchListener(View.OnTouchListener)
+ * @see #onShowListener(DialogInterface.OnShowListener)
+ * @see #onDismissListener(DialogInterface.OnDismissListener)
+ * @see #applyInsets(int)
+ * @since 1.3*/
 @SuppressWarnings("unused")
 public class MessageDialog extends SJDialog{
 
@@ -20,17 +50,33 @@ public class MessageDialog extends SJDialog{
     public MessageDialog(){
         onlyOneButton = true;
     }
-
+    /**
+     * Build a dialog with the default theme
+     * @param context the base context
+     * @return current class
+     * */
     public MessageDialog Builder(Context context){
         super.Builder(context,R.layout.message_dialog);
         onButtonClick(() -> dialog.dismiss());
         return this;
     }
+    /**
+     * Build a dialog with a custom theme <b>(only works with Material3 themes)</b>
+     * @param context the base context
+     * @param theme theme that will be applied to the dialog
+     * @return current class
+     * */
     public MessageDialog Builder(Context context,@StyleRes int theme){
         super.Builder(context,R.layout.message_dialog,theme, false);
         onButtonClick(() -> dialog.dismiss());
         return this;
     }
+    /**
+     * Build a dialog with the app theme <b>(only works with Material3 themes)</b>
+     * @param context the base context
+     * @param useAppTheme if it's true, the app theme will be applied to the dialog
+     * @return current class
+     * */
     public MessageDialog Builder(Context context,boolean useAppTheme){
         super.Builder(context,R.layout.message_dialog,useAppTheme);
         onButtonClick(() -> dialog.dismiss());
