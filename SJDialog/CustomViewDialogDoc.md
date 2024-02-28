@@ -68,6 +68,38 @@ By default dialog colors will be set to material3 dynamic colors. With this meth
 customViewDialog.setOldTheme();
 ```
 ![CustomViewDialog oldTheme](https://raw.githubusercontent.com/SlaVcE14/SJ-Dialog/master/SJDialog/images/CustomViewDialog%20oldTheme.png)
+## DialogPreset
+With **DialogPreset**, you can create customized dialogs with consistent customizations. Simply create a DialogPreset and implement it across all dialogs that you want to have that customizations.
+### Creating a DialogPreset
+```java
+DialogPreset<CustomViewDialog> preset = dialog -> {
+    // add customization here  
+};
+```
+#### Example
+```java
+DialogPreset<CustomViewDialog> preset = dialog -> {
+    dialog.dialogWithTwoButtons()
+        .setDialogBackgroundResource(background)
+        .setTextColor(textColor)
+        .setButtonsColor(btnColor);
+};
+```
+### Apply presets to a dialog
+```java
+customViewDialog.setPresets(preset);
+```
+It's recommended to apply the presets first before modifying any other properties.
+If you want to use [Dialog with two buttons](#dialog-with-two-buttons) and is not specified in the preset, add that before applying the presets
+#### Example
+```java
+customViewDialog.Builder(context,true)
+    .dialogWithTwoButtons()
+    .setPresets(preset)
+    .setTitle("Title")
+    .setMessage("Message")
+    ...
+```
 ## Add View
 ```java
 customViewDialog.addCustomView(view);
@@ -103,6 +135,18 @@ customViewDialog.onButtonClick(new DialogButtonEvents() {
       	}
 });
 ```
+## Add onShowListener
+```java
+customViewDialog.onShowListener(dialogInterface -> {
+    // Do something
+});
+```
+## Add onDismissListener
+```java
+customViewDialog.onDismissListener(dialogInterface -> {
+    // Do something
+});
+```
 ## Apply Insets
 supported values: `INSETS_LEFT`, `INSETS_RIGHT`, `INSETS_BOTTOM`, `INSETS_HORIZONTAL`, `INSETS_ALL` or `INSETS_NONE`.
 ```java
@@ -132,6 +176,9 @@ customViewDialog.setMessage("Message");
 customViewDialog.setTitleAlignment(TextAlignment);
 //Set message text alignment
 customViewDialog.setMessageAlignment(TextAlignment);
+
+//Hide title text
+customViewDialog.hideTitle();
 
 //Set text color
 customViewDialog.setTextColor(color);

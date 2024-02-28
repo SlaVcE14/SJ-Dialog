@@ -1,6 +1,7 @@
 package com.sjapps.library.customdialog;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,7 +11,44 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.StyleRes;
 
 import com.sjapps.library.R;
-/**@since 1.6*/
+/**
+ * Creating a simple dialog. Use the {@link #Builder(Context)}, {@link #Builder(Context, int)} or {@link #Builder(Context, boolean)} to build a dialog
+ * <pre>
+ * BasicDialog dialog = new BasicDialog();
+ * dialog.Builder(context)
+ * 	.setTitle("Title")
+ *   	.setLeftButtonText("button1")
+ *   	.setRightButtonText("button2")
+ *   	.onButtonClick(() -> {
+ * 		    // Do something
+ *      })
+ *      .show();
+ * </pre>
+ * @see #setOldTheme()
+ * @see #setTitle(String)
+ * @see #setMessage(String)
+ * @see #setTitleAlignment(int)
+ * @see #setMessageAlignment(int)
+ * @see #setLeftButtonText(String)
+ * @see #setRightButtonText(String)
+ * @see #setTextColor(int)
+ * @see #setTitleTextColor(int)
+ * @see #setMessageTextColor(int)
+ * @see #setButtonsColor(int)
+ * @see #setButtonsTextColor(int)
+ * @see #setButtonsBackgroundResource(int)
+ * @see #setDialogBackgroundColor(int)
+ * @see #setDialogBackgroundResource(int)
+ * @see #setMaxDialogWidth(int)
+ * @see #setDialogAnimations(int)
+ * @see #swipeToDismiss(boolean)
+ * @see #onButtonClick(DialogButtonEvent)
+ * @see #onButtonClick(DialogButtonEvents)
+ * @see #setOnTouchListener(View.OnTouchListener)
+ * @see #onShowListener(DialogInterface.OnShowListener)
+ * @see #onDismissListener(DialogInterface.OnDismissListener)
+ * @see #applyInsets(int)
+ * @since 1.6*/
 @SuppressWarnings("unused")
 public class BasicDialog extends SJDialog{
     @Deprecated
@@ -109,14 +147,31 @@ public class BasicDialog extends SJDialog{
     public BasicDialog DialogBuilder(Context context, String Title, String Text, String Btn1Txt, String Btn2Txt){
         return Builder(context,Title,Text,Btn1Txt,Btn2Txt);
     }
+    /**
+     * Build a dialog with the default theme
+     * @param context the base context
+     * @return current class
+     * */
     public BasicDialog Builder(Context context){
         super.Builder(context,R.layout.basic_dialog);
         return this;
     }
+    /**
+     * Build a dialog with the app theme <b>(only works with Material3 themes)</b>
+     * @param context the base context
+     * @param useAppTheme if it's true, the app theme will be applied to the dialog
+     * @return current class
+     * */
     public BasicDialog Builder(Context context, boolean useAppTheme){
         super.Builder(context,R.layout.basic_dialog,useAppTheme);
         return this;
     }
+    /**
+     * Build a dialog with a custom theme <b>(only works with Material3 themes)</b>
+     * @param context the base context
+     * @param theme theme that will be applied to the dialog
+     * @return current class
+     * */
     public BasicDialog Builder(Context context,@StyleRes int theme){
         super.Builder(context,R.layout.basic_dialog,theme,false);
         return this;
@@ -263,6 +318,8 @@ public class BasicDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #setLeftButtonColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.4*/
     @Override
     public BasicDialog setButtonsColor(@ColorInt int color){
@@ -271,6 +328,8 @@ public class BasicDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #setButtonsColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.4*/
     @Override
     public BasicDialog setLeftButtonColor(@ColorInt int color){
@@ -279,6 +338,8 @@ public class BasicDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #setButtonsColor(int)
+     * @see #setLeftButtonColor(int)
      * @since 1.4*/
     @Override
     public BasicDialog setRightButtonColor(@ColorInt int color){
@@ -345,6 +406,7 @@ public class BasicDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #onButtonClick(DialogButtonEvents)
      * @since 1.0*/
     @Override
     public BasicDialog onButtonClick(DialogButtonEvent dialogButtonEvent){
@@ -353,10 +415,27 @@ public class BasicDialog extends SJDialog{
     }
 
     /**{@inheritDoc}
+     * @see #onButtonClick(DialogButtonEvent)
      * @since 1.0*/
     @Override
     public BasicDialog onButtonClick(DialogButtonEvents dialogButtonEvents) {
         super.onButtonClick(dialogButtonEvents);
+        return this;
+    }
+
+    /**{@inheritDoc}
+     * @since 1.7*/
+    @Override
+    public BasicDialog onDismissListener(DialogInterface.OnDismissListener listener) {
+        super.onDismissListener(listener);
+        return this;
+    }
+
+    /**{@inheritDoc}
+     * @since 1.7*/
+    @Override
+    public BasicDialog onShowListener(DialogInterface.OnShowListener listener) {
+        super.onShowListener(listener);
         return this;
     }
 
@@ -419,6 +498,17 @@ public class BasicDialog extends SJDialog{
     @Override
     public BasicDialog applyInsets(int insets) {
         super.applyInsets(insets);
+        return this;
+    }
+
+    /**
+     * Apply presets on a dialog
+     * @param presets {@link DialogPreset presets} that will be applied to the dialog
+     * @return current class
+     * @since 1.7
+     * */
+    public BasicDialog setPresets(DialogPreset<BasicDialog> presets){
+        presets.addPresets(this);
         return this;
     }
 

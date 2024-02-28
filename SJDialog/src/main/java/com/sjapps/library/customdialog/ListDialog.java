@@ -1,6 +1,7 @@
 package com.sjapps.library.customdialog;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,7 +22,138 @@ import com.sjapps.library.customdialog.list.events.ListItemClick;
 import com.sjapps.library.customdialog.list.events.ListItemClickObj;
 
 import java.util.ArrayList;
-/**@since 1.5*/
+/**
+ * Creating a dialog with a list. Use the {@link #Builder(Context)}, {@link #Builder(Context, int)} or {@link #Builder(Context, boolean)} to build a dialog
+ *
+ *  <h2>Examples</h2>
+ * <h3>List of String array</h3>
+ * <pre>
+ * String[] strings = {"item1","item2","item3"};
+ *
+ * ListDialog listDialog = new ListDialog();
+ * listDialog.Builder(this)
+ * 	.setItems(strings,(position, value) -> {
+ *        		// Do something
+ *                        })
+ *        	.show();
+ * </pre>
+ *
+ * <h3>List of Objects</h3>
+ * <pre>
+ * class ExampleObject{
+ *     	String value;
+ *
+ *     	public ExampleObject(String value) {
+ *         	this.value = value;
+ *      }
+ * }
+ * </pre>
+ * <pre>
+ * ExampleObject[] objects = {new ExampleObject("object1"),new ExampleObject("object2"),new ExampleObject("object3")};
+ *
+ * ListDialog listDialog = new ListDialog();
+ * listDialog.Builder(this)
+ * 	    .setItems(
+ *        		objects,
+ *              obj -> obj.value, // get value from object
+ *              (position, value) -> {
+ *                 	// Do something
+ *              })
+ *      .show();
+ * </pre>
+ *
+ * <h3>ArrayList of Objects with two values</h3>
+ * <pre>
+ * class ExampleObject{
+ *     	String value1;
+ *     	String value2;
+ *
+ * 	    public ExampleObject(String value1, String value2) {
+ *         	this.value1 = value1;
+ *         	this.value2 = value2;
+ *      }
+ * }
+ * </pre>
+ * <pre>
+ * ArrayList<ExampleObject> arrayList = new ArrayList<>();
+ * arrayList.add(new ExampleObject("object1","value1"));
+ * arrayList.add(new ExampleObject("object2","value2"));
+ * arrayList.add(new ExampleObject("object3","value3"));
+ *
+ * ListDialog listDialog = new ListDialog();
+ * listDialog.Builder(this)
+ * 	    .setItems(
+ *    		arrayList,
+ *          new ListItemValues<ExampleObject>() {
+ *              {@code @Override}
+ *              public String getValue1(ExampleObject obj) {
+ *                  return obj.value1;
+ *              }
+ *
+ *              {@code @Override}
+ *              public String getValue2(ExampleObject obj) {
+ *                  return obj.value2;
+ *              }
+ *          },
+ *       	(position, value) -> {
+ *              // Do something
+ *           })
+ *      .show();
+ * </pre>
+ *
+ *
+ * @see #dialogWithTwoButtons()
+ * @see #setOldTheme()
+ * @see #setTitle(String)
+ * @see #setMessage(String)
+ * @see #setTitleAlignment(int)
+ * @see #setMessageAlignment(int)
+ * @see #setLeftButtonText(String)
+ * @see #setRightButtonText(String)
+ * @see #setTextColor(int)
+ * @see #setTitleTextColor(int)
+ * @see #setMessageTextColor(int)
+ * @see #setButtonsColor(int)
+ * @see #setButtonsTextColor(int)
+ * @see #setButtonsBackgroundResource(int)
+ * @see #setDialogBackgroundColor(int)
+ * @see #setDialogBackgroundResource(int)
+ * @see #setSelectableList()
+ * @see #setListItemTextColor(int) 
+ * @see #setListItemBackgroundColor(int)  
+ * @see #setListItemSelectedBackgroundColor(int)   
+ * @see #setListItemBackgroundResource(int)    
+ * @see #setListItemSelectedBackgroundResource(int)     
+ * @see #setListBackgroundResource(int)      
+ * @see #setAdapter(RecyclerView.Adapter)       
+ * @see #setLayoutManager(RecyclerView.LayoutManager)        
+ * @see #setItems(String[])
+ * @see #setItems(String[], ListItemClick) 
+ * @see #setItems(Object[], ListItemValue)  
+ * @see #setItems(Object[], ListItemValue, ListItemClickObj)
+ * @see #setItems(Object[], ListItemValues)
+ * @see #setItems(Object[], ListItemValues, ListItemClickObj)
+ * @see #setItems(Object[], ListItemValues, ListItemClickObj)
+ * @see #setItems(ArrayList, ListItemValue) 
+ * @see #setItems(ArrayList, ListItemValue,ListItemClickObj) 
+ * @see #setItems(ArrayList, ListItemValues)  
+ * @see #setItems(ArrayList, ListItemValues, ListItemClickObj)  
+ * @see #setImageItems(ArrayList)   
+ * @see #setImageItems(ArrayList, ListItemClickObj)    
+ * @see #selectItem(int)    
+ * @see #updateList()     
+ * @see #hideEmptyListText()     
+ * @see #setEmptyListText(String)     
+ * @see #setMaxDialogWidth(int)
+ * @see #setDialogAnimations(int)
+ * @see #swipeToDismiss(boolean)
+ * @see #onButtonClick(DialogButtonEvent)
+ * @see #onButtonClick(DialogButtonEvents)
+ * @see #setOnTouchListener(View.OnTouchListener)
+ * @see #onShowListener(DialogInterface.OnShowListener)
+ * @see #onDismissListener(DialogInterface.OnDismissListener)
+ * @see #applyInsets(int)
+ * @since 1.5*/
 @SuppressWarnings({"unused", "unchecked","UnusedReturnValue"})
 public class ListDialog extends SJDialog {
 
@@ -45,11 +177,20 @@ public class ListDialog extends SJDialog {
     public ListDialog() {
 
     }
-
+    /**
+     * Build a dialog with the default theme
+     * @param context the base context
+     * @return current class
+     * */
     public ListDialog Builder(Context context) {
         return Builder(context, false);
     }
-
+    /**
+     * Build a dialog with a custom theme <b>(only works with Material3 themes)</b>
+     * @param context the base context
+     * @param theme theme that will be applied to the dialog
+     * @return current class
+     * */
     public ListDialog Builder(Context context, @StyleRes int theme) {
         super.Builder(context, R.layout.list_dialog, theme, false);
         listRV = dialog.findViewById(R.id.list);
@@ -57,7 +198,12 @@ public class ListDialog extends SJDialog {
         emptyListTxt = dialog.findViewById(R.id.emptyListTxt);
         return this;
     }
-
+    /**
+     * Build a dialog with the app theme <b>(only works with Material3 themes)</b>
+     * @param context the base context
+     * @param useAppTheme if it's true, the app theme will be applied to the dialog
+     * @return current class
+     * */
     public ListDialog Builder(Context context, boolean useAppTheme) {
         super.Builder(context, R.layout.list_dialog, useAppTheme);
         listRV = dialog.findViewById(R.id.list);
@@ -204,6 +350,9 @@ public class ListDialog extends SJDialog {
      *
      * @param color Color to use for tinting this drawable
      * @return current class
+     * @see #setButtonsColor(int)
+     * @see #setLeftButtonColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.5
      */
     public ListDialog setButtonColor(@ColorInt int color) {
@@ -211,6 +360,9 @@ public class ListDialog extends SJDialog {
     }
 
     /**{@inheritDoc}
+     * @see #setButtonColor(int)
+     * @see #setLeftButtonColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.5*/
     @Override
     public ListDialog setButtonsColor(@ColorInt int color) {
@@ -219,6 +371,9 @@ public class ListDialog extends SJDialog {
     }
 
     /**{@inheritDoc}
+     * @see #setButtonColor(int)
+     * @see #setButtonsColor(int)
+     * @see #setRightButtonColor(int)
      * @since 1.5*/
     @Override
     public ListDialog setLeftButtonColor(@ColorInt int color) {
@@ -227,6 +382,8 @@ public class ListDialog extends SJDialog {
     }
 
     /**{@inheritDoc}
+     * @see #setButtonsColor(int)
+     * @see #setLeftButtonColor(int)
      * @since 1.5*/
     @Override
     public ListDialog setRightButtonColor(@ColorInt int color) {
@@ -314,6 +471,7 @@ public class ListDialog extends SJDialog {
      *
      * @param dialogButtonEvent dialog button event
      * @return current class
+     * @see #onButtonClick(DialogButtonEvents)
      * @since 1.5
      */
     @Override
@@ -326,10 +484,27 @@ public class ListDialog extends SJDialog {
     }
 
     /**{@inheritDoc}
+     * @see #onButtonClick(DialogButtonEvent)
      * @since 1.5*/
     @Override
     public ListDialog onButtonClick(DialogButtonEvents dialogButtonEvents) {
         super.onButtonClick(dialogButtonEvents);
+        return this;
+    }
+
+    /**{@inheritDoc}
+     * @since 1.7*/
+    @Override
+    public ListDialog onDismissListener(DialogInterface.OnDismissListener listener) {
+        super.onDismissListener(listener);
+        return this;
+    }
+
+    /**{@inheritDoc}
+     * @since 1.7*/
+    @Override
+    public ListDialog onShowListener(DialogInterface.OnShowListener listener) {
+        super.onShowListener(listener);
         return this;
     }
 
@@ -959,6 +1134,17 @@ public class ListDialog extends SJDialog {
     @Override
     public ListDialog applyInsets(int insets) {
         super.applyInsets(insets);
+        return this;
+    }
+
+    /**
+     * Apply presets on a dialog
+     * @param presets {@link DialogPreset presets} that will be applied to the dialog
+     * @return current class
+     * @since 1.7
+     * */
+    public ListDialog setPresets(DialogPreset<ListDialog> presets){
+        presets.addPresets(this);
         return this;
     }
 

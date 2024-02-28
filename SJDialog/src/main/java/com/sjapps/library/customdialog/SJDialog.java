@@ -3,6 +3,7 @@ package com.sjapps.library.customdialog;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.ContextThemeWrapper;
@@ -27,6 +28,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.sjapps.library.R;
 
+/**
+ * @see BasicDialog
+ * @see MessageDialog
+ * @see ListDialog
+ * @see CustomViewDialog
+ * */
 @SuppressWarnings({"unused", "UnusedReturnValue"})
 public abstract class SJDialog {
 
@@ -562,6 +569,25 @@ public abstract class SJDialog {
         leftBtnOnClick = true;
         this.dialogButtonEvent = dialogButtonEvent;
 
+        return this;
+    }
+
+    /**
+     * Set dialog {@link DialogInterface.OnDismissListener OnDismissListener}
+     * @since 1.7
+     */
+    protected SJDialog onDismissListener(DialogInterface.OnDismissListener listener){
+        this.dialog.setOnDismissListener(listener);
+        dialog.dismiss();
+        return this;
+    }
+
+    /**
+     * Set dialog {@link DialogInterface.OnShowListener OnShowListener}
+     * @since 1.7
+     */
+    protected SJDialog onShowListener (DialogInterface.OnShowListener listener){
+        this.dialog.setOnShowListener(listener);
         return this;
     }
 
